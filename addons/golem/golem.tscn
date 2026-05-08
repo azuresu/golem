@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://35ukcrxw2y3f"]
+
+[ext_resource type="Script" uid="uid://clo2ne6yydh2e" path="res://addons/golem/golem.gd" id="1_5qwxt"]
+[ext_resource type="Script" uid="uid://dqygrurr0q1c7" path="res://addons/golem/animation_state_machine.gd" id="2_5qwxt"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5qwxt"]
+animation = &"human/human_stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6aon"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qwxt"]
+states/stand/node = SubResource("AnimationNodeAnimation_5qwxt")
+states/stand/position = Vector2(0, 0)
+transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_s6aon")]
+graph_offset = Vector2(-419, -97)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s6aon"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l3ll3"]
+nodes/output/position = Vector2(624, 144)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5qwxt")
+nodes/StateMachine/position = Vector2(160, 144)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_s6aon")
+nodes/TimeScale/position = Vector2(432, 144)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
+
+[node name="Golem" type="CharacterBody3D" unique_id=1331856773]
+script = ExtResource("1_5qwxt")
+
+[node name="AnimationStateMachine" type="Node" parent="." unique_id=132464318]
+script = ExtResource("2_5qwxt")
+metadata/_custom_type_script = "uid://c4cxusklobxcr"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1728137870]
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1656163031]
+tree_root = SubResource("AnimationNodeBlendTree_l3ll3")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

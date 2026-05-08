@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cutylbwq7gvmh"]
+
+[ext_resource type="Script" uid="uid://b2glps5ufnge8" path="res://addons/golem/golem_shape.gd" id="1_7t14u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6ryh5"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.1
+
+[node name="GolemShape" type="CollisionShape3D" unique_id=1813886583]
+shape = SubResource("CapsuleShape3D_6ryh5")
+script = ExtResource("1_7t14u")
