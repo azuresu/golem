@@ -1,6 +1,8 @@
 @tool
 extends CollisionShape3D
 
+var default_shape:= true
+
 @export var diameter:= 0.1:
 	set(d):
 		diameter = d

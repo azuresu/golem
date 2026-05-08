@@ -7,6 +7,11 @@ class_name Golem extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+func set_default_shapes_disabled(disabled: bool) -> void:
+	for ch in get_children():
+		if ch is CollisionShape3D and "default_shape" in ch and ch.default_shape:
+			ch.disabled = disabled
+
 func _ready() -> void:
 	if skeleton:
 		animation_player.root_node = skeleton.get_path()
