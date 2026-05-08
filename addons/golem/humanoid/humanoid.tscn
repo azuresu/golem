@@ -81,6 +81,8 @@ height = 0.2
 
 [node name="Humanoid" unique_id=1331856773 instance=ExtResource("1_v5vjw")]
 script = ExtResource("2_saknf")
+height = 1.8
+height_baseline = 1.8
 
 [node name="Head" parent="." index="3" unique_id=1813886583 instance=ExtResource("2_ibm0m")]
 shape = SubResource("CapsuleShape3D_saknf")

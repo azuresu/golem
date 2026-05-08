@@ -7,10 +7,18 @@ class_name Golem extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-func set_default_shapes_disabled(disabled: bool) -> void:
-	for ch in get_children():
-		if ch is CollisionShape3D and "default_shape" in ch and ch.default_shape:
-			ch.disabled = disabled
+@export var height:= 1.0:
+	set(h):
+		if h > 0 and not h == height:
+			height = h
+
+@export var height_baseline:= 1.0:
+	set(h):
+		if h > 0 and not h == height_baseline:
+			height_baseline = h
+
+var height_ratio: float:
+	get: return height / height_baseline
 
 func _ready() -> void:
 	if skeleton:
@@ -18,3 +26,8 @@ func _ready() -> void:
 	else:
 		if not Engine.is_editor_hint():
 			Glaze.log_error("No skeleton found in golem: %s", self)
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	move_and_slide()

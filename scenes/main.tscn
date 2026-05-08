@@ -3,15 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://dps0x4lqi4ky" path="res://scenes/male.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://1vhfq5v7402m" path="res://scenes/female.tscn" id="2_0wfyh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
+size = Vector3(10, 1, 10)
+
 [node name="Main" type="Node3D" unique_id=1150763051]
 
 [node name="Male" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_o5qli")]
-transform = Transform3D(0.7186848, 0, -0.69533604, 0, 1, 0, 0.69533604, 0, 0.7186848, 0.057139635, 0, 0.7598268)
+transform = Transform3D(0.7186848, 0, -0.69533604, 0, 1, 0, 0.69533604, 0, 0.7186848, -0.469, 0.021713525, 0.76)
 look_at_target = NodePath("../Female")
 
 [node name="Female" parent="." unique_id=1352224686 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_0wfyh")]
-transform = Transform3D(-0.63857985, 0, 0.76955557, 0, 1, 0, -0.76955557, 0, -0.63857985, 0.90311456, 0, -0.96605545)
+transform = Transform3D(-0.63857985, 0, 0.76955557, 0, 1, 0, -0.76955557, 0, -0.63857985, 0.484, 0, 0.739)
 look_at_target = NodePath("../Male")
 
 [node name="Origin" type="Marker3D" parent="." unique_id=1519620699]
 metadata/_edit_lock_ = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1448971692]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2086354755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_0wfyh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1397779435]
+transform = Transform3D(1, 0, 0, 0, 0.8927667, 0.4505192, 0, -0.4505192, 0.8927667, 0, 1.8883734, 2.1769156)

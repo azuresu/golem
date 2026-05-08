@@ -1,28 +1,26 @@
 @tool
 extends CollisionShape3D
 
-var default_shape:= true
-
 @export var diameter:= 0.1:
 	set(d):
 		diameter = d
-		shape.radius = diameter * 0.5
+		_height_ratio = 0
 
 @export var length:= 0.1:
 	set(l):
 		length = l
-		shape.height = length
+		_height_ratio = 0
 
 @export var end_bone:= ""
 
-@onready var golem: Golem = get_parent()
+var golem: Golem:
+	get: return get_parent()
 
 var _bone: BoneAttachment3D
 var _bone2: BoneAttachment3D
+var _height_ratio: float
 
 func _ready() -> void:
-	shape.radius = diameter * 0.5
-	shape.height = length
 	var skeleton: Skeleton3D = golem.skeleton
 	if skeleton:
 		for i in skeleton.get_bone_count():
@@ -46,6 +44,15 @@ func _ready() -> void:
 
 # Make sure to use Jolt engine otherwise rotation/scale won't work.
 func _physics_process(delta: float) -> void:
+
+	# Align size with golem.
+	var ghr:= golem.height_ratio
+	if not ghr == _height_ratio:
+		shape.radius = diameter * 0.5 * ghr
+		shape.height = length * ghr
+		_height_ratio = ghr
+
+	# Align rotation with bones.
 	if _bone:
 		if _bone2:
 			global_position = lerp(_bone.global_position, _bone2.global_position, 0.5)
