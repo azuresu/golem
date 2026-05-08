@@ -48,10 +48,14 @@ script = ExtResource("2_5qwxt")
 metadata/_custom_type_script = "uid://c4cxusklobxcr"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1728137870]
+root_node = NodePath("../Model")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1656163031]
+root_node = NodePath("../Model")
 tree_root = SubResource("AnimationNodeBlendTree_l3ll3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/StateMachine/conditions/stand = false
 parameters/StateMachine/conditions/walk = false
 parameters/TimeScale/scale = 1.0
+
+[node name="Model" type="Node3D" parent="." unique_id=1535311207]
