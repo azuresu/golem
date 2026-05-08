@@ -6,13 +6,28 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5qwxt"]
 animation = &"human/human_stand"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s6aon"]
+animation = &"human/human_walk"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6aon"]
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l3ll3"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0ih5"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qwxt"]
 states/stand/node = SubResource("AnimationNodeAnimation_5qwxt")
 states/stand/position = Vector2(0, 0)
-transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_s6aon")]
+states/walk/node = SubResource("AnimationNodeAnimation_s6aon")
+states/walk/position = Vector2(0, 0)
+transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_s6aon"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_l3ll3"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_n0ih5")]
 graph_offset = Vector2(-419, -97)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s6aon"]
@@ -37,4 +52,6 @@ metadata/_custom_type_script = "uid://c4cxusklobxcr"
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1656163031]
 tree_root = SubResource("AnimationNodeBlendTree_l3ll3")
 anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/conditions/stand = false
+parameters/StateMachine/conditions/walk = false
 parameters/TimeScale/scale = 1.0

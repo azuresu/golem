@@ -10,3 +10,6 @@ class_name Golem extends CharacterBody3D
 func _ready() -> void:
 	if skeleton:
 		animation_player.root_node = skeleton.get_path()
+	else:
+		if not Engine.is_editor_hint():
+			Glaze.log_error("No skeleton found in golem: %s", self)

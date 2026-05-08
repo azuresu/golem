@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://clfa0dxe6p382"]
+
+[ext_resource type="PackedScene" uid="uid://dps0x4lqi4ky" path="res://scenes/male.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://1vhfq5v7402m" path="res://scenes/female.tscn" id="2_0wfyh"]
+
+[node name="Main" type="Node3D" unique_id=1150763051]
+
+[node name="Male" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_o5qli")]
+transform = Transform3D(0.7186848, 0, -0.69533604, 0, 1, 0, 0.69533604, 0, 0.7186848, -0.17968446, 0, 0.973223)
+look_at_target = NodePath("../Female")
+
+[node name="Female" parent="." unique_id=1352224686 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_0wfyh")]
+transform = Transform3D(-0.63857985, 0, 0.76955557, 0, 1, 0, -0.76955557, 0, -0.63857985, 0.90311456, 0, -0.61260086)
+look_at_target = NodePath("../Male")

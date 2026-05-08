@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c1ygh5yw4mwco"]
+
+[node name="HumanoidLookAt" type="LookAtModifier3D" unique_id=1292822680]
+bone_name = "Head"
+duration = 0.5
+transition_type = 1
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 2.0943952
+primary_damp_threshold = 1.0
+secondary_limit_angle = 2.0943952
+secondary_damp_threshold = 1.0
