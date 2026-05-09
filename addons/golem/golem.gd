@@ -15,6 +15,12 @@ class_name Golem extends CharacterBody3D
 		if h > 0 and not h == height_baseline:
 			height_baseline = h
 
+## Allow golem to be collidable in editor so it will not overlap with others when you move it in editor.
+@export var collidable_in_editor:= true
+
+## Add offset to position when game starts to avoid overlap with objects like floor when it is too close.
+@export var initial_offset_in_game:= Vector3(0, 0.1, 0)
+
 var height_ratio: float:
 	get: return height / height_baseline
 
@@ -24,12 +30,17 @@ var skeleton: Skeleton3D:
 			skeleton = _look_for_skeleton($Model)
 		return skeleton
 
+func get_model_vector() -> Vector3:
+	return $Model/Marker/End.global_position - $Model/Marker.global_position
+
 func _ready() -> void:
 	if skeleton:
 		animation_player.root_node = skeleton.get_path()
 	else:
 		Glaze.log_warn("No skeleton found in golem: %s", self)
 	$Model/Marker.visible = Engine.is_editor_hint()
+	if not Engine.is_editor_hint():
+		position += initial_offset_in_game
 
 func _process(delta: float) -> void:
 	if not rotation == Vector3.ZERO:
@@ -38,7 +49,10 @@ func _process(delta: float) -> void:
 		$Model.rotation = r
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	if Engine.is_editor_hint():
+		if not collidable_in_editor:
+			return
+	else:
 		velocity += get_gravity() * delta
 	move_and_slide()
 
@@ -90,3 +104,6 @@ func _set_model_rotation(model_rotation: Vector3) -> void:
 func _set_animation_playing(animation_playing: StringName) -> void:
 	if animation_playing in animation_state_machine.states:
 		animation_state_machine.set_current_state(animation_playing)
+
+func _mark_start_point() -> void:
+	pass
