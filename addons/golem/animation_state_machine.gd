@@ -4,11 +4,6 @@ class_name AnimationStateMachine extends StateMachine
 var golem: Golem:
 	get: return owner
 
-var animation_playing: String:
-	set(a):
-		animation_playing = a
-		set_current_state(a)
-
 var _fixed: bool
 
 # Cache conditions to improve performance (a lot!)
@@ -27,9 +22,6 @@ func _ready() -> void:
 	super._ready()
 	state_entered.connect(_on_state_entered)
 	state_exited.connect(_on_state_exited)
-	print(" - %" % animation_playing)
-	if animation_playing in states:
-		set_current_state(animation_playing)
 
 func _process(delta: float) -> void:
 	_fix_tree()
@@ -119,7 +111,7 @@ func _on_animation_finished(animation_name: String) -> void:
 func _on_state_entered(state: State) -> void:
 	if state is AnimationState:
 		state.animation_time = 0
-		_set_animation_time_scale(state._get_animation_speed_scale())
+		_set_animation_time_scale(state.get_speed_scale())
 
 func _on_state_exited(state: State) -> void:
 	if state is AnimationState:

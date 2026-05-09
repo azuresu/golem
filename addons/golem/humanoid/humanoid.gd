@@ -15,8 +15,6 @@ var look_at_modifier: LookAtModifier3D:
 						look_at_modifier = ch
 				if not look_at_modifier:
 					Glaze.log_warn("No LookAtModifier on head in humanoid: %s", self)
-			else:
-				Glaze.log_warn("No skeleton to look for LookAtModifier on head in humanoid: %s", self)
 		return look_at_modifier
 
 func _update_look_at_modifier() -> void:

@@ -30,7 +30,7 @@ states/stand/node = SubResource("AnimationNodeAnimation_0wfyh")
 states/stand/position = Vector2(0, 0)
 states/walk/node = SubResource("AnimationNodeAnimation_sugp2")
 states/walk/position = Vector2(0, 0)
-transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_jyhfs"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_tbgi4"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_tefeu")]
+transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_jyhfs"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_tbgi4"), "Start", "walk", SubResource("AnimationNodeStateMachineTransition_tefeu")]
 graph_offset = Vector2(-419, -97)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ya4ey"]
@@ -134,110 +134,129 @@ shape = SubResource("BoxShape3D_0wfyh")
 transform = Transform3D(1, 0, 0, 0, 0.8927667, 0.4505192, 0, -0.4505192, 0.8927667, 0, 1.8883734, 2.1769156)
 
 [node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(0.99999166, 0, 0, 0, 0.9999968, 0, 0, 0, 0.9999912, -0.6469572, 0.04282918, 1.44819055e-08)
+transform = Transform3D(0.99999166, 0, 0, 0, 0.9999968, 0, 0, 0, 0.9999912, -0.64695597, 0.041973047, -0.01500992)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
-look_at_target = NodePath("../HumanFemale")
-model_rotation = Vector3(0, -69.212, 0)
+look_at_target = NodePath("../HumanFemale/Hips")
+model_rotation = Vector3(0, -92.703995, 0)
 
 [node name="HumanFemale" parent="." unique_id=2060380920 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.373, 0, 0.279)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.373, 0, 0.7449392)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanMale")
 height = 1.0
+model_rotation = Vector3(0, 43.032997, 0)
+animation_playing = &"walk"
 
 [node name="AnimationPlayer" parent="HumanFemale" index="1" unique_id=1728137870]
 root_node = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/Main/HumanFemale/Model/Sketchfab_Scene/Sketchfab_model/d586f6c1963c49c68e3bc0ee00aec68b_fbx/RootNode/rig_CharRoot/Object_4/GeneralSkeleton")
 
 [node name="AnimationTree" parent="HumanFemale" index="2" unique_id=1656163031]
 tree_root = SubResource("AnimationNodeBlendTree_o6xl0")
+parameters/StateMachine/conditions/stand = false
+parameters/StateMachine/conditions/walk = true
+
+[node name="Model" parent="HumanFemale" index="3" unique_id=1535311207]
+transform = Transform3D(0.7309607, 0, 0.6824194, 0, 1, 0, -0.6824194, 0, 0.7309607, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="HumanFemale/Model/Sketchfab_Scene/Sketchfab_model/d586f6c1963c49c68e3bc0ee00aec68b_fbx/RootNode/rig_CharRoot/Object_4" parent_id_path=PackedInt32Array(2060380920, 282307578, 437076838) index="0" unique_id=283811095]
-bones/2/position = Vector3(0.042613223, 0.9291065, 0.010928354)
-bones/2/rotation = Quaternion(-0.0052592102, -0.03909402, -0.02445825, 0.9989224)
-bones/3/rotation = Quaternion(0.0104894405, 0.006258006, 0.0145850675, 0.99981904)
-bones/4/rotation = Quaternion(0.020985937, 0.012433466, 0.025527023, 0.9993765)
-bones/5/rotation = Quaternion(-0.09095061, 0.0021894965, -0.0017498841, 0.99585146)
-bones/6/rotation = Quaternion(0.03567994, 0.0068425834, -0.039542515, 0.9985572)
-bones/8/rotation = Quaternion(0.5145012, 0.46856534, 0.5796027, -0.4240233)
-bones/9/rotation = Quaternion(0.13769825, 0.81217486, -0.54627377, -0.15164511)
-bones/10/rotation = Quaternion(0.05519242, -0.7088199, 0.054591887, 0.7011047)
-bones/11/rotation = Quaternion(0.039677, 0.57890964, 0.17882754, 0.7945503)
-bones/15/rotation = Quaternion(0.11788549, -0.068275444, -0.09848245, 0.9857701)
-bones/16/rotation = Quaternion(0.098025866, 0.0038327037, -0.0100484155, 0.9951258)
-bones/18/rotation = Quaternion(0.5160543, -0.47096407, -0.55665755, -0.44945884)
-bones/19/rotation = Quaternion(-0.12222463, 0.79928154, -0.54263633, 0.2274993)
-bones/20/rotation = Quaternion(0.07158378, 0.7083294, -0.070609, 0.6986843)
-bones/21/rotation = Quaternion(-0.066799186, -0.49034628, -0.21995862, 0.84066445)
-bones/25/rotation = Quaternion(0.1151648, 0.06313974, 0.062536396, 0.9893633)
-bones/26/rotation = Quaternion(0.041621324, -0.001405154, 0.0054679485, 0.9991176)
-bones/28/rotation = Quaternion(0.024251537, 0.12592229, 0.98907423, -0.07271604)
-bones/29/rotation = Quaternion(0.0044913464, 0.99267286, -0.1207466, 0.0008936563)
-bones/30/rotation = Quaternion(0.092189975, 0.72096056, -0.67438036, 0.13010837)
-bones/31/rotation = Quaternion(-0.02542195, 0.9995932, -0.00039805908, 0.012922289)
-bones/33/rotation = Quaternion(-0.060837608, 0.023137951, 0.99628246, -0.05643447)
-bones/34/rotation = Quaternion(-0.0021853806, 0.9973562, -0.07263675, 0.00011362979)
-bones/35/rotation = Quaternion(-0.10077729, 0.6709695, -0.73240757, -0.05677295)
+bones/2/position = Vector3(0.0014402083, 0.9202791, 1.787319e-05)
+bones/2/rotation = Quaternion(-0.009602499, 0.002384152, 0.015929053, 0.9998242)
+bones/3/rotation = Quaternion(0.044033196, 0.028145757, -0.0088017145, 0.9985948)
+bones/4/rotation = Quaternion(0.0054512317, 0.0079874825, -0.00025408118, 0.99995327)
+bones/5/rotation = Quaternion(-0.010413519, -0.0048783757, -8.993389e-05, 0.9999339)
+bones/6/rotation = Quaternion(-0.035276208, -0.039608534, -0.02386883, 0.9983071)
+bones/8/rotation = Quaternion(0.5616557, 0.41530672, 0.58927125, -0.40598366)
+bones/9/rotation = Quaternion(-0.033861656, 0.83589727, -0.5405102, -0.08931878)
+bones/10/rotation = Quaternion(0.04399043, -0.70573705, 0.043990303, 0.7057372)
+bones/11/rotation = Quaternion(-0.005826729, 0.8036766, 0.0348521, 0.5940164)
+bones/12/rotation = Quaternion(-0.30504882, 0.674652, 0.13339844, 0.65878284)
+bones/13/rotation = Quaternion(0.18021831, 0.10836979, 0.11454951, 0.97090465)
+bones/14/rotation = Quaternion(-0.14613989, -0.06590737, -0.21863568, 0.96254754)
+bones/15/rotation = Quaternion(0.28051203, -0.010961906, -0.021820439, 0.9595399)
+bones/16/rotation = Quaternion(0.2799229, -2.092994e-07, -0.028685352, 0.9595939)
+bones/17/rotation = Quaternion(0.17356122, -1.1920964e-07, -0.017785925, 0.9846625)
+bones/18/rotation = Quaternion(0.5606262, -0.42016393, -0.5775917, -0.41898483)
+bones/19/rotation = Quaternion(-0.15580063, 0.8664295, -0.47349933, 0.02871493)
+bones/20/rotation = Quaternion(0.15346636, 0.6902523, -0.15346612, 0.6902522)
+bones/21/rotation = Quaternion(0.03683414, -0.6754626, -0.09658256, 0.73011327)
+bones/22/rotation = Quaternion(-0.30730787, -0.6242415, -0.16654983, 0.6986742)
+bones/23/rotation = Quaternion(0.24242847, -0.15439849, -0.051471047, 0.9564206)
+bones/24/rotation = Quaternion(-0.15628013, -0.015480301, 0.14231229, 0.97728413)
+bones/25/rotation = Quaternion(0.19589502, 0.006953285, 0.016694406, 0.98045814)
+bones/26/rotation = Quaternion(0.35673764, 8.931839e-08, 0.02906051, 0.9337526)
+bones/27/rotation = Quaternion(0.16716701, 2.5879478e-07, 0.013617608, 0.98583454)
+bones/28/rotation = Quaternion(0.036612816, 0.24095696, 0.96956784, 0.023185715)
+bones/29/rotation = Quaternion(-0.010952978, 0.9851691, -0.1492536, 0.08393661)
+bones/30/rotation = Quaternion(0.010758615, 0.71007085, -0.7036259, 0.024375746)
+bones/31/rotation = Quaternion(2.8921722e-08, 0.99999785, -0.002085122, 6.674325e-09)
+bones/33/rotation = Quaternion(-0.09550287, -0.049789052, 0.99415076, 0.008032559)
+bones/34/rotation = Quaternion(-0.018702252, 0.9933372, -0.11343149, 0.008045446)
+bones/35/rotation = Quaternion(-0.041777015, 0.5953094, -0.80149096, 0.03839138)
+bones/36/rotation = Quaternion(-4.059195e-08, 0.99701375, 0.0772247, 2.1166713e-08)
+
+[node name="HumanoidLookAt" parent="HumanFemale/Model/Sketchfab_Scene/Sketchfab_model/d586f6c1963c49c68e3bc0ee00aec68b_fbx/RootNode/rig_CharRoot/Object_4/GeneralSkeleton" index="2" unique_id=1292822680]
+target_node = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/Main/HumanMale/Head")
 
 [node name="Head" parent="HumanFemale" index="4" unique_id=1813886583]
-transform = Transform3D(-0.99800694, -0.053073756, 0.0291492, -0.051245414, 0.9966953, 0.060255367, -0.032257058, 0.05865126, -0.99757755, -0.034796596, 1.4874175, -0.0007195473)
+transform = Transform3D(-0.36305776, 0.06494952, -0.929344, 0.034988124, 0.9976396, 0.056058146, 0.93095315, -0.012165071, -0.36453706, -0.0051703453, 1.4775612, -0.0156002045)
 shape = SubResource("CapsuleShape3D_tipki")
 
 [node name="Chest" parent="HumanFemale" index="5" unique_id=2141173862]
-transform = Transform3D(-0.99839336, 0.03448299, 0.040846404, 0.032395698, 0.9980207, -0.05069194, -0.042519614, -0.049295127, -0.9977274, -0.045536637, 1.11925, -0.022239506)
+transform = Transform3D(-0.67725706, -0.043043196, -0.73426986, 0.016568623, 0.9969734, -0.07372697, 0.73533595, -0.062107373, -0.67461395, -0.011316657, 1.112227, -0.012745917)
 shape = SubResource("CapsuleShape3D_85g3d")
 
 [node name="Hips" parent="HumanFemale" index="6" unique_id=1055591327]
-transform = Transform3D(-0.99558145, -0.04924767, 0.07773921, -0.0484284, 0.9985883, 0.012380534, -0.07825115, 0.00856258, -0.9967302, -0.042533994, 0.92504793, 0.0057307184)
+transform = Transform3D(-0.72244126, 0.040033042, -0.6900447, 0.031223629, 0.99903023, 0.025269965, 0.6904965, -0.003290133, -0.7231113, 0.012260675, 0.91995496, 0.014303207)
 shape = SubResource("CapsuleShape3D_choun")
 
 [node name="RightUpperArm" parent="HumanFemale" index="7" unique_id=241013015]
-transform = Transform3D(-0.5549533, 0.2495426, 0.7933334, 0, -0.95372283, 0.29999042, 0.8317195, 0.1665038, 0.52934074, 0.16759264, 1.2398081, 0.04160419)
+transform = Transform3D(0.8953596, 0.10777737, 0.4317329, 0, -0.9700175, 0.24215408, 0.44501176, -0.2168471, -0.8686426, 0.15181935, 1.2153507, -0.14394444)
 shape = SubResource("CapsuleShape3D_ya4ey")
 
 [node name="RightLowerArm" parent="HumanFemale" index="8" unique_id=975853271]
-transform = Transform3D(0.9988103, 0.008937556, 0.044341143, 0, -0.98008496, 0.19754933, 0.04523464, -0.19734707, -0.97908133, 0.19769704, 1.0166526, 0.03845647)
+transform = Transform3D(0.7139336, -0.44385916, -0.5412343, 0, -0.773082, 0.63399494, -0.69998944, -0.45270106, -0.5520161, 0.1136564, 1.0139525, -0.22095138)
 shape = SubResource("CapsuleShape3D_eb6dy")
 
 [node name="RightHand" parent="HumanFemale" index="9" unique_id=63962693]
-transform = Transform3D(0.98714197, -0.081510425, -0.1357685, 0, -0.8547322, 0.5131899, -0.15881093, -0.5066551, -0.84391415, 0.19271886, 0.84173477, -0.021389425)
+transform = Transform3D(-0.029629944, -0.8032791, -0.58330494, 0, -0.583592, 0.8035897, -0.99940807, 0.023815213, 0.017293531, 0.011475205, 0.8882209, -0.27116016)
 shape = SubResource("CapsuleShape3D_trceg")
 
 [node name="LeftUpperArm" parent="HumanFemale" index="10" unique_id=369303869]
-transform = Transform3D(-0.13495894, -0.24398805, -0.9601098, 0, -0.9689785, 0.24624139, -0.9906855, 0.03323796, 0.13079368, -0.2450434, 1.2425821, 0.0049969554)
+transform = Transform3D(-0.9546307, 0.09085887, 0.28304124, 0, -0.95193684, 0.30557927, 0.29728797, 0.2917598, 0.9088826, -0.090981126, 1.2195348, 0.17206985)
 shape = SubResource("CapsuleShape3D_a8y0u")
 
 [node name="LeftLowerArm" parent="HumanFemale" index="11" unique_id=769943401]
-transform = Transform3D(0.99872303, -0.013507714, -0.045256108, 0, -0.95805675, 0.2858748, -0.04723634, -0.28559506, -0.95685476, -0.27502286, 1.0201658, -0.023766667)
+transform = Transform3D(0.041761093, -0.11576866, -0.9922207, 0, -0.99294674, 0.11588619, -0.9989726, -0.0048395977, -0.04147883, -0.09362328, 0.9951037, 0.20552015)
 shape = SubResource("CapsuleShape3D_jkv2x")
 
 [node name="LeftHand" parent="HumanFemale" index="12" unique_id=1423774856]
-transform = Transform3D(0.78005046, 0.371526, 0.50062776, 0, -0.80028105, 0.59385824, 0.6255076, -0.46331817, -0.6243168, -0.24961174, 0.85261875, -0.0900186)
+transform = Transform3D(0.5896235, 0.464799, 0.6529011, 0, -0.808385, 0.57555723, 0.8074885, -0.3393936, -0.47674465, -0.07726872, 0.8301606, 0.18336344)
 shape = SubResource("CapsuleShape3D_jbj1t")
 
 [node name="RightUpperLeg" parent="HumanFemale" index="13" unique_id=1899827686]
-transform = Transform3D(0.9383351, 0.031355537, 0.34383646, 0, -0.9956645, 0.09079745, 0.34528112, -0.08521173, -0.9344091, 0.063223004, 0.73669845, -0.0029697418)
+transform = Transform3D(0.39351884, 0.059350688, 0.917158, 0, -0.99768066, 0.06456132, 0.91915095, -0.025409985, -0.3926656, 0.09610355, 0.72323436, -0.059755683)
 shape = SubResource("CapsuleShape3D_muem4")
 
 [node name="RightLowerLeg" parent="HumanFemale" index="14" unique_id=154634051]
-transform = Transform3D(-0.9656274, -0.05897663, -0.25251526, 0, -0.9736036, 0.22739127, -0.25932062, 0.21961018, 0.94028634, 0.057223916, 0.3440259, 0.025490135)
+transform = Transform3D(-0.8275745, 0.22923543, 0.5121, 0, -0.91256374, 0.40849802, 0.56107926, 0.33811513, 0.7553315, 0.15458572, 0.34267414, 0.004586458)
 shape = SubResource("CapsuleShape3D_dp3eg")
 
 [node name="RightFoot" parent="HumanFemale" index="15" unique_id=1099984133]
-transform = Transform3D(0.8765653, 0.3206987, 0.35715795, 0, -0.74242395, 0.66670954, 0.48097152, -0.58446985, -0.65091646, 0.07469463, 0.07613334, 0.016622603)
+transform = Transform3D(0.904215, -0.2844993, -0.31521094, 0, -0.73859197, 0.6666011, -0.42671588, -0.60285664, -0.6679349, 0.17525733, 0.08744627, 0.018141866)
 shape = SubResource("CapsuleShape3D_0ld40")
 
 [node name="LeftUpperLeg" parent="HumanFemale" index="16" unique_id=2008624075]
-transform = Transform3D(0.8742052, -0.16412634, -0.45659184, 0, -0.9406459, 0.33825228, -0.48523474, -0.29569212, -0.82260174, -0.17406023, 0.73764, -0.05949086)
+transform = Transform3D(0.59596735, -0.42966515, -0.67796785, 0, -0.84451133, 0.5350125, -0.80282485, -0.31895676, -0.50328124, -0.14343941, 0.7592085, 0.021539748)
 shape = SubResource("CapsuleShape3D_gqmmt")
 
 [node name="LeftLowerLeg" parent="HumanFemale" index="17" unique_id=135186777]
-transform = Transform3D(-0.6441981, -0.13646783, -0.7523639, 0, -0.9837585, 0.17844, -0.7646784, 0.11496637, 0.6338238, -0.23387325, 0.3535269, -0.09332396)
+transform = Transform3D(-0.6635772, 0.06276903, 0.74523926, 0, -0.99628484, 0.08391337, 0.7479084, 0.05569144, 0.66120905, -0.21395314, 0.39121634, -0.02894175)
 shape = SubResource("CapsuleShape3D_yc10j")
 
 [node name="LeftFoot" parent="HumanFemale" index="18" unique_id=1702758973]
-transform = Transform3D(0.91184247, -0.27244484, -0.30656722, 0, -0.7473099, 0.6641297, -0.41016477, -0.6056755, -0.68153346, -0.28664863, 0.083904564, -0.124937296)
+transform = Transform3D(0.532642, -0.60826856, -0.58794177, 0, -0.6947263, 0.7187468, -0.84616756, -0.38289025, -0.37009513, -0.25650537, 0.12380797, -0.05241233)
 shape = SubResource("CapsuleShape3D_jscy8")
 
 [editable path="HumanFemale"]

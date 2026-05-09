@@ -27,8 +27,8 @@ var skeleton: Skeleton3D:
 func _ready() -> void:
 	if skeleton:
 		animation_player.root_node = skeleton.get_path()
-	elif not Engine.is_editor_hint():
-		Glaze.log_error("No skeleton found in golem: %s", self)
+	else:
+		Glaze.log_warn("No skeleton found in golem: %s", self)
 	$Model/Marker.visible = Engine.is_editor_hint()
 
 func _process(delta: float) -> void:
@@ -69,19 +69,24 @@ func _get_property_list() -> Array[Dictionary]:
 	return props
 
 func _get(property: StringName) -> Variant:
-	if Engine.is_editor_hint():
-		if property == &"model_rotation":
-			return $Model.rotation_degrees
-		if property == &"animation_playing":
-			return animation_state_machine.animation_playing
+	if property == &"model_rotation":
+		return $Model.rotation_degrees
+	if property == &"animation_playing":
+		return animation_state_machine.current_state.name if animation_state_machine.current_state else ""
 	return null
 
 func _set(property: StringName, value: Variant) -> bool:
-	if Engine.is_editor_hint():
-		if property == &"model_rotation":
-			$Model.rotation_degrees = value
-			return true
-		if property == &"animation_playing":
-			animation_state_machine.animation_playing = value
-			return true
+	if property == &"model_rotation":
+		_set_model_rotation.call_deferred(value)
+		return true
+	if property == &"animation_playing":
+		_set_animation_playing.call_deferred(value)
+		return true
 	return false
+
+func _set_model_rotation(model_rotation: Vector3) -> void:
+	$Model.rotation_degrees = model_rotation
+
+func _set_animation_playing(animation_playing: StringName) -> void:
+	if animation_playing in animation_state_machine.states:
+		animation_state_machine.set_current_state(animation_playing)
