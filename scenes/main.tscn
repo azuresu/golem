@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://clfa0dxe6p382"]
 
+[ext_resource type="PackedScene" uid="uid://bk5x3gayjsaa5" path="res://scenes/human_male.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://grtecf1f3j26" path="res://scenes/human_female.tscn" id="2_sugp2"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
 size = Vector3(10, 1, 10)
 
@@ -16,3 +19,11 @@ shape = SubResource("BoxShape3D_0wfyh")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1397779435]
 transform = Transform3D(1, 0, 0, 0, 0.8927667, 0.4505192, 0, -0.4505192, 0.8927667, 0, 1.8883734, 2.1769156)
+
+[node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0542216, 0.04279247, -0.5851935)
+look_at_target = NodePath("../HumanFemale")
+
+[node name="HumanFemale" parent="." unique_id=2060380920 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0902873, 0.020885643, 0.28598294)
+look_at_target = NodePath("../HumanMale")
