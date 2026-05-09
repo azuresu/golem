@@ -15,11 +15,11 @@ class_name Golem extends CharacterBody3D
 		if h > 0 and not h == height_baseline:
 			height_baseline = h
 
-## Allow golem to be collidable in editor so it will not overlap with others when you move it in editor.
-@export var collidable_in_editor:= true
-
 ## Add offset to position when game starts to avoid overlap with objects like floor when it is too close.
 @export var initial_offset_in_game:= Vector3(0, 0.1, 0)
+
+## Allow golem to be collidable in editor so it will not overlap with others when you move it in editor.
+@export var collidable_in_editor:= true
 
 var height_ratio: float:
 	get: return height / height_baseline
