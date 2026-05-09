@@ -17,8 +17,28 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_s6aon")
 nodes/TimeScale/position = Vector2(432, 144)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qwxt"]
+shading_mode = 0
+
+[sub_resource type="TorusMesh" id="TorusMesh_s6aon"]
+material = SubResource("StandardMaterial3D_5qwxt")
+inner_radius = 0.45
+outer_radius = 0.5
+rings = 16
+ring_segments = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5qwxt"]
+material = SubResource("StandardMaterial3D_5qwxt")
+top_radius = 0.0
+bottom_radius = 0.025
+height = 0.5
+radial_segments = 8
+rings = 1
+
 [node name="Golem" type="CharacterBody3D" unique_id=1331856773]
 script = ExtResource("1_5qwxt")
+model_rotation = Vector3(0, 0, 0)
+animation_playing = ""
 
 [node name="AnimationStateMachine" type="Node" parent="." unique_id=132464318]
 script = ExtResource("2_5qwxt")
@@ -35,3 +55,12 @@ parameters/TimeScale/scale = 1.0
 
 [node name="Model" type="Node3D" parent="." unique_id=1535311207]
 metadata/_edit_lock_ = true
+
+[node name="Marker" type="Marker3D" parent="Model" unique_id=1162990653]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Marker" unique_id=1886689943]
+mesh = SubResource("TorusMesh_s6aon")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Marker" unique_id=666276863]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.25)
+mesh = SubResource("CylinderMesh_5qwxt")

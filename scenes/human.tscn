@@ -118,11 +118,13 @@ radius = 0.05
 height = 0.2
 
 [node name="Human" unique_id=1331856773 instance=ExtResource("1_swaxu")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+animation_playing = "stand"
 
 [node name="stand" type="Node" parent="AnimationStateMachine" parent_id_path=PackedInt32Array(132464318) index="0" unique_id=2026527584]
 script = ExtResource("2_4otcn")
 animation_name = "human/stand"
-playing = true
 metadata/_custom_type_script = "uid://cdhcpyafkeihx"
 
 [node name="walk" type="Node" parent="AnimationStateMachine" parent_id_path=PackedInt32Array(132464318) index="1" unique_id=1890757861]

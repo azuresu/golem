@@ -4,6 +4,11 @@ class_name AnimationStateMachine extends StateMachine
 var golem: Golem:
 	get: return owner
 
+var animation_playing: String:
+	set(a):
+		animation_playing = a
+		set_current_state(a)
+
 var _fixed: bool
 
 # Cache conditions to improve performance (a lot!)
@@ -22,6 +27,9 @@ func _ready() -> void:
 	super._ready()
 	state_entered.connect(_on_state_entered)
 	state_exited.connect(_on_state_exited)
+	print(" - %" % animation_playing)
+	if animation_playing in states:
+		set_current_state(animation_playing)
 
 func _process(delta: float) -> void:
 	_fix_tree()
@@ -42,6 +50,8 @@ func _fix_tree() -> void:
 			var sm = golem.animation_tree.tree_root.get_node("StateMachine")
 			if sm is AnimationNodeStateMachine:
 				for n in sm.get_node_list():
+					if n == &"Start" or n == &"End":
+						continue
 					sm.remove_node(n)
 				_fix_animations(sm, ap)
 				_fix_transitions(sm)
@@ -53,6 +63,9 @@ func _fix_tree() -> void:
 
 func _fix_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> void:
 	for state_name in states:
+		if state_name == "Start" or state_name == "End":
+			Glaze.log_warn("Animation state name is not allowed: %s" % state_name)
+			continue
 		var s = states[state_name]
 		if s is AnimationState and not sm.has_node(state_name):
 			var ana:= AnimationNodeAnimation.new()
@@ -88,10 +101,10 @@ func _fix_transitions(sm: AnimationNodeStateMachine) -> void:
 					trans.advance_condition = str(node_list[j])
 					sm.add_transition(node_list[i], node_list[j], trans)
 	# Add transition from start to current immediately.
-	if current_state and not _has_transition(sm, "Start", current_state.name):
+	if current_state and not _has_transition(sm, &"Start", current_state.name):
 		var trans:= AnimationNodeStateMachineTransition.new()
 		trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
-		sm.add_transition("Start", current_state.name, trans)
+		sm.add_transition(&"Start", current_state.name, trans)
 
 func _has_transition(sm: AnimationNodeStateMachine, from: StringName, to: StringName) -> bool:
 	for i in sm.get_transition_count():

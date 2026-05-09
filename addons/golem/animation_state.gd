@@ -5,15 +5,6 @@ class_name AnimationState extends State
 @export var play_backward: bool
 @export var speed_scale:= 1.0
 
-@export var playing: bool:
-	get: return machine and machine.current_state == self
-	set(p):
-		if machine:
-			if p and not machine.current_state == self:
-				machine.set_current_state(name)
-			elif not p and machine.current_state == self and machine.states:
-				machine.set_current_state(machine.states.values()[0].name)
-
 var animation_time: float
 
 var golem: Golem:
