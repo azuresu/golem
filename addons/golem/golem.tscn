@@ -3,36 +3,13 @@
 [ext_resource type="Script" uid="uid://clo2ne6yydh2e" path="res://addons/golem/golem.gd" id="1_5qwxt"]
 [ext_resource type="Script" uid="uid://dqygrurr0q1c7" path="res://addons/golem/animation_state_machine.gd" id="2_5qwxt"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5qwxt"]
-animation = &"human/human_stand"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s6aon"]
-animation = &"human/human_walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6aon"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l3ll3"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0ih5"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qwxt"]
-states/stand/node = SubResource("AnimationNodeAnimation_5qwxt")
-states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_s6aon")
-states/walk/position = Vector2(0, 0)
-transitions = ["Start", "stand", SubResource("AnimationNodeStateMachineTransition_s6aon"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_l3ll3"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_n0ih5")]
 graph_offset = Vector2(-419, -97)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s6aon"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l3ll3"]
+resource_local_to_scene = true
 nodes/output/position = Vector2(624, 144)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5qwxt")
 nodes/StateMachine/position = Vector2(160, 144)
@@ -54,8 +31,7 @@ root_node = NodePath("../Model")
 root_node = NodePath("../Model")
 tree_root = SubResource("AnimationNodeBlendTree_l3ll3")
 anim_player = NodePath("../AnimationPlayer")
-parameters/StateMachine/conditions/stand = false
-parameters/StateMachine/conditions/walk = false
 parameters/TimeScale/scale = 1.0
 
 [node name="Model" type="Node3D" parent="." unique_id=1535311207]
+metadata/_edit_lock_ = true
