@@ -44,13 +44,15 @@ func _ready() -> void:
 
 # Make sure to use Jolt engine otherwise rotation/scale won't work.
 func _physics_process(delta: float) -> void:
+	if disabled:
+		return
 
 	# Align size with golem.
 	var ghr:= golem.height_ratio
 	if not ghr == _height_ratio:
+		_height_ratio = ghr
 		shape.radius = diameter * 0.5 * ghr
 		shape.height = length * ghr
-		_height_ratio = ghr
 
 	# Align rotation with bones.
 	if _bone:
