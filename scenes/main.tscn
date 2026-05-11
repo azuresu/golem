@@ -26,14 +26,14 @@ shadow_enabled = true
 omni_range = 10.0
 
 [node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(-0.9879706, 0, -0.1545882, 0, 0.9999969, 0, 0.15458822, 0, -0.9879701, -2.2497902, 0.19127417, -1.0756788)
+transform = Transform3D(-0.9879706, 0, -0.1545882, 0, 0.9999969, 0, 0.15458822, 0, -0.9879701, -2.2497902, 0.09621394, -1.0756788)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanFemale")
 animation_playing = &"walk"
 
 [node name="HumanFemale" parent="." unique_id=2060380920 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_sugp2")]
-transform = Transform3D(0.99080694, 0, 0.13528323, 0, 1, 0, -0.13528323, 0, 0.99080694, 1.5539565, 0.12607014, 2.6408439)
+transform = Transform3D(0.99080694, 0, 0.13528323, 0, 1, 0, -0.13528323, 0, 0.99080694, 1.5539565, 0.06609857, 2.6408439)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanMale")
@@ -65,4 +65,25 @@ material = ExtResource("4_tbgi4")
 [node name="CSGBox3D5" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=29305898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026651382, 1.3678436, 3.4111185)
 size = Vector3(7.486944, 2.2171936, 0.123031616)
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1295069064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18803382, 1.2584581, 1.0935864)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1271110982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8077805, 1.2584581, -0.13125658)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1059534463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146431, 1.2584581, -1.5012267)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
 material = ExtResource("4_tbgi4")

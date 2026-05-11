@@ -25,29 +25,12 @@ bottom_radius = 0.05
 height = 0.02
 radial_segments = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe7sm"]
-shading_mode = 0
-albedo_color = Color(0, 0.78431374, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_rqkgc"]
-material = SubResource("StandardMaterial3D_xe7sm")
-top_radius = 0.25
-bottom_radius = 0.25
-height = 0.01
-radial_segments = 16
-rings = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4thvs"]
-shading_mode = 0
-albedo_color = Color(0.78431374, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_p8wnm"]
-material = SubResource("StandardMaterial3D_4thvs")
-top_radius = 0.25
-bottom_radius = 0.25
-height = 0.1
-radial_segments = 16
-rings = 1
+[sub_resource type="CylinderMesh" id="CylinderMesh_xe7sm"]
+material = SubResource("StandardMaterial3D_5qwxt")
+top_radius = 0.02
+bottom_radius = 0.0
+height = 0.4
+radial_segments = 8
 
 [node name="Marker" type="Marker3D" unique_id=1979055072]
 
@@ -61,12 +44,6 @@ mesh = SubResource("CylinderMesh_5qwxt")
 [node name="Center" type="MeshInstance3D" parent="." unique_id=968800870]
 mesh = SubResource("CylinderMesh_s6aon")
 
-[node name="SafeTop" type="MeshInstance3D" parent="." unique_id=1063467324]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-mesh = SubResource("CylinderMesh_rqkgc")
-metadata/_edit_lock_ = true
-
-[node name="SafeBottom" type="MeshInstance3D" parent="." unique_id=1250215828]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155, 0)
-mesh = SubResource("CylinderMesh_p8wnm")
-metadata/_edit_lock_ = true
+[node name="Nail" type="MeshInstance3D" parent="." unique_id=1634029343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_xe7sm")
