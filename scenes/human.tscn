@@ -137,15 +137,14 @@ animation_name = "human/walk"
 metadata/_custom_type_script = "uid://cdhcpyafkeihx"
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=1728137870]
+root_node = NodePath("..")
 libraries/human = ExtResource("2_cwf78")
 
 [node name="AnimationTree" parent="." index="2" unique_id=1656163031]
+root_node = NodePath("..")
 tree_root = SubResource("AnimationNodeBlendTree_brk74")
 parameters/StateMachine/conditions/stand = true
 parameters/StateMachine/conditions/walk = false
-
-[node name="End" type="Marker3D" parent="Model/Marker" parent_id_path=PackedInt32Array(1162990653) index="3" unique_id=1889265236]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Head" parent="." index="4" unique_id=1813886583]
 shape = SubResource("CapsuleShape3D_74uwr")
@@ -191,3 +190,6 @@ shape = SubResource("CapsuleShape3D_1ttmb")
 
 [node name="LeftFoot" parent="." index="18" unique_id=1702758973]
 shape = SubResource("CapsuleShape3D_k2c8j")
+
+[node name="Towards" type="Marker3D" parent="." index="19" unique_id=1189250796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

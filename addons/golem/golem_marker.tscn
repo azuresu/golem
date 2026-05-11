@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://b0d8ergs32061"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qwxt"]
+shading_mode = 0
+
+[sub_resource type="TorusMesh" id="TorusMesh_s6aon"]
+material = SubResource("StandardMaterial3D_5qwxt")
+inner_radius = 0.48
+outer_radius = 0.5
+rings = 16
+ring_segments = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5qwxt"]
+material = SubResource("StandardMaterial3D_5qwxt")
+top_radius = 0.0
+bottom_radius = 0.01
+height = 0.5
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s6aon"]
+material = SubResource("StandardMaterial3D_5qwxt")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.02
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe7sm"]
+shading_mode = 0
+albedo_color = Color(0, 0.78431374, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rqkgc"]
+material = SubResource("StandardMaterial3D_xe7sm")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.01
+radial_segments = 16
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4thvs"]
+shading_mode = 0
+albedo_color = Color(0.78431374, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p8wnm"]
+material = SubResource("StandardMaterial3D_4thvs")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.1
+radial_segments = 16
+rings = 1
+
+[node name="Marker" type="Marker3D" unique_id=1979055072]
+
+[node name="Ring" type="MeshInstance3D" parent="." unique_id=2019113779]
+mesh = SubResource("TorusMesh_s6aon")
+
+[node name="Pointer" type="MeshInstance3D" parent="." unique_id=1066835445]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.25)
+mesh = SubResource("CylinderMesh_5qwxt")
+
+[node name="Center" type="MeshInstance3D" parent="." unique_id=968800870]
+mesh = SubResource("CylinderMesh_s6aon")
+
+[node name="SafeTop" type="MeshInstance3D" parent="." unique_id=1063467324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("CylinderMesh_rqkgc")
+metadata/_edit_lock_ = true
+
+[node name="SafeBottom" type="MeshInstance3D" parent="." unique_id=1250215828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155, 0)
+mesh = SubResource("CylinderMesh_p8wnm")
+metadata/_edit_lock_ = true

@@ -39,15 +39,14 @@ shadow_enabled = true
 omni_range = 10.0
 
 [node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(0.99999166, 0, 0, 0, 0.9999968, 0, 0, 0, 0.9999912, -1.0440172, 0.019300606, -0.8210355)
+transform = Transform3D(-0.9879706, 0, -0.1545882, 0, 0.9999969, 0, 0.15458822, 0, -0.9879701, -1.3020567, 0.1018159, 0.01146305)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanFemale")
-model_rotation = Vector3(0, -130.32797, 0)
 animation_playing = &"walk"
 
 [node name="HumanFemale" parent="." unique_id=2060380920 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4557271, 0.0032085238, 0.8278726)
+transform = Transform3D(0.99080694, 0, 0.13528323, 0, 1, 0, -0.13528323, 0, 0.99080694, 1.5539478, 0.09817098, 0.9403795)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanMale")

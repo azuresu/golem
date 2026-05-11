@@ -95,7 +95,6 @@ height = 0.2
 
 [node name="Humanoid" unique_id=1331856773 instance=ExtResource("1_v5vjw")]
 script = ExtResource("2_saknf")
-look_at_enabled = true
 height = 1.8
 height_baseline = 1.8
 
