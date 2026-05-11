@@ -27,7 +27,7 @@ signal size_changed
 			size_changed.emit()
 
 ## Allow golem to be collidable in editor so it will not overlap with others when you move it in editor.
-@export var collidable_in_editor:= true
+@export var collidable_in_editor:= false
 
 var height_ratio: float:
 	get: return height / height_baseline

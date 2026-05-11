@@ -20,7 +20,6 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"
 
 [node name="Golem" type="CharacterBody3D" unique_id=1331856773]
 script = ExtResource("1_5qwxt")
-initial_offset_in_game = Vector3(0, 0.1, 0)
 animation_playing = ""
 
 [node name="AnimationStateMachine" type="Node" parent="." unique_id=132464318]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://13yrk4fteyn5"]
+
+[ext_resource type="Script" uid="uid://4ndeh7uas18v" path="res://addons/golem/wall/wall.gd" id="1_xs4q1"]
+[ext_resource type="Material" uid="uid://c2bif8nrpgc6c" path="res://addons/golem/wall/wall_material.tres" id="2_asl3j"]
+
+[node name="Wall" type="StaticBody3D" unique_id=1656249024]
+script = ExtResource("1_xs4q1")
+default_material = ExtResource("2_asl3j")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

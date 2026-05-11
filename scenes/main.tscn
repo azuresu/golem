@@ -2,15 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bk5x3gayjsaa5" path="res://scenes/human_male.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://grtecf1f3j26" path="res://scenes/human_female.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://13yrk4fteyn5" path="res://addons/golem/wall/wall.tscn" id="4_jyhfs"]
+[ext_resource type="Material" uid="uid://c2bif8nrpgc6c" path="res://addons/golem/wall/wall_material.tres" id="4_tbgi4"]
 
 [sub_resource type="Environment" id="Environment_0wfyh"]
 background_mode = 1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
-size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
-size = Vector3(10, 1, 10)
 
 [node name="Main" type="Node3D" unique_id=1150763051]
 
@@ -20,34 +16,53 @@ environment = SubResource("Environment_0wfyh")
 [node name="Origin" type="Marker3D" parent="." unique_id=1519620699]
 metadata/_edit_lock_ = true
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=1448971692]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2086354755]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_0wfyh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=458922735]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_0wfyh")
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1397779435]
-transform = Transform3D(1, 0, 0, 0, 0.77531934, 0.6315693, 0, -0.6315693, 0.77531934, 0, 3.1103587, 4.749753)
+transform = Transform3D(1, 0, 0, 0, 0.6346226, 0.77282226, 0, -0.77282226, 0.6346226, 0, 3.8211575, 6.1382475)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1017860974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3393455, 0)
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
 
 [node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(-0.9879706, 0, -0.1545882, 0, 0.9999969, 0, 0.15458822, 0, -0.9879701, -1.3020567, 0.1018159, 0.01146305)
+transform = Transform3D(-0.9879706, 0, -0.1545882, 0, 0.9999969, 0, 0.15458822, 0, -0.9879701, -2.2497902, 0.19127417, -1.0756788)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanFemale")
 animation_playing = &"walk"
 
 [node name="HumanFemale" parent="." unique_id=2060380920 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_sugp2")]
-transform = Transform3D(0.99080694, 0, 0.13528323, 0, 1, 0, -0.13528323, 0, 0.99080694, 1.5539478, 0.09817098, 0.9403795)
+transform = Transform3D(0.99080694, 0, 0.13528323, 0, 1, 0, -0.13528323, 0, 0.99080694, 1.5539565, 0.12607014, 2.6408439)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 look_at_target = NodePath("../HumanMale")
 animation_playing = &"walk"
+
+[node name="Wall" parent="." unique_id=1656249024 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90706396, 0, -1.959064)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Wall" unique_id=329527670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3332214, -0.24224854, 2.9804077)
+size = Vector3(7.5910034, 0.5155029, 6.9608154)
+material = ExtResource("4_tbgi4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=2071500762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7339554, 1.3678436, 0)
+size = Vector3(0.12309265, 2.2171936, 6.9608154)
+material = ExtResource("4_tbgi4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=246655573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7278695, 1.3678436, 0)
+size = Vector3(0.12309265, 2.2171936, 6.9608154)
+material = ExtResource("4_tbgi4")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=1218098318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026651382, 1.3678436, -3.418892)
+size = Vector3(7.486944, 2.2171936, 0.123031616)
+material = ExtResource("4_tbgi4")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=29305898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026651382, 1.3678436, 3.4111185)
+size = Vector3(7.486944, 2.2171936, 0.123031616)
+material = ExtResource("4_tbgi4")

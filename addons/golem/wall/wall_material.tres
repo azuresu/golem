@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c2bif8nrpgc6c"]
+
+[ext_resource type="Texture2D" uid="uid://hn74jnonf1ve" path="res://addons/golem/wall/wall_texture.png" id="1_64tv2"]
+
+[resource]
+albedo_texture = ExtResource("1_64tv2")
+uv1_triplanar = true
