@@ -17,27 +17,13 @@ environment = SubResource("Environment_0wfyh")
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1397779435]
-transform = Transform3D(1, 0, 0, 0, 0.6346226, 0.77282226, 0, -0.77282226, 0.6346226, 0, 3.8211575, 6.1382475)
+transform = Transform3D(1, 0, 0, 0, 0.6449376, 0.7642353, 0, -0.7642353, 0.6449376, -0.66918015, 4.8033395, 4.6131897)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1017860974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3393455, 0)
 light_energy = 5.0
 shadow_enabled = true
 omni_range = 10.0
-
-[node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("look_at_target") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(-0.9879706, 0, -0.1545882, 0, 0.9999969, 0, 0.15458822, 0, -0.9879701, -2.2497902, 0.09621394, -1.0756788)
-axis_lock_angular_x = false
-axis_lock_angular_z = false
-look_at_target = NodePath("../HumanFemale")
-animation_playing = &"walk"
-
-[node name="HumanFemale" parent="." unique_id=2060380920 node_paths=PackedStringArray("look_at_target") instance=ExtResource("2_sugp2")]
-transform = Transform3D(0.99080694, 0, 0.13528323, 0, 1, 0, -0.13528323, 0, 0.99080694, 1.5539565, 0.06609857, 2.6408439)
-axis_lock_angular_x = false
-axis_lock_angular_z = false
-look_at_target = NodePath("../HumanMale")
-animation_playing = &"walk"
 
 [node name="Wall" parent="." unique_id=1656249024 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90706396, 0, -1.959064)
@@ -68,14 +54,14 @@ size = Vector3(7.486944, 2.2171936, 0.123031616)
 material = ExtResource("4_tbgi4")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1295069064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18803382, 1.2584581, 1.0935864)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5634987, 1.2584581, 1.0935864)
 radius = 0.39990234
 height = 2.0864258
 sides = 16
 material = ExtResource("4_tbgi4")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1271110982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8077805, 1.2584581, -0.13125658)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6085186, 1.2584581, -0.13125658)
 radius = 0.39990234
 height = 2.0864258
 sides = 16
@@ -87,3 +73,14 @@ radius = 0.39990234
 height = 2.0864258
 sides = 16
 material = ExtResource("4_tbgi4")
+
+[node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("target_to_look") instance=ExtResource("1_0wfyh")]
+transform = Transform3D(-0.3805862, 0, -0.92474544, 0, 1, 0, 0.92474544, 0, -0.3805862, -1.9247795, 0.025770366, 0.2959609)
+walk = true
+target_to_look = NodePath("../HumanFemale")
+
+[node name="HumanFemale" parent="." unique_id=2062014971 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
+transform = Transform3D(0.552679, 0, 0.8333942, 0, 1, 0, -0.8333942, 0, 0.552679, 1.1489596, 0.022868812, 1.2775247)
+walk = true
+target_to_look = NodePath("../HumanMale")
+height = 1.7

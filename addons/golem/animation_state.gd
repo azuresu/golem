@@ -1,4 +1,3 @@
-@tool
 class_name AnimationState extends State
 
 @export var animation_name: String

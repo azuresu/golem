@@ -3,36 +3,36 @@
 [ext_resource type="PackedScene" uid="uid://bbopoy518hwab" path="res://scenes/human.tscn" id="1_klkc5"]
 [ext_resource type="PackedScene" uid="uid://b8osrs5cc3ckx" path="res://models/female.glb" id="2_a2soa"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_klkc5"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c7jhf"]
 animation = &"human/stand"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a2soa"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0vvy"]
 animation = &"human/walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_puwqi"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oxdja"]
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sy6hq"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqsuu"]
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"stand"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6puu8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_brk74"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qwxt"]
-states/stand/node = SubResource("AnimationNodeAnimation_klkc5")
+states/stand/node = SubResource("AnimationNodeAnimation_c7jhf")
 states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_a2soa")
+states/walk/node = SubResource("AnimationNodeAnimation_u0vvy")
 states/walk/position = Vector2(0, 0)
-transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_puwqi"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_sy6hq"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_6puu8")]
+transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_oxdja"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_lqsuu"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_brk74")]
 graph_offset = Vector2(-419, -97)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s6aon"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f6f6t"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3x5js"]
 resource_local_to_scene = true
 nodes/output/position = Vector2(624, 144)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5qwxt")
@@ -41,151 +41,131 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_s6aon")
 nodes/TimeScale/position = Vector2(432, 144)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klkc5"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2soa"]
+resource_local_to_scene = true
+radius = 0.15
+height = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_puwqi"]
+resource_local_to_scene = true
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sy6hq"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6puu8"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f6f6t"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h4ebs"]
 resource_local_to_scene = true
-radius = 0.094444446
-height = 0.37777779
+radius = 0.05
+height = 0.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_txmq6"]
 resource_local_to_scene = true
-radius = 0.14166667
-height = 0.56666666
+radius = 0.05
+height = 0.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxgjm"]
 resource_local_to_scene = true
-radius = 0.14166667
-height = 0.28333333
+radius = 0.1
+height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iqjcc"]
 resource_local_to_scene = true
-radius = 0.047222223
-height = 0.37777779
+radius = 0.1
+height = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8p4vj"]
 resource_local_to_scene = true
-radius = 0.047222223
-height = 0.37777779
+radius = 0.1
+height = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mk500"]
 resource_local_to_scene = true
-radius = 0.094444446
-height = 0.18888889
+radius = 0.05
+height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_laanm"]
 resource_local_to_scene = true
-radius = 0.047222223
-height = 0.37777779
+radius = 0.1
+height = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvnaj"]
 resource_local_to_scene = true
-radius = 0.047222223
-height = 0.37777779
+radius = 0.1
+height = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gpcyr"]
 resource_local_to_scene = true
-radius = 0.094444446
-height = 0.18888889
+radius = 0.05
+height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18fv8"]
-resource_local_to_scene = true
-radius = 0.094444446
-height = 0.4722222
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6ua08"]
-resource_local_to_scene = true
-radius = 0.094444446
-height = 0.4722222
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tgqjf"]
-resource_local_to_scene = true
-radius = 0.047222223
-height = 0.18888889
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u0oat"]
-resource_local_to_scene = true
-radius = 0.094444446
-height = 0.4722222
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjike"]
-resource_local_to_scene = true
-radius = 0.094444446
-height = 0.4722222
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvcuk"]
-resource_local_to_scene = true
-radius = 0.047222223
-height = 0.18888889
-
-[node name="HumanFemale" unique_id=1331856773 node_paths=PackedStringArray("model") instance=ExtResource("1_klkc5")]
-model = NodePath("Sketchfab_Scene")
-height = 1.7
-
-[node name="AnimationPlayer" parent="." index="1" unique_id=1728137870]
-root_node = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/HumanFemale/Sketchfab_Scene/Sketchfab_model/d586f6c1963c49c68e3bc0ee00aec68b_fbx/RootNode/rig_CharRoot/Object_4/GeneralSkeleton")
+[node name="HumanFemale" unique_id=1331856773 instance=ExtResource("1_klkc5")]
+walk = false
 
 [node name="AnimationTree" parent="." index="2" unique_id=1656163031]
-root_node = NodePath("../Sketchfab_Scene/Sketchfab_model/d586f6c1963c49c68e3bc0ee00aec68b_fbx/RootNode/rig_CharRoot/Object_4/GeneralSkeleton")
-tree_root = SubResource("AnimationNodeBlendTree_f6f6t")
+tree_root = SubResource("AnimationNodeBlendTree_3x5js")
 
-[node name="Head" parent="." index="4" unique_id=1813886583]
-transform = Transform3D(-0.9977025, -0.05494114, 0.0356703, -0.052300822, 0.99593943, 0.07114681, -0.039440647, 0.06912821, -0.99667186, -0.03272823, 1.494808, -0.0029237056)
+[node name="Head" parent="." index="5" unique_id=1813886583]
+shape = SubResource("CapsuleShape3D_klkc5")
+
+[node name="Chest" parent="." index="6" unique_id=2141173862]
+shape = SubResource("CapsuleShape3D_a2soa")
+
+[node name="Hips" parent="." index="7" unique_id=1055591327]
+shape = SubResource("CapsuleShape3D_puwqi")
+
+[node name="RightUpperArm" parent="." index="8" unique_id=241013015]
+shape = SubResource("CapsuleShape3D_sy6hq")
+
+[node name="RightLowerArm" parent="." index="9" unique_id=975853271]
+shape = SubResource("CapsuleShape3D_6puu8")
+
+[node name="RightHand" parent="." index="10" unique_id=63962693]
+shape = SubResource("CapsuleShape3D_f6f6t")
+
+[node name="LeftUpperArm" parent="." index="11" unique_id=369303869]
 shape = SubResource("CapsuleShape3D_h4ebs")
 
-[node name="Chest" parent="." index="5" unique_id=2141173862]
-transform = Transform3D(-0.99819684, 0.033386316, 0.04649681, 0.03104531, 0.998238, -0.05009489, -0.048084095, -0.048571356, -0.99758935, -0.04287847, 1.1265974, -0.024892688)
+[node name="LeftLowerArm" parent="." index="12" unique_id=769943401]
 shape = SubResource("CapsuleShape3D_txmq6")
 
-[node name="Hips" parent="." index="6" unique_id=1055591327]
-transform = Transform3D(-0.99524283, -0.04908719, 0.08248833, -0.048508387, 0.99876124, 0.00893708, -0.08282582, 0.0048944023, -0.99642164, -0.039977167, 0.93244624, 0.003527819)
+[node name="LeftHand" parent="." index="13" unique_id=1423774856]
 shape = SubResource("CapsuleShape3D_xxgjm")
 
-[node name="RightUpperArm" parent="." index="7" unique_id=241013015]
-transform = Transform3D(-0.59971184, 0.26567298, 0.75460494, 0, -0.94305754, 0.33201915, 0.8000912, 0.19913635, 0.56561744, 0.17155826, 1.2485697, 0.043783292)
+[node name="RightUpperLeg" parent="." index="14" unique_id=1899827686]
 shape = SubResource("CapsuleShape3D_iqjcc")
 
-[node name="RightLowerArm" parent="." index="8" unique_id=975853271]
-transform = Transform3D(0.9987585, -0.010367909, -0.045176778, 0, -0.97445947, 0.22363363, -0.046353284, -0.22339383, -0.97340876, 0.20133607, 1.0273001, 0.0414619)
+[node name="RightLowerLeg" parent="." index="15" unique_id=154634051]
 shape = SubResource("CapsuleShape3D_8p4vj")
 
-[node name="RightHand" parent="." index="9" unique_id=63962693]
-transform = Transform3D(0.98957056, -0.072142914, -0.12333719, 0, -0.8627543, 0.5046443, -0.14293486, -0.49946183, -0.8538914, 0.1948331, 0.852339, -0.020886345)
+[node name="RightFoot" parent="." index="16" unique_id=1099984133]
 shape = SubResource("CapsuleShape3D_mk500")
 
-[node name="LeftUpperArm" parent="." index="10" unique_id=369303869]
-transform = Transform3D(-0.26162583, -0.27029946, -0.92632216, 0, -0.95976263, 0.2800569, -0.9650082, 0.07328158, 0.25113758, -0.24589577, 1.2507172, 0.006121439)
+[node name="LeftUpperLeg" parent="." index="17" unique_id=2008624075]
 shape = SubResource("CapsuleShape3D_laanm")
 
-[node name="LeftLowerArm" parent="." index="11" unique_id=769943401]
-transform = Transform3D(0.9990123, 0.012983602, 0.038496807, 0, -0.94736564, 0.3195134, 0.040629014, -0.31924915, -0.9465843, -0.27591413, 1.0305964, -0.021821778)
+[node name="LeftLowerLeg" parent="." index="18" unique_id=135186777]
 shape = SubResource("CapsuleShape3D_hvnaj")
 
-[node name="LeftHand" parent="." index="12" unique_id=1423774856]
-transform = Transform3D(0.7768861, 0.37049314, 0.50857663, 0, -0.80784225, 0.5884996, 0.62949413, -0.4572417, -0.6276566, -0.2475901, 0.86380744, -0.091430366)
+[node name="LeftFoot" parent="." index="20" unique_id=1702758973]
 shape = SubResource("CapsuleShape3D_gpcyr")
 
-[node name="RightUpperLeg" parent="." index="13" unique_id=1899827686]
-transform = Transform3D(0.9410251, 0.029328912, 0.3366618, 0, -0.9960558, 0.086773135, 0.337951, -0.0816664, -0.93743527, 0.06534897, 0.7440348, -0.0040266225)
-shape = SubResource("CapsuleShape3D_18fv8")
-
-[node name="RightLowerLeg" parent="." index="14" unique_id=154634051]
-transform = Transform3D(-0.9628451, -0.06161678, -0.26246342, 0, -0.97332966, 0.2285021, -0.26962388, 0.22003768, 0.9372746, 0.058415394, 0.35134608, 0.025209853)
-shape = SubResource("CapsuleShape3D_6ua08")
-
-[node name="RightFoot" parent="." index="15" unique_id=1099984133]
-transform = Transform3D(0.87634724, 0.32120228, 0.35863486, 0, -0.74463505, 0.66692036, 0.48160526, -0.58447194, -0.6525856, 0.07533784, 0.0834274, 0.01652785)
-shape = SubResource("CapsuleShape3D_tgqjf")
-
-[node name="LeftUpperLeg" parent="." index="16" unique_id=2008624075]
-transform = Transform3D(0.87068284, -0.16581404, -0.46272486, 0, -0.9411947, 0.33726853, -0.4915705, -0.29369426, -0.8195906, -0.17178684, 0.74496174, -0.061751965)
-shape = SubResource("CapsuleShape3D_u0oat")
-
-[node name="LeftLowerLeg" parent="." index="17" unique_id=135186777]
-transform = Transform3D(-0.63706905, -0.14063899, -0.75767267, 0, -0.9830199, 0.18246892, -0.77068675, 0.11625573, 0.6263113, -0.23277551, 0.36093122, -0.094921395)
-shape = SubResource("CapsuleShape3D_pjike")
-
-[node name="Sketchfab_Scene" parent="." index="18" unique_id=282307578 instance=ExtResource("2_a2soa")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9352579, 0)
-
-[node name="LeftFoot" parent="." index="19" unique_id=1702758973]
-transform = Transform3D(0.9122003, -0.272471, -0.30586794, 0, -0.74652076, 0.66501, -0.40972063, -0.60662836, -0.6809831, -0.2864079, 0.0915319, -0.1263576)
-shape = SubResource("CapsuleShape3D_xvcuk")
+[node name="Sketchfab_Scene" parent="." index="21" unique_id=282307578 instance=ExtResource("2_a2soa")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8782956, 0)

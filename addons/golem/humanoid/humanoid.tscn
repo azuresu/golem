@@ -101,98 +101,107 @@ height_baseline = 1.8
 [node name="AnimationTree" parent="." index="2" unique_id=1656163031]
 tree_root = SubResource("AnimationNodeBlendTree_saknf")
 
-[node name="Head" parent="." index="4" unique_id=1813886583 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LookAtModifier" type="LookAtModifier3D" parent="." index="4" unique_id=436845131]
+bone_name = "Head"
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 2.0943952
+primary_damp_threshold = 1.0
+secondary_limit_angle = 2.0943952
+secondary_damp_threshold = 1.0
+
+[node name="Head" parent="." index="5" unique_id=1813886583 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ylcgb")
 diameter = 0.2
 length = 0.4
 
-[node name="Chest" parent="." index="5" unique_id=2141173862 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="Chest" parent="." index="6" unique_id=2141173862 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_lr4ed")
 diameter = 0.3
 length = 0.6
 
-[node name="Hips" parent="." index="6" unique_id=1055591327 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="Hips" parent="." index="7" unique_id=1055591327 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_lrfsq")
 diameter = 0.3
 length = 0.3
 
-[node name="RightUpperArm" parent="." index="7" unique_id=241013015 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="RightUpperArm" parent="." index="8" unique_id=241013015 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ttagf")
 length = 0.4
 end_bone = "RightLowerArm"
 
-[node name="RightLowerArm" parent="." index="8" unique_id=975853271 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="RightLowerArm" parent="." index="9" unique_id=975853271 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_malo8")
 length = 0.4
 end_bone = "RightHand"
 
-[node name="RightHand" parent="." index="9" unique_id=63962693 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="RightHand" parent="." index="10" unique_id=63962693 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_dov38")
 diameter = 0.2
 length = 0.2
 end_bone = "RightIndexDistal"
 
-[node name="LeftUpperArm" parent="." index="10" unique_id=369303869 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LeftUpperArm" parent="." index="11" unique_id=369303869 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_jxsds")
 length = 0.4
 end_bone = "LeftLowerArm"
 
-[node name="LeftLowerArm" parent="." index="11" unique_id=769943401 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LeftLowerArm" parent="." index="12" unique_id=769943401 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_k3eam")
 length = 0.4
 end_bone = "LeftHand"
 
-[node name="LeftHand" parent="." index="12" unique_id=1423774856 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LeftHand" parent="." index="13" unique_id=1423774856 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_aaddd")
 diameter = 0.2
 length = 0.2
 end_bone = "LeftIndexDistal"
 
-[node name="RightUpperLeg" parent="." index="13" unique_id=1899827686 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="RightUpperLeg" parent="." index="14" unique_id=1899827686 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_asnft")
 diameter = 0.2
 length = 0.5
 end_bone = "RightLowerLeg"
 
-[node name="RightLowerLeg" parent="." index="14" unique_id=154634051 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="RightLowerLeg" parent="." index="15" unique_id=154634051 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_3weli")
 diameter = 0.2
 length = 0.5
 end_bone = "RightFoot"
 
-[node name="RightFoot" parent="." index="15" unique_id=1099984133 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="RightFoot" parent="." index="16" unique_id=1099984133 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_opvud")
 length = 0.2
 end_bone = "RightToes"
 
-[node name="LeftUpperLeg" parent="." index="16" unique_id=2008624075 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LeftUpperLeg" parent="." index="17" unique_id=2008624075 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_qdomi")
 diameter = 0.2
 length = 0.5
 end_bone = "LeftLowerLeg"
 
-[node name="LeftLowerLeg" parent="." index="17" unique_id=135186777 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LeftLowerLeg" parent="." index="18" unique_id=135186777 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_den0d")
 diameter = 0.2
 length = 0.5
 end_bone = "LeftFoot"
 
-[node name="LeftFoot" parent="." index="18" unique_id=1702758973 instance=ExtResource("2_ibm0m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44272482, 0)
+[node name="LeftFoot" parent="." index="19" unique_id=1702758973 instance=ExtResource("2_ibm0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_sm4pd")
 length = 0.2
 end_bone = "LeftToes"

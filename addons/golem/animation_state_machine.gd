@@ -1,4 +1,3 @@
-@tool
 class_name AnimationStateMachine extends StateMachine
 
 var golem: Golem:
@@ -41,10 +40,6 @@ func _fix_tree() -> void:
 		if ap is AnimationPlayer:
 			var sm = golem.animation_tree.tree_root.get_node("StateMachine")
 			if sm is AnimationNodeStateMachine:
-				for n in sm.get_node_list():
-					if n == &"Start" or n == &"End":
-						continue
-					sm.remove_node(n)
 				_fix_animations(sm, ap)
 				_fix_transitions(sm)
 				sm.tree_changed.emit()
