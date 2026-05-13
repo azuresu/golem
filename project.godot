@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Glaze="*uid://cqelmv6y5frql"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/glaze/plugin.cfg", "res://addons/golem/plugin.cfg")

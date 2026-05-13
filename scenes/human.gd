@@ -9,6 +9,3 @@ func _ready() -> void:
 	if walk:
 		animation_state_machine.set_current_state("walk")
 	look_at_target(target_to_look)
-
-func get_towards_vector() -> Vector3:
-	return $Towards.global_position - global_position

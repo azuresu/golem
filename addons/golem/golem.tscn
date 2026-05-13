@@ -19,3 +19,6 @@ root_node = NodePath("")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Marker" parent="." unique_id=1979055072 instance=ExtResource("3_s6aon")]
+
+[node name="Forward" type="Marker3D" parent="." unique_id=760718276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

@@ -26,6 +26,9 @@ var skeleton: Skeleton3D:
 				Glaze.log_error("Skeleton not found in golem: %s", self)
 		return skeleton
 
+func get_forward_vector() -> Vector3:
+	return $Forward.global_position - global_position
+
 func _ready() -> void:
 	marker.visible = false
 	if skeleton:
