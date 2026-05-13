@@ -1,5 +1,7 @@
 class_name AnimationStateMachine extends StateMachine
 
+@export var animation_tree: AnimationTree
+
 var golem: Golem:
 	get: return owner
 
@@ -12,18 +14,18 @@ var _animation_time_scale:= 1.0
 func set_animation_condition(param_name: String, param_value: bool) -> void:
 	if not param_name in _animation_conditions or not _animation_conditions[param_name] == param_value:
 		_animation_conditions[param_name] = param_value
-		golem.animation_tree.set("parameters/StateMachine/conditions/%s" % param_name, param_value)
+		animation_tree.set("parameters/StateMachine/conditions/%s" % param_name, param_value)
 
 func play_animation(animation_name: String) -> void:
-	golem.animation_tree.get("parameters/StateMachine/playback").start(animation_name)
+	animation_tree.get("parameters/StateMachine/playback").start(animation_name)
 
 func _ready() -> void:
 	super._ready()
 	state_entered.connect(_on_state_entered)
 	state_exited.connect(_on_state_exited)
+	_fix_tree()
 
 func _process(delta: float) -> void:
-	_fix_tree()
 	super._process(delta)
 	if current_state is AnimationState:
 		var anim_ss: float = current_state.get_speed_scale()
@@ -31,22 +33,21 @@ func _process(delta: float) -> void:
 		_set_animation_time_scale(anim_ss)
 
 func _fix_tree() -> void:
-	if not golem.animation_tree.tree_root:
-		var blend_tree:= AnimationNodeBlendTree.new()
-		var state_machine:= AnimationNodeStateMachine.new()
-		var time_scale:= AnimationNodeTimeScale.new()
-		blend_tree.add_node("StateMachine", state_machine)
-		blend_tree.add_node("TimeScale", time_scale)
-		blend_tree.connect_node("TimeScale", 0, "StateMachine")
-		blend_tree.connect_node("output", 0, "TimeScale")
-		var ap = golem.animation_tree.get_node(golem.animation_tree.anim_player)
-		if ap is AnimationPlayer:
-			_fix_animations(state_machine, ap)
-			_fix_transitions(state_machine)
-		else:
-			Glaze.log_error("Animation player not found in golem animation tree: %s", golem)
-		golem.animation_tree.tree_root = blend_tree
-		golem.animation_tree.animation_finished.connect(_on_animation_finished)
+	var blend_tree:= AnimationNodeBlendTree.new()
+	var state_machine:= AnimationNodeStateMachine.new()
+	var time_scale:= AnimationNodeTimeScale.new()
+	blend_tree.add_node("StateMachine", state_machine)
+	blend_tree.add_node("TimeScale", time_scale)
+	blend_tree.connect_node("TimeScale", 0, "StateMachine")
+	blend_tree.connect_node("output", 0, "TimeScale")
+	var ap = animation_tree.get_node(animation_tree.anim_player)
+	if ap is AnimationPlayer:
+		_fix_animations(state_machine, ap)
+		_fix_transitions(state_machine)
+	else:
+		Glaze.log_error("Animation player not found in golem animation tree: %s", animation_tree)
+	animation_tree.tree_root = blend_tree
+	animation_tree.animation_finished.connect(_on_animation_finished)
 
 func _fix_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> void:
 	for state_name in states:
@@ -83,7 +84,7 @@ func _fix_transitions(sm: AnimationNodeStateMachine) -> void:
 			for j in node_list.size():
 				if sm.get_node(node_list[j]) is AnimationNodeAnimation and not i == j and not _has_transition(sm, node_list[i], node_list[j]):
 					var trans:= AnimationNodeStateMachineTransition.new()
-					trans.xfade_time = 0.2
+					trans.xfade_time = 0.2 # Maybe this should be configurable in animation state.
 					trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
 					trans.advance_condition = str(node_list[j])
 					sm.add_transition(node_list[i], node_list[j], trans)
@@ -115,4 +116,4 @@ func _on_state_exited(state: State) -> void:
 func _set_animation_time_scale(time_scale: float) -> void:
 	if not _animation_time_scale == time_scale:
 		_animation_time_scale = time_scale
-		golem.animation_tree.set("parameters/TimeScale/scale", time_scale)
+		animation_tree.set("parameters/TimeScale/scale", time_scale)

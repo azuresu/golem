@@ -79,6 +79,6 @@ transform = Transform3D(-0.3805862, 0, -0.92474544, 0, 1, 0, 0.92474544, 0, -0.3
 walk = true
 target_to_look = NodePath("../HumanFemale")
 
-[node name="HumanFemale" parent="." unique_id=881437544 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
-transform = Transform3D(-0.024327544, 0, 0.99970406, 0, 1, 0, -0.99970406, 0, -0.024327544, 1.7821537, 0.060064673, 1.0721853)
+[node name="HumanFemale" parent="." unique_id=533732810 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
+transform = Transform3D(-0.77835274, 0, 0.6278272, 0, 1, 0, -0.6278272, 0, -0.77835274, 1.0164664, 0.11887729, 0.9392016)
 target_to_look = NodePath("../HumanMale")
