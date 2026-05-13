@@ -4,20 +4,6 @@
 [ext_resource type="Script" uid="uid://dqygrurr0q1c7" path="res://addons/golem/animation_state_machine.gd" id="2_5qwxt"]
 [ext_resource type="PackedScene" uid="uid://b0d8ergs32061" path="res://addons/golem/golem_marker.tscn" id="3_s6aon"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qwxt"]
-graph_offset = Vector2(-419, -97)
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s6aon"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l3ll3"]
-resource_local_to_scene = true
-nodes/output/position = Vector2(624, 144)
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5qwxt")
-nodes/StateMachine/position = Vector2(160, 144)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_s6aon")
-nodes/TimeScale/position = Vector2(432, 144)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
-
 [node name="Golem" type="CharacterBody3D" unique_id=1331856773]
 script = ExtResource("1_5qwxt")
 
@@ -29,9 +15,6 @@ metadata/_custom_type_script = "uid://c4cxusklobxcr"
 root_node = NodePath("")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1656163031]
-root_node = NodePath("")
-tree_root = SubResource("AnimationNodeBlendTree_l3ll3")
 anim_player = NodePath("../AnimationPlayer")
-parameters/TimeScale/scale = 1.0
 
 [node name="Marker" parent="." unique_id=1979055072 instance=ExtResource("3_s6aon")]

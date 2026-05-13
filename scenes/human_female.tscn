@@ -3,44 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bbopoy518hwab" path="res://scenes/human.tscn" id="1_klkc5"]
 [ext_resource type="PackedScene" uid="uid://b8osrs5cc3ckx" path="res://models/female.glb" id="2_a2soa"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c7jhf"]
-animation = &"human/stand"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0vvy"]
-animation = &"human/walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oxdja"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqsuu"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_brk74"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qwxt"]
-states/stand/node = SubResource("AnimationNodeAnimation_c7jhf")
-states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_u0vvy")
-states/walk/position = Vector2(0, 0)
-transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_oxdja"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_lqsuu"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_brk74")]
-graph_offset = Vector2(-419, -97)
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s6aon"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3x5js"]
-resource_local_to_scene = true
-nodes/output/position = Vector2(624, 144)
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5qwxt")
-nodes/StateMachine/position = Vector2(160, 144)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_s6aon")
-nodes/TimeScale/position = Vector2(432, 144)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klkc5"]
 resource_local_to_scene = true
 radius = 0.1
@@ -117,10 +79,6 @@ radius = 0.05
 height = 0.2
 
 [node name="HumanFemale" unique_id=1331856773 instance=ExtResource("1_klkc5")]
-walk = false
-
-[node name="AnimationTree" parent="." index="2" unique_id=1656163031]
-tree_root = SubResource("AnimationNodeBlendTree_3x5js")
 
 [node name="Head" parent="." index="5" unique_id=1813886583]
 shape = SubResource("CapsuleShape3D_klkc5")

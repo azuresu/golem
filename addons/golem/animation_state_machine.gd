@@ -31,22 +31,22 @@ func _process(delta: float) -> void:
 		_set_animation_time_scale(anim_ss)
 
 func _fix_tree() -> void:
-	if not _fixed:
-		_fixed = true
-		# Fix animation state machine.
-		# Make sure animation tree root is marked as unqiue then both root and state machine are local to scene.
-		golem.animation_tree.animation_finished.connect(_on_animation_finished)
+	if not golem.animation_tree.tree_root:
+		var blend_tree:= AnimationNodeBlendTree.new()
+		var state_machine:= AnimationNodeStateMachine.new()
+		var time_scale:= AnimationNodeTimeScale.new()
+		blend_tree.add_node("StateMachine", state_machine)
+		blend_tree.add_node("TimeScale", time_scale)
+		blend_tree.connect_node("TimeScale", 0, "StateMachine")
+		blend_tree.connect_node("output", 0, "TimeScale")
 		var ap = golem.animation_tree.get_node(golem.animation_tree.anim_player)
 		if ap is AnimationPlayer:
-			var sm = golem.animation_tree.tree_root.get_node("StateMachine")
-			if sm is AnimationNodeStateMachine:
-				_fix_animations(sm, ap)
-				_fix_transitions(sm)
-				sm.tree_changed.emit()
-			else:
-				Glaze.log_error("State machine node not found in golem animation tree: %s", golem)
+			_fix_animations(state_machine, ap)
+			_fix_transitions(state_machine)
 		else:
 			Glaze.log_error("Animation player not found in golem animation tree: %s", golem)
+		golem.animation_tree.tree_root = blend_tree
+		golem.animation_tree.animation_finished.connect(_on_animation_finished)
 
 func _fix_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> void:
 	for state_name in states:
