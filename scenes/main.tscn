@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://grtecf1f3j26" path="res://scenes/human_female.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://13yrk4fteyn5" path="res://addons/golem/wall/wall.tscn" id="4_jyhfs"]
 [ext_resource type="Material" uid="uid://c2bif8nrpgc6c" path="res://addons/golem/wall/wall_material.tres" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cajxaefxgf8s" path="res://scenes/player_agent.tscn" id="7_o6xl0"]
 
 [sub_resource type="Environment" id="Environment_0wfyh"]
 background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
 
 [node name="Main" type="Node3D" unique_id=1150763051]
 script = ExtResource("1_tefeu")
@@ -42,9 +46,6 @@ environment = SubResource("Environment_0wfyh")
 
 [node name="Origin" type="Marker3D" parent="." unique_id=1519620699]
 metadata/_edit_lock_ = true
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1397779435]
-transform = Transform3D(1, 0, 0, 0, 0.6449376, 0.7642353, 0, -0.7642353, 0.6449376, -0.66918015, 4.8033395, 4.6131897)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1017860974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3393455, 0)
@@ -103,18 +104,11 @@ material = ExtResource("4_tbgi4")
 
 [node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("target_to_look") instance=ExtResource("1_0wfyh")]
 transform = Transform3D(-0.3805862, 0, -0.92474544, 0, 1, 0, 0.92474544, 0, -0.3805862, -1.9247795, 0.025770366, 0.2959609)
-walk = true
 target_to_look = NodePath("../HumanFemale")
 
 [node name="HumanFemale" parent="." unique_id=533732810 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
 transform = Transform3D(-0.77835274, 0, 0.6278272, 0, 1, 0, -0.6278272, 0, -0.77835274, 1.0164664, 0.036494315, 0.9392016)
 target_to_look = NodePath("../HumanMale")
 
-[node name="HumanMale2" parent="." unique_id=451371174 node_paths=PackedStringArray("target_to_look") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(0.46987224, 0, -0.8827344, 0, 1, 0, 0.8827344, 0, 0.46987224, -1.9247795, 0.025770366, 2.2575018)
-walk = true
-target_to_look = NodePath("../HumanFemale")
-
-[node name="HumanFemale2" parent="." unique_id=1239358701 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
-transform = Transform3D(0.5952717, 0, 0.8035245, 0, 1, 0, -0.8035245, 0, 0.5952717, 0.18767524, 0.036494315, 2.3772557)
-target_to_look = NodePath("../HumanMale")
+[node name="PlayerCamera" parent="." unique_id=410845761 node_paths=PackedStringArray("human") instance=ExtResource("7_o6xl0")]
+human = NodePath("../HumanMale")

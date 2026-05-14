@@ -26,8 +26,17 @@ var skeleton: Skeleton3D:
 				Glaze.log_error("Skeleton not found in golem: %s", self)
 		return skeleton
 
-func get_forward_vector() -> Vector3:
-	return $Forward.global_position - global_position
+func set_animation(state_name: String, params:= {}) -> void:
+	animation_state_machine.set_current_state(state_name, params)
+
+func get_front_vector() -> Vector3:
+	return $Front.global_position - global_position
+
+func turn_front(global_pos: Vector3, turn_speed: float, delta: float) -> void:
+	var r:= global_transform.looking_at(global_pos).basis.get_euler()
+	if r.length_squared() > 0:
+		var d:= absf(angle_difference(rotation.y, r.y))
+		rotation.y = lerp_angle(rotation.y, r.y, minf(turn_speed * delta, d) / d)
 
 func _ready() -> void:
 	marker.visible = false

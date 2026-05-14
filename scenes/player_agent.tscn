@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cajxaefxgf8s"]
+
+[ext_resource type="Script" uid="uid://crthyixcjmscx" path="res://scenes/player_agent.gd" id="1_78pfg"]
+
+[node name="PlayerAgent" type="Node3D" unique_id=410845761]
+script = ExtResource("1_78pfg")
+
+[node name="Forward" type="Marker3D" parent="." unique_id=630279447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Backward" type="Marker3D" parent="." unique_id=398559981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Left" type="Marker3D" parent="." unique_id=412886286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Right" type="Marker3D" parent="." unique_id=623171140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="CameraArm" type="SpringArm3D" parent="." unique_id=1548340123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="Camera" type="Camera3D" parent="CameraArm" unique_id=147354644]
