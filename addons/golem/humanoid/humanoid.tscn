@@ -117,6 +117,8 @@ text = "1.5m"
 
 [node name="LookAtModifier" type="LookAtModifier3D" parent="." index="5" unique_id=436845131]
 bone_name = "Head"
+duration = 0.5
+transition_type = 1
 use_angle_limitation = true
 symmetry_limitation = true
 primary_limit_angle = 2.0943952

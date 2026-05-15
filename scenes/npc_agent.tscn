@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bugk4rppb7u6m"]
+
+[ext_resource type="Script" uid="uid://dtyhe8c4wu85b" path="res://scenes/npc_agent.gd" id="1_1fbo5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1fbo5"]
+radius = 3.0
+
+[node name="NPCAgent" type="Node3D" unique_id=601820671]
+script = ExtResource("1_1fbo5")
+
+[node name="LookAtArea" type="Area3D" parent="." unique_id=1033919786]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LookAtArea" unique_id=1511314632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_1fbo5")
+
+[connection signal="body_entered" from="LookAtArea" to="." method="_on_look_at_area_body_entered"]
+[connection signal="body_exited" from="LookAtArea" to="." method="_on_look_at_area_body_exited"]

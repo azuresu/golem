@@ -3,21 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://bk5x3gayjsaa5" path="res://scenes/human_male.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://46l7q0rcq4wj" path="res://addons/glaze/custom/evaluate.gd" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://dab5lv2qum36g" path="res://scenes/main.gd" id="1_tefeu"]
-[ext_resource type="PackedScene" uid="uid://grtecf1f3j26" path="res://scenes/human_female.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://13yrk4fteyn5" path="res://addons/golem/wall/wall.tscn" id="4_jyhfs"]
 [ext_resource type="Material" uid="uid://c2bif8nrpgc6c" path="res://addons/golem/wall/wall_material.tres" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cajxaefxgf8s" path="res://scenes/player_agent.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://b3tk7bpyp2iwx" path="res://scenes/human_female2.tscn" id="7_tipki"]
-[ext_resource type="PackedScene" uid="uid://ceul0qblfc1jf" path="res://scenes/human_male2.tscn" id="9_85g3d"]
-[ext_resource type="PackedScene" uid="uid://bua2hibkwsb3l" path="res://scenes/human_male3.tscn" id="10_choun"]
-[ext_resource type="PackedScene" uid="uid://20gn3eexnvwg" path="res://scenes/human_female3.tscn" id="11_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://c6d4ysvvt6s6t" path="res://scenes/human_female4.tscn" id="12_eb6dy"]
 
 [sub_resource type="Environment" id="Environment_0wfyh"]
 background_mode = 1
-ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.1
+ambient_light_energy = 0.01
 
 [node name="Main" type="Node3D" unique_id=1150763051]
 script = ExtResource("1_tefeu")
@@ -44,7 +37,7 @@ text = "FPS"
 
 [node name="text" type="Node" parent="CanvasLayer/MarginContainer/Label" unique_id=75531548]
 script = ExtResource("1_tbgi4")
-source_var = "fps_text"
+source_var = "debug_text"
 metadata/_custom_type_script = "uid://46l7q0rcq4wj"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=557581955]
@@ -54,89 +47,97 @@ environment = SubResource("Environment_0wfyh")
 metadata/_edit_lock_ = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1017860974]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3393455, 0)
-light_energy = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_energy = 10.0
 shadow_enabled = true
-omni_range = 10.0
+omni_range = 15.0
 
 [node name="Wall" parent="." unique_id=1656249024 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90706396, 0, -1.959064)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Wall" unique_id=329527670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3332214, -0.24224854, 2.9804077)
-size = Vector3(7.5910034, 0.5155029, 6.9608154)
-material = ExtResource("4_tbgi4")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=2071500762]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7339554, 1.3678436, 0)
-size = Vector3(0.12309265, 2.2171936, 6.9608154)
-material = ExtResource("4_tbgi4")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=246655573]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7278695, 1.3678436, 0)
-size = Vector3(0.12309265, 2.2171936, 6.9608154)
-material = ExtResource("4_tbgi4")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=1218098318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026651382, 1.3678436, -3.418892)
-size = Vector3(7.486944, 2.2171936, 0.123031616)
-material = ExtResource("4_tbgi4")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Wall/CSGBox3D" unique_id=29305898]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026651382, 1.3678436, 3.4111185)
-size = Vector3(7.486944, 2.2171936, 0.123031616)
+size = Vector3(20, 0.5155, 50)
 material = ExtResource("4_tbgi4")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1295069064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5634987, 1.2584581, 1.0935864)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2585, 0)
 radius = 0.39990234
 height = 2.0864258
 sides = 16
 material = ExtResource("4_tbgi4")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1271110982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6085186, 1.2584581, -0.13125658)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=853314460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.2585, 0)
 radius = 0.39990234
 height = 2.0864258
 sides = 16
 material = ExtResource("4_tbgi4")
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1059534463]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3146431, 1.2584581, -1.5012267)
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1280026819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2585, 5)
 radius = 0.39990234
 height = 2.0864258
 sides = 16
 material = ExtResource("4_tbgi4")
 
-[node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("target_to_look") instance=ExtResource("1_0wfyh")]
-transform = Transform3D(-0.3805862, 0, -0.92474544, 0, 1, 0, 0.92474544, 0, -0.3805862, -1.9247795, 0.025770366, 0.2959609)
-target_to_look = NodePath("../HumanFemale")
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=2081373726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.2585, 5)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
 
-[node name="HumanFemale" parent="." unique_id=533732810 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
-transform = Transform3D(-0.77835274, 0, 0.6278272, 0, 1, 0, -0.6278272, 0, -0.77835274, 1.0164664, 0.036494315, 0.9392016)
-walk = true
-target_to_look = NodePath("../HumanMale")
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1233627877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2585, -5)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
 
-[node name="HumanFemale2" parent="." unique_id=334618067 instance=ExtResource("7_tipki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0080079, 0.033583045, 2.4881277)
-walk = true
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1337055988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.2585, -5)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1509162614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2585, -10)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1558793940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.2585, -10)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=2028161053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2585, 10)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Wall/CSGBox3D" unique_id=1293153780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.2585, 10)
+radius = 0.39990234
+height = 2.0864258
+sides = 16
+material = ExtResource("4_tbgi4")
+
+[node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("target_to_look") groups=["player"] instance=ExtResource("1_0wfyh")]
+target_to_look = NodePath("")
 
 [node name="PlayerCamera" parent="." unique_id=410845761 node_paths=PackedStringArray("human") instance=ExtResource("7_o6xl0")]
 human = NodePath("../HumanMale")
 
-[node name="HumanMale2" parent="." unique_id=2026730383 instance=ExtResource("9_85g3d")]
-transform = Transform3D(-0.8789253, 0, 0.47695944, 0, 1, 0, -0.47695944, 0, -0.8789253, 0, 0.021796346, -1.7220335)
-walk = true
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1881470646]
+wait_time = 0.8
+autostart = true
 
-[node name="HumanMale3" parent="." unique_id=1511333488 instance=ExtResource("10_choun")]
-transform = Transform3D(0.7415872, 0, 0.6708564, 0, 1, 0, -0.6708564, 0, 0.7415872, 1.1021047, 0.04689598, 2.6301131)
-walk = true
-
-[node name="HumanFemale3" parent="." unique_id=892253215 instance=ExtResource("11_ya4ey")]
-transform = Transform3D(-0.6023961, 0, -0.7981973, 0, 1, 0, 0.7981973, 0, -0.6023961, -2.4694371, 0.03405428, -1.6243416)
-walk_speed = 1.5
-walk = true
-
-[node name="HumanFemale4" parent="." unique_id=692393202 instance=ExtResource("12_eb6dy")]
-transform = Transform3D(0.3441612, 0, -0.9389106, 0, 1, 0, 0.9389106, 0, 0.3441612, -3.4612198, 0.023281813, 2.4817917)
-walk = true
+[connection signal="timeout" from="SpawnTimer" to="." method="_spawn_npc"]
