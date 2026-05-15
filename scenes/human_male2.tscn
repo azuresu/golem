@@ -3,127 +3,128 @@
 [ext_resource type="PackedScene" uid="uid://bbopoy518hwab" path="res://scenes/human.tscn" id="1_qpu7r"]
 [ext_resource type="PackedScene" uid="uid://cnj6owgn7nd7g" path="res://models/male2.glb" id="2_amw4m"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tfiut"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w2nyb"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.4
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r5rc3"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7xc4"]
 resource_local_to_scene = true
 radius = 0.15
 height = 0.6
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m3ug3"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mx5oy"]
 resource_local_to_scene = true
 radius = 0.15
 height = 0.3
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hsj6i"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2whrn"]
 resource_local_to_scene = true
 radius = 0.05
 height = 0.4
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s354y"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4inxn"]
 resource_local_to_scene = true
 radius = 0.05
 height = 0.4
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_odcv2"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lab4l"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_85je0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mw6ha"]
 resource_local_to_scene = true
 radius = 0.05
 height = 0.4
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ld5a7"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3uqae"]
 resource_local_to_scene = true
 radius = 0.05
 height = 0.4
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8117q"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m2a8k"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yc8o3"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7syj4"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_axrnm"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1rgpu"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n6jgu"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xbvx"]
 resource_local_to_scene = true
 radius = 0.05
 height = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cridb"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nebsa"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2mkex"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1sw1k"]
 resource_local_to_scene = true
 radius = 0.1
 height = 0.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f1fvx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vt51a"]
 resource_local_to_scene = true
 radius = 0.05
 height = 0.2
 
 [node name="HumanMale2" unique_id=1331856773 instance=ExtResource("1_qpu7r")]
+height = 1.85
 
 [node name="Head" parent="." index="6" unique_id=1813886583]
-shape = SubResource("CapsuleShape3D_tfiut")
+shape = SubResource("CapsuleShape3D_w2nyb")
 
 [node name="Chest" parent="." index="7" unique_id=2141173862]
-shape = SubResource("CapsuleShape3D_r5rc3")
+shape = SubResource("CapsuleShape3D_y7xc4")
 
 [node name="Hips" parent="." index="8" unique_id=1055591327]
-shape = SubResource("CapsuleShape3D_m3ug3")
+shape = SubResource("CapsuleShape3D_mx5oy")
 
 [node name="RightUpperArm" parent="." index="9" unique_id=241013015]
-shape = SubResource("CapsuleShape3D_hsj6i")
+shape = SubResource("CapsuleShape3D_2whrn")
 
 [node name="RightLowerArm" parent="." index="10" unique_id=975853271]
-shape = SubResource("CapsuleShape3D_s354y")
+shape = SubResource("CapsuleShape3D_4inxn")
 
 [node name="RightHand" parent="." index="11" unique_id=63962693]
-shape = SubResource("CapsuleShape3D_odcv2")
+shape = SubResource("CapsuleShape3D_lab4l")
 
 [node name="LeftUpperArm" parent="." index="12" unique_id=369303869]
-shape = SubResource("CapsuleShape3D_85je0")
+shape = SubResource("CapsuleShape3D_mw6ha")
 
 [node name="LeftLowerArm" parent="." index="13" unique_id=769943401]
-shape = SubResource("CapsuleShape3D_ld5a7")
+shape = SubResource("CapsuleShape3D_3uqae")
 
 [node name="LeftHand" parent="." index="14" unique_id=1423774856]
-shape = SubResource("CapsuleShape3D_8117q")
+shape = SubResource("CapsuleShape3D_m2a8k")
 
 [node name="RightUpperLeg" parent="." index="15" unique_id=1899827686]
-shape = SubResource("CapsuleShape3D_yc8o3")
+shape = SubResource("CapsuleShape3D_7syj4")
 
 [node name="RightLowerLeg" parent="." index="16" unique_id=154634051]
-shape = SubResource("CapsuleShape3D_axrnm")
+shape = SubResource("CapsuleShape3D_1rgpu")
 
 [node name="RightFoot" parent="." index="17" unique_id=1099984133]
-shape = SubResource("CapsuleShape3D_n6jgu")
+shape = SubResource("CapsuleShape3D_5xbvx")
 
 [node name="LeftUpperLeg" parent="." index="18" unique_id=2008624075]
-shape = SubResource("CapsuleShape3D_cridb")
+shape = SubResource("CapsuleShape3D_nebsa")
 
 [node name="LeftLowerLeg" parent="." index="19" unique_id=135186777]
-shape = SubResource("CapsuleShape3D_2mkex")
+shape = SubResource("CapsuleShape3D_1sw1k")
 
 [node name="LeftFoot" parent="." index="20" unique_id=1702758973]
-shape = SubResource("CapsuleShape3D_f1fvx")
+shape = SubResource("CapsuleShape3D_vt51a")
 
 [node name="male2" parent="." index="21" unique_id=1474671759 instance=ExtResource("2_amw4m")]
-transform = Transform3D(-0.011, 0, -1.6609538e-09, 0, 0.011, 0, 1.6609538e-09, 0, -0.011, 0, -0.9428472, 0)
+transform = Transform3D(-0.011, 0, -1.6609538e-09, 0, 0.011, 0, 1.6609538e-09, 0, -0.011, 0, -0.8961839, 0)

@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bua2hibkwsb3l"]
+
+[ext_resource type="PackedScene" uid="uid://bbopoy518hwab" path="res://scenes/human.tscn" id="1_ej610"]
+[ext_resource type="PackedScene" uid="uid://o81x4i4po840" path="res://models/male3.glb" id="2_oj01j"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xyr3h"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dxk77"]
+resource_local_to_scene = true
+radius = 0.15
+height = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofaer"]
+resource_local_to_scene = true
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgocf"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8vl5v"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jf6x1"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5cvc"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7duyk"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjkip"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w31rl"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_487ml"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgtpr"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e62ga"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6fsg"]
+resource_local_to_scene = true
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ng3fj"]
+resource_local_to_scene = true
+radius = 0.05
+height = 0.2
+
+[node name="HumanMale3" unique_id=1331856773 instance=ExtResource("1_ej610")]
+height = 1.75
+
+[node name="Head" parent="." index="6" unique_id=1813886583]
+shape = SubResource("CapsuleShape3D_xyr3h")
+
+[node name="Chest" parent="." index="7" unique_id=2141173862]
+shape = SubResource("CapsuleShape3D_dxk77")
+
+[node name="Hips" parent="." index="8" unique_id=1055591327]
+shape = SubResource("CapsuleShape3D_ofaer")
+
+[node name="RightUpperArm" parent="." index="9" unique_id=241013015]
+shape = SubResource("CapsuleShape3D_bgocf")
+
+[node name="RightLowerArm" parent="." index="10" unique_id=975853271]
+shape = SubResource("CapsuleShape3D_8vl5v")
+
+[node name="RightHand" parent="." index="11" unique_id=63962693]
+shape = SubResource("CapsuleShape3D_jf6x1")
+
+[node name="LeftUpperArm" parent="." index="12" unique_id=369303869]
+shape = SubResource("CapsuleShape3D_i5cvc")
+
+[node name="LeftLowerArm" parent="." index="13" unique_id=769943401]
+shape = SubResource("CapsuleShape3D_7duyk")
+
+[node name="LeftHand" parent="." index="14" unique_id=1423774856]
+shape = SubResource("CapsuleShape3D_mjkip")
+
+[node name="RightUpperLeg" parent="." index="15" unique_id=1899827686]
+shape = SubResource("CapsuleShape3D_w31rl")
+
+[node name="RightLowerLeg" parent="." index="16" unique_id=154634051]
+shape = SubResource("CapsuleShape3D_487ml")
+
+[node name="RightFoot" parent="." index="17" unique_id=1099984133]
+shape = SubResource("CapsuleShape3D_vgtpr")
+
+[node name="LeftUpperLeg" parent="." index="18" unique_id=2008624075]
+shape = SubResource("CapsuleShape3D_e62ga")
+
+[node name="LeftLowerLeg" parent="." index="19" unique_id=135186777]
+shape = SubResource("CapsuleShape3D_j6fsg")
+
+[node name="LeftFoot" parent="." index="20" unique_id=1702758973]
+shape = SubResource("CapsuleShape3D_ng3fj")
+
+[node name="male3" parent="." index="21" unique_id=1716592119 instance=ExtResource("2_oj01j")]
+transform = Transform3D(-0.0102, 0, -8.9171237e-10, 0, 0.0102, 0, 8.9171237e-10, 0, -0.0102, 0, -0.8952102, 0)

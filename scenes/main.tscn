@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cajxaefxgf8s" path="res://scenes/player_agent.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b3tk7bpyp2iwx" path="res://scenes/human_female2.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://ceul0qblfc1jf" path="res://scenes/human_male2.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bua2hibkwsb3l" path="res://scenes/human_male3.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://20gn3eexnvwg" path="res://scenes/human_female3.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://c6d4ysvvt6s6t" path="res://scenes/human_female4.tscn" id="12_eb6dy"]
 
 [sub_resource type="Environment" id="Environment_0wfyh"]
 background_mode = 1
@@ -18,6 +21,7 @@ ambient_light_energy = 0.1
 
 [node name="Main" type="Node3D" unique_id=1150763051]
 script = ExtResource("1_tefeu")
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1808865963]
 
@@ -110,6 +114,7 @@ target_to_look = NodePath("../HumanFemale")
 
 [node name="HumanFemale" parent="." unique_id=533732810 node_paths=PackedStringArray("target_to_look") instance=ExtResource("2_sugp2")]
 transform = Transform3D(-0.77835274, 0, 0.6278272, 0, 1, 0, -0.6278272, 0, -0.77835274, 1.0164664, 0.036494315, 0.9392016)
+walk = true
 target_to_look = NodePath("../HumanMale")
 
 [node name="HumanFemale2" parent="." unique_id=334618067 instance=ExtResource("7_tipki")]
@@ -121,4 +126,17 @@ human = NodePath("../HumanMale")
 
 [node name="HumanMale2" parent="." unique_id=2026730383 instance=ExtResource("9_85g3d")]
 transform = Transform3D(-0.8789253, 0, 0.47695944, 0, 1, 0, -0.47695944, 0, -0.8789253, 0, 0.021796346, -1.7220335)
+walk = true
+
+[node name="HumanMale3" parent="." unique_id=1511333488 instance=ExtResource("10_choun")]
+transform = Transform3D(0.7415872, 0, 0.6708564, 0, 1, 0, -0.6708564, 0, 0.7415872, 1.1021047, 0.04689598, 2.6301131)
+walk = true
+
+[node name="HumanFemale3" parent="." unique_id=892253215 instance=ExtResource("11_ya4ey")]
+transform = Transform3D(-0.6023961, 0, -0.7981973, 0, 1, 0, 0.7981973, 0, -0.6023961, -2.4694371, 0.03405428, -1.6243416)
+walk_speed = 1.5
+walk = true
+
+[node name="HumanFemale4" parent="." unique_id=692393202 instance=ExtResource("12_eb6dy")]
+transform = Transform3D(0.3441612, 0, -0.9389106, 0, 1, 0, 0.9389106, 0, 0.3441612, -3.4612198, 0.023281813, 2.4817917)
 walk = true

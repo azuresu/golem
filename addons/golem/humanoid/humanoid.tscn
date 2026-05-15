@@ -84,6 +84,37 @@ script = ExtResource("2_saknf")
 height = 1.8
 height_baseline = 1.8
 
+[node name="2_0m" type="Label3D" parent="Marker" parent_id_path=PackedInt32Array(1979055072) index="0" unique_id=851087138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+pixel_size = 0.002
+text = "2.0m
+"
+
+[node name="1_9m" type="Label3D" parent="Marker" parent_id_path=PackedInt32Array(1979055072) index="1" unique_id=864056638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+pixel_size = 0.002
+text = "1.9m"
+
+[node name="1_8m" type="Label3D" parent="Marker" parent_id_path=PackedInt32Array(1979055072) index="6" unique_id=1458179846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+pixel_size = 0.002
+text = "1.8m"
+
+[node name="1_7m" type="Label3D" parent="Marker" parent_id_path=PackedInt32Array(1979055072) index="7" unique_id=1038516021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+pixel_size = 0.002
+text = "1.7m"
+
+[node name="1_6m" type="Label3D" parent="Marker" parent_id_path=PackedInt32Array(1979055072) index="8" unique_id=1471722861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+pixel_size = 0.002
+text = "1.6m"
+
+[node name="1_5m" type="Label3D" parent="Marker" parent_id_path=PackedInt32Array(1979055072) index="9" unique_id=465555146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+pixel_size = 0.002
+text = "1.5m"
+
 [node name="LookAtModifier" type="LookAtModifier3D" parent="." index="5" unique_id=436845131]
 bone_name = "Head"
 use_angle_limitation = true
