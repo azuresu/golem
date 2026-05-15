@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://13yrk4fteyn5" path="res://addons/golem/wall/wall.tscn" id="4_jyhfs"]
 [ext_resource type="Material" uid="uid://c2bif8nrpgc6c" path="res://addons/golem/wall/wall_material.tres" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cajxaefxgf8s" path="res://scenes/player_agent.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b3tk7bpyp2iwx" path="res://scenes/human_female2.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://ceul0qblfc1jf" path="res://scenes/human_male2.tscn" id="9_85g3d"]
 
 [sub_resource type="Environment" id="Environment_0wfyh"]
 background_mode = 1
@@ -110,5 +112,13 @@ target_to_look = NodePath("../HumanFemale")
 transform = Transform3D(-0.77835274, 0, 0.6278272, 0, 1, 0, -0.6278272, 0, -0.77835274, 1.0164664, 0.036494315, 0.9392016)
 target_to_look = NodePath("../HumanMale")
 
+[node name="HumanFemale2" parent="." unique_id=334618067 instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0080079, 0.033583045, 2.4881277)
+walk = true
+
 [node name="PlayerCamera" parent="." unique_id=410845761 node_paths=PackedStringArray("human") instance=ExtResource("7_o6xl0")]
 human = NodePath("../HumanMale")
+
+[node name="HumanMale2" parent="." unique_id=2026730383 instance=ExtResource("9_85g3d")]
+transform = Transform3D(-0.8789253, 0, 0.47695944, 0, 1, 0, -0.47695944, 0, -0.8789253, 0, 0.021796346, -1.7220335)
+walk = true

@@ -58,6 +58,8 @@ func _fix_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> void
 		if s is AnimationState and not sm.has_node(state_name):
 			var ana:= AnimationNodeAnimation.new()
 			var anim_name: String = s.animation_name
+			if not anim_name:
+				anim_name = s.name
 			var anim_lib:= ""
 			var i = anim_name.find("/")
 			if i >= 0:

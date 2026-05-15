@@ -3,6 +3,7 @@ extends Node3D
 @export var mouse_sensitivity:= 0.05
 @export var human: Human
 
+@onready var arm: SpringArm3D = $CameraArm
 @onready var camera: Camera3D = $CameraArm/Camera
 
 var _mouse_motion: Vector2
@@ -13,7 +14,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	rotation_degrees.y -= _mouse_motion.x * mouse_sensitivity
-	camera.rotation_degrees.x = clampf(camera.rotation_degrees.x - _mouse_motion.y * mouse_sensitivity, -90, 90)
+	arm.rotation_degrees.x = clampf(arm.rotation_degrees.x - _mouse_motion.y * mouse_sensitivity, -90, 90)
 	_mouse_motion = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
