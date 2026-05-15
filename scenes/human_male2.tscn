@@ -97,7 +97,6 @@ shape = SubResource("CapsuleShape3D_s354y")
 
 [node name="RightHand" parent="." index="11" unique_id=63962693]
 shape = SubResource("CapsuleShape3D_odcv2")
-end_bone = "RightIndexProximal"
 
 [node name="LeftUpperArm" parent="." index="12" unique_id=369303869]
 shape = SubResource("CapsuleShape3D_85je0")
@@ -107,7 +106,6 @@ shape = SubResource("CapsuleShape3D_ld5a7")
 
 [node name="LeftHand" parent="." index="14" unique_id=1423774856]
 shape = SubResource("CapsuleShape3D_8117q")
-end_bone = "LeftIndexProximal"
 
 [node name="RightUpperLeg" parent="." index="15" unique_id=1899827686]
 shape = SubResource("CapsuleShape3D_yc8o3")

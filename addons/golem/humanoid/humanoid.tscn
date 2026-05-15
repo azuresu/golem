@@ -128,7 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_malo8")
 diameter = 0.2
 length = 0.2
-end_bone = "RightIndexDistal"
+end_bone = "RightIndex"
 
 [node name="LeftUpperArm" parent="." index="12" unique_id=369303869 instance=ExtResource("2_ibm0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -147,7 +147,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_k3eam")
 diameter = 0.2
 length = 0.2
-end_bone = "LeftIndexDistal"
+end_bone = "LeftIndex"
 
 [node name="RightUpperLeg" parent="." index="15" unique_id=1899827686 instance=ExtResource("2_ibm0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

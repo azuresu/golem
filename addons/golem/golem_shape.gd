@@ -22,19 +22,17 @@ var _height_ratio: float
 func _ready() -> void:
 	var skeleton: Skeleton3D = golem.skeleton
 	if skeleton:
-		for i in skeleton.get_bone_count():
-			if name == skeleton.get_bone_name(i):
-				_bone = BoneAttachment3D.new()
-				_bone.bone_idx = i
-				skeleton.add_child(_bone)
-			if end_bone and end_bone == skeleton.get_bone_name(i):
-				_bone2 = BoneAttachment3D.new()
-				_bone2.bone_idx = i
-				skeleton.add_child(_bone2)
-		if not _bone:
+		_bone = _find_bone(skeleton, name)
+		if _bone:
+			skeleton.add_child(_bone)
+		else:
 			Glaze.log_error("Bone: %s not found in golem: %s", name, golem)
-		if end_bone and not _bone2:
-			Glaze.log_error("End bone: %s not found in golem: %s", end_bone, golem)
+		if end_bone:
+			_bone2 = _find_bone(skeleton, end_bone)
+			if _bone2:
+				skeleton.add_child(_bone2)
+			else:
+				Glaze.log_error("End bone: %s not found in golem: %s", end_bone, golem)
 
 # Make sure to use Jolt engine otherwise rotation/scale won't work.
 func _physics_process(delta: float) -> void:
@@ -55,3 +53,17 @@ func _physics_process(delta: float) -> void:
 		else:
 			global_position = _bone.global_position
 			global_rotation = _bone.global_rotation
+
+func _find_bone(skeleton: Skeleton3D, bone_name: String) -> BoneAttachment3D:
+	var bone_index:= -1
+	for i in skeleton.get_bone_count():
+		if bone_name == skeleton.get_bone_name(i):
+			bone_index = i
+			break
+		elif skeleton.get_bone_name(i).containsn(bone_name):
+			bone_index = i
+	if bone_index >= 0:
+		var bone = BoneAttachment3D.new()
+		bone.bone_idx = bone_index
+		return bone
+	return null
