@@ -82,6 +82,10 @@ resource_local_to_scene = true
 radius = 0.05
 height = 0.2
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ss4x0"]
+radius = 0.3
+height = 1.8
+
 [node name="Human" unique_id=1331856773 instance=ExtResource("1_swaxu")]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -163,3 +167,7 @@ shape = SubResource("CapsuleShape3D_dyrg8")
 
 [node name="LeftFoot" parent="." index="20" unique_id=1702758973]
 shape = SubResource("CapsuleShape3D_gmtd2")
+
+[node name="SimpleShape" type="CollisionShape3D" parent="." index="21" unique_id=1705017747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98, 0)
+shape = SubResource("CapsuleShape3D_ss4x0")

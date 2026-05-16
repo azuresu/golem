@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cajxaefxgf8s"]
 
-[ext_resource type="Script" uid="uid://crthyixcjmscx" path="res://scenes/player_agent.gd" id="1_78pfg"]
+[ext_resource type="Script" uid="uid://crthyixcjmscx" path="res://scenes/player_control.gd" id="1_78pfg"]
 
-[node name="PlayerAgent" type="Node3D" unique_id=410845761]
+[node name="PlayerControl" type="Node3D" unique_id=410845761]
 script = ExtResource("1_78pfg")
 
 [node name="Forward" type="Marker3D" parent="." unique_id=630279447]
@@ -18,7 +18,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="CameraArm" type="SpringArm3D" parent="." unique_id=1548340123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 spring_length = 1.5
 
 [node name="Camera" type="Camera3D" parent="CameraArm" unique_id=147354644]
+
+[node name="AimCast" type="RayCast3D" parent="CameraArm/Camera" unique_id=186161704]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -10)
+collision_mask = 4
+
+[node name="AimDefault" type="Marker3D" parent="CameraArm/Camera" unique_id=865979527]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)

@@ -14,9 +14,9 @@ var _npc_count: int
 func _ready() -> void:
 	var rt = RemoteTransform3D.new()
 	rt.update_rotation = false
-	rt.remote_path = $PlayerCamera.get_path()
-	$HumanMale.get_node("Head").add_child(rt)
-	$PlayerCamera.global_rotation = $HumanMale.global_rotation
+	rt.remote_path = $PlayerControl.get_path()
+	$Player.get_node("Head").add_child(rt)
+	$PlayerControl.set_player($Player)
 
 func _spawn_npc() -> void:
 	var npc_name = Glaze.rand_option(NPC_NAMES)
@@ -25,6 +25,8 @@ func _spawn_npc() -> void:
 	})
 	npc.rotation_degrees.y = 180
 	npc.set_animation("walk")
+	npc.use_simple_shape(true)
+	npc.set_collision_layer_value(3, true)
 	npc.tree_exited.connect(func(): _npc_count -= 1)
 	Glaze.new_scene("res://scenes/npc_agent.tscn", npc)
 	_npc_count += 1

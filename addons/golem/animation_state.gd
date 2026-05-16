@@ -18,16 +18,16 @@ func get_speed_scale() -> float:
 func is_play_backward() -> bool:
 	return play_backward
 
-func _process(delta: float) -> void:
-	if machine:
-		machine.set_animation_condition(name, _has_animation_condition())
-
-func _transition(state_name: String, params:= {}) -> void:
-	super._transition(state_name, params)
+func transition(state_name: String, params:= {}) -> void:
+	super.transition(state_name, params)
 	# Some states can be transitioned to itself when agent requires like melee and roll.
 	if machine.current_state and machine.current_state.name == state_name:
 		if machine.current_state.reset_when_transition_to_self:
 			machine.play_animation(animation_name)
+
+func _process(delta: float) -> void:
+	if machine:
+		machine.set_animation_condition(name, _has_animation_condition())
 
 func _is_animation_between(begin_time: float, end_time: float, margin:= 0.0) -> bool:
 	return animation_time >= begin_time - margin and animation_time <= end_time + margin

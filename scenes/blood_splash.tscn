@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dqjx1nby2dqeh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqb1g"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Curve" id="Curve_qwesb"]
+_data = [Vector2(0, 0.10019845), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wsa2r"]
+curve = SubResource("Curve_qwesb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0rc37"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_curve = SubResource("CurveTexture_wsa2r")
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1omub"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Animation" id="Animation_iqb1g"]
+resource_name = "splash"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwesb"]
+_data = {
+&"splash": SubResource("Animation_iqb1g")
+}
+
+[node name="BloodSplash" type="Node3D" unique_id=281672049]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1691595]
+material_override = SubResource("StandardMaterial3D_iqb1g")
+amount = 20
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_0rc37")
+draw_pass_1 = SubResource("SphereMesh_1omub")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=284985138]
+libraries/ = SubResource("AnimationLibrary_qwesb")
+autoplay = &"splash"

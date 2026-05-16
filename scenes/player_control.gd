@@ -8,6 +8,10 @@ extends Node3D
 
 var _mouse_motion: Vector2
 
+func set_player(player: Human) -> void:
+	global_rotation = player.global_rotation
+	arm.add_excluded_object(player)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_mouse_motion += event.relative
@@ -33,3 +37,16 @@ func _physics_process(delta: float) -> void:
 		human.set_animation("run" if sprint else "walk")
 	else:
 		human.animation_state_machine.set_current_state("stand")
+
+	var player: Human = get_tree().get_first_node_in_group("player")
+	var pri_weapon = player.get_node("Primary").get_child(0)
+	if Input.is_action_pressed("primary_attack") and pri_weapon and pri_weapon.can_fire():
+		pri_weapon.fire(_get_aim_position())
+	var sec_weapon = player.get_node("Secondary").get_child(0)
+	if Input.is_action_pressed("secondary_attack") and sec_weapon and sec_weapon.can_fire():
+		sec_weapon.fire(_get_aim_position())
+
+func _get_aim_position() -> Vector3:
+	if %AimCast.is_colliding():
+		return %AimCast.get_collision_point()
+	return %AimDefault.global_position

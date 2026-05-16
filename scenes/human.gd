@@ -4,6 +4,14 @@ class_name Human extends Humanoid
 @export var walk: bool
 @export var target_to_look: Node3D
 
+func use_simple_shape(simple: bool) -> void:
+	for ch in get_children():
+		if ch is CollisionShape3D:
+			if ch == $SimpleShape:
+				ch.disabled = not simple
+			else:
+				ch.disabled = simple
+
 func _ready() -> void:
 	super._ready()
 	if walk:

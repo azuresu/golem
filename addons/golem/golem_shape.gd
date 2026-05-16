@@ -36,18 +36,23 @@ func _ready() -> void:
 
 # Make sure to use Jolt engine otherwise rotation/scale won't work.
 func _physics_process(delta: float) -> void:
+	if disabled:
+		return
 	
 	if not _height_ratio == golem.height_ratio:
 		_height_ratio = golem.height_ratio
 		shape.radius = diameter * 0.5 * _height_ratio
 		shape.height = length * _height_ratio
 
-	# Always do this even when shape is disabled otherwise weird issues will be reported by physics engine.
 	if _bone:
 		if _bone2:
 			global_position = lerp(_bone.global_position, _bone2.global_position, 0.5)
 			if not global_position.is_equal_approx(_bone2.global_position):
-				look_at(_bone2.global_position)
+				var target_dir = (_bone2.global_position - global_position).normalized()
+				if abs(target_dir.dot(Vector3.UP)) > 0.99:
+					look_at(_bone2.global_position, Vector3.RIGHT)
+				else:
+					look_at(_bone2.global_position, Vector3.UP)
 			rotate_object_local(Vector3.LEFT, PI * 0.5)
 		else:
 			global_position = _bone.global_position

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://crnw7k01v0hvy"]
+
+[ext_resource type="Script" uid="uid://ca5c5iuafsefk" path="res://scenes/billiard_cue.gd" id="1_4v3kq"]
+[ext_resource type="PackedScene" uid="uid://i3bxtkjnq1dq" path="res://models/billiard_cue.glb" id="1_7tkxn"]
+
+[sub_resource type="Animation" id="Animation_7tkxn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollOffset/Roll:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4v3kq"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollOffset/Roll:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qr5kh"]
+_data = {
+&"RESET": SubResource("Animation_7tkxn"),
+&"rotate": SubResource("Animation_4v3kq")
+}
+
+[node name="BilliardCue" type="Node3D" unique_id=1999313620]
+script = ExtResource("1_4v3kq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=261169224]
+libraries/ = SubResource("AnimationLibrary_qr5kh")
+autoplay = &"rotate"
+
+[node name="RollOffset" type="Node3D" parent="." unique_id=1028772903]
+
+[node name="Roll" type="Node3D" parent="RollOffset" unique_id=2008799401]
+
+[node name="Sketchfab_Scene" parent="RollOffset/Roll" unique_id=373819701 instance=ExtResource("1_7tkxn")]
+transform = Transform3D(-0.08715577, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, -0.08715577, 0.1, 0, 0)

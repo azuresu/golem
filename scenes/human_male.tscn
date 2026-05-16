@@ -82,48 +82,68 @@ height = 0.2
 
 [node name="Head" parent="." index="6" unique_id=1813886583]
 shape = SubResource("CapsuleShape3D_hdlah")
+disabled = false
+end_bone = null
 
 [node name="Chest" parent="." index="7" unique_id=2141173862]
 shape = SubResource("CapsuleShape3D_1jmxg")
+disabled = false
+end_bone = null
 
 [node name="Hips" parent="." index="8" unique_id=1055591327]
 shape = SubResource("CapsuleShape3D_nbkoe")
+disabled = false
+end_bone = null
 
 [node name="RightUpperArm" parent="." index="9" unique_id=241013015]
 shape = SubResource("CapsuleShape3D_m6dx0")
+disabled = false
+diameter = null
 
 [node name="RightLowerArm" parent="." index="10" unique_id=975853271]
 shape = SubResource("CapsuleShape3D_4fvg0")
+disabled = false
+diameter = null
 
 [node name="RightHand" parent="." index="11" unique_id=63962693]
 shape = SubResource("CapsuleShape3D_obus1")
+disabled = false
 
 [node name="LeftUpperArm" parent="." index="12" unique_id=369303869]
 shape = SubResource("CapsuleShape3D_1i1gn")
+disabled = false
+diameter = null
 
 [node name="LeftLowerArm" parent="." index="13" unique_id=769943401]
 shape = SubResource("CapsuleShape3D_rce4l")
+disabled = false
+diameter = null
 
 [node name="LeftHand" parent="." index="14" unique_id=1423774856]
 shape = SubResource("CapsuleShape3D_h4vrc")
+disabled = false
 
 [node name="RightUpperLeg" parent="." index="15" unique_id=1899827686]
 shape = SubResource("CapsuleShape3D_u3j3r")
+disabled = false
 
 [node name="RightLowerLeg" parent="." index="16" unique_id=154634051]
 shape = SubResource("CapsuleShape3D_a0tpq")
 
 [node name="RightFoot" parent="." index="17" unique_id=1099984133]
 shape = SubResource("CapsuleShape3D_mw5l3")
+diameter = null
 
 [node name="LeftUpperLeg" parent="." index="18" unique_id=2008624075]
 shape = SubResource("CapsuleShape3D_wmcaa")
+disabled = false
 
 [node name="LeftLowerLeg" parent="." index="19" unique_id=135186777]
 shape = SubResource("CapsuleShape3D_bjktu")
 
 [node name="LeftFoot" parent="." index="20" unique_id=1702758973]
 shape = SubResource("CapsuleShape3D_7pf4v")
+diameter = null
 
-[node name="Sketchfab_Scene" parent="." index="21" unique_id=418478164 instance=ExtResource("2_1jmxg")]
+[node name="Sketchfab_Scene" parent="." index="22" unique_id=418478164 instance=ExtResource("2_1jmxg")]
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0, -0.8979098, 0)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://daw4dll5ddbe1"]
+
+[ext_resource type="Script" uid="uid://cmsfidov0inbu" path="res://scenes/billiard_cue_flying.gd" id="1_e2u0t"]
+[ext_resource type="PackedScene" uid="uid://i3bxtkjnq1dq" path="res://models/billiard_cue.glb" id="1_ve08m"]
+
+[node name="BilliardCueFlying" type="RigidBody3D" unique_id=1813139415]
+gravity_scale = 0.5
+script = ExtResource("1_e2u0t")
+
+[node name="Roll" type="Node3D" parent="." unique_id=1346634022]
+
+[node name="Sketchfab_Scene" parent="Roll" unique_id=373819701 instance=ExtResource("1_ve08m")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="HitCast" type="RayCast3D" parent="." unique_id=782742647]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+target_position = Vector3(0, 0, -1)

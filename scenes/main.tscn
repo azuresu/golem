@@ -5,14 +5,16 @@
 [ext_resource type="Script" uid="uid://dab5lv2qum36g" path="res://scenes/main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://13yrk4fteyn5" path="res://addons/golem/wall/wall.tscn" id="4_jyhfs"]
 [ext_resource type="Material" uid="uid://c2bif8nrpgc6c" path="res://addons/golem/wall/wall_material.tres" id="4_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://cajxaefxgf8s" path="res://scenes/player_agent.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bwu6rno74qeju" path="res://scenes/fire_axe.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cajxaefxgf8s" path="res://scenes/player_control.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://crnw7k01v0hvy" path="res://scenes/billiard_cue.tscn" id="7_tipki"]
 
 [sub_resource type="Environment" id="Environment_0wfyh"]
 background_mode = 1
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.01
 
-[node name="Main" type="Node3D" unique_id=1150763051]
+[node name="Main" type="Node3D" unique_id=1150763051 groups=["stage"]]
 script = ExtResource("1_tefeu")
 metadata/_edit_lock_ = true
 
@@ -130,14 +132,24 @@ height = 2.0864258
 sides = 16
 material = ExtResource("4_tbgi4")
 
-[node name="HumanMale" parent="." unique_id=1331856773 node_paths=PackedStringArray("target_to_look") groups=["player"] instance=ExtResource("1_0wfyh")]
-target_to_look = NodePath("")
+[node name="Player" parent="." unique_id=1331856773 groups=["player"] instance=ExtResource("1_0wfyh")]
+collision_layer = 3
 
-[node name="PlayerCamera" parent="." unique_id=410845761 node_paths=PackedStringArray("human") instance=ExtResource("7_o6xl0")]
-human = NodePath("../HumanMale")
+[node name="Primary" type="Marker3D" parent="Player" unique_id=1892350000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.7, 0)
+
+[node name="FireAxe" parent="Player/Primary" unique_id=1405131164 instance=ExtResource("6_o6xl0")]
+
+[node name="Secondary" type="Marker3D" parent="Player" unique_id=350607575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0)
+
+[node name="BilliardCue" parent="Player/Secondary" unique_id=1999313620 instance=ExtResource("7_tipki")]
+
+[node name="PlayerControl" parent="." unique_id=410845761 node_paths=PackedStringArray("human") instance=ExtResource("7_o6xl0")]
+human = NodePath("../Player")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1881470646]
-wait_time = 0.8
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_spawn_npc"]
