@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://behpr5jboqjfd"]
+
+[ext_resource type="AnimationLibrary" uid="uid://c6eh0l30c2pnk" path="res://scenes/human_animations.res" id="1_s3lh4"]
+[ext_resource type="ArrayMesh" uid="uid://bpvorsmlfnao2" path="res://models/rigged_female_hair.res" id="2_s3lh4"]
+[ext_resource type="ArrayMesh" uid="uid://36qnhf8e4ds7" path="res://models/rigged_female_upper_body.res" id="3_b5jch"]
+[ext_resource type="ArrayMesh" uid="uid://cdwthe5oy6w71" path="res://models/rigged_male_upper_body.res" id="4_haijs"]
+[ext_resource type="ArrayMesh" uid="uid://ckjim8etdbpoa" path="res://models/rigged_female_lower_body.res" id="4_l351e"]
+[ext_resource type="PackedScene" uid="uid://bmpendxwnykmp" path="res://models/human_skeleton.blend" id="4_s3lh4"]
+[ext_resource type="ArrayMesh" uid="uid://1hlod5ro4cgq" path="res://models/rigged_male_lower_body.res" id="5_b5jch"]
+
+[node name="HumanTest" type="Node3D" unique_id=923592021]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1866554256]
+root_node = NodePath("../human_skeleton2/human_skeleton/GeneralSkeleton")
+libraries/human_animations = ExtResource("1_s3lh4")
+
+[node name="human_skeleton2" parent="." unique_id=1872564995 instance=ExtResource("4_s3lh4")]
+
+[node name="GeneralSkeleton" parent="human_skeleton2/human_skeleton" parent_id_path=PackedInt32Array(1872564995, 997189113) index="0" unique_id=522757277]
+bones/0/position = Vector3(-0.1799384, 0.10718101, 1.2018219)
+bones/0/rotation = Quaternion(0.7585799, 0.25923714, 0.08508386, 0.59170383)
+bones/1/rotation = Quaternion(-0.00057472894, -0.051239684, -0.12303999, 0.9910779)
+bones/2/rotation = Quaternion(0.00019034627, -0.021340195, -0.05042156, 0.9985)
+bones/3/rotation = Quaternion(0.0008202002, -0.021151507, -0.050489824, 0.9985003)
+bones/4/rotation = Quaternion(-0.0759729, 0.023829244, 0.07428889, 0.99405307)
+bones/5/rotation = Quaternion(-0.022134019, 0.032850023, 0.032311123, 0.99869263)
+bones/7/rotation = Quaternion(0.43029642, 0.5839417, 0.53800076, -0.42943257)
+bones/8/rotation = Quaternion(-0.010121241, 0.78667563, -0.4807735, 0.3871639)
+bones/9/rotation = Quaternion(0.37654692, -0.3822567, 0.77322435, 0.33795902)
+bones/10/rotation = Quaternion(-0.058663227, 0.67648226, 0.23281121, 0.696225)
+bones/11/rotation = Quaternion(0.5988861, -0.3739427, -0.52087533, -0.47978255)
+bones/12/rotation = Quaternion(-0.075250424, 0.9436307, -0.22814125, 0.22770649)
+bones/13/rotation = Quaternion(0.43746886, 0.7117531, 0.25820333, 0.48513883)
+bones/14/rotation = Quaternion(0.20541215, -0.62398785, 0.059320584, 0.75161564)
+bones/19/rotation = Quaternion(0.24844493, 0.58878964, 0.7255749, -0.25523138)
+bones/20/rotation = Quaternion(-0.038823705, 0.78234315, -0.5945519, 0.18149345)
+bones/21/rotation = Quaternion(-0.042284455, 0.7875359, -0.6130799, 0.046177324)
+bones/22/rotation = Quaternion(-0.009922731, 0.9993931, -0.03273604, 0.006596442)
+bones/24/rotation = Quaternion(-0.10329049, 0.08730127, 0.97228616, 0.19070715)
+bones/25/rotation = Quaternion(0.1043876, 0.97188514, -0.19960727, -0.068554066)
+bones/26/rotation = Quaternion(0.032688722, 0.78317124, -0.620044, -0.03346473)
+bones/27/rotation = Quaternion(-0.08587316, 0.9144107, -0.3474501, -0.18909582)
+
+[node name="Body" type="Node3D" parent="." unique_id=192182790]
+
+[node name="FemaleHair" type="MeshInstance3D" parent="Body" unique_id=273115140]
+mesh = ExtResource("2_s3lh4")
+skeleton = NodePath("../../human_skeleton2/human_skeleton/GeneralSkeleton")
+
+[node name="FemaleUpperBody" type="MeshInstance3D" parent="Body" unique_id=1462489289]
+mesh = ExtResource("3_b5jch")
+skeleton = NodePath("../../human_skeleton2/human_skeleton/GeneralSkeleton")
+
+[node name="FemaleLowerBody" type="MeshInstance3D" parent="Body" unique_id=1714807857]
+mesh = ExtResource("4_l351e")
+skeleton = NodePath("../../human_skeleton2/human_skeleton/GeneralSkeleton")
+
+[node name="MaleUpperBody" type="MeshInstance3D" parent="Body" unique_id=2054032693]
+visible = false
+mesh = ExtResource("4_haijs")
+skeleton = NodePath("../../human_skeleton2/human_skeleton/GeneralSkeleton")
+
+[node name="MaleLowerBody" type="MeshInstance3D" parent="Body" unique_id=1199832529]
+visible = false
+mesh = ExtResource("5_b5jch")
+skeleton = NodePath("../../human_skeleton2/human_skeleton/GeneralSkeleton")
+
+[editable path="human_skeleton2"]

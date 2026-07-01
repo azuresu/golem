@@ -1,4 +1,7 @@
 extends AnimationState
 
+var human: Human:
+	get: return owner
+
 func _enter() -> void:
-	golem.velocity = Vector3(0, golem.velocity.y, 0)
+	human.velocity = Vector3(0, human.velocity.y, 0)
