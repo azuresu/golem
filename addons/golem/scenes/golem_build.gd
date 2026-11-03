@@ -122,7 +122,7 @@ func _build_transitions(sm: AnimationNodeStateMachine) -> void:
 				trans.advance_condition = str(node_list[j])
 				sm.add_transition(node_list[i], node_list[j], trans)
 	if golem.default_state:
-		Glaze.log_debug("Building transition from Start to default: %s", golem.default_state)
+		Glaze.log_debug("Building default transition from Start to %s", golem.default_state)
 		var trans:= AnimationNodeStateMachineTransition.new()
 		trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
 		sm.add_transition(&"Start", golem.default_state, trans)
