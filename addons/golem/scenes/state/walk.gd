@@ -3,6 +3,8 @@ class_name GolemState_Walk extends GolemState
 func _update(delta: float) -> void:
 	if not _is_agent_moving():
 		transition("stand")
+	elif golem.agent.is_acting("run"):
+		transition("run")
 
 func _physics_update(delta: float) -> void:
 	var target:= golem.agent.get_target_to_move()

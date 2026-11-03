@@ -1,9 +1,11 @@
 class_name GolemState_Stand extends GolemState
 
 func _enter() -> void:
-	golem.velocity.x = 0
-	golem.velocity.z = 0
+	golem.move_to(Vector3.ZERO, 0)
 
 func _update(delta: float) -> void:
 	if _is_agent_moving():
-		transition("walk")
+		if golem.agent.is_acting("run"):
+			transition("run")
+		else:
+			transition("walk")

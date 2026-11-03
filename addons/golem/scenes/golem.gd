@@ -26,8 +26,11 @@ func turn_to(global_pos: Vector3, speed: float, delta: float) -> void:
 			rotation.y = lerp_angle(rotation.y, r.y, minf(speed * delta, d) / d)
 
 func move_to(global_pos: Vector3, speed: float) -> void:
-	var r:= global_transform.looking_at(global_pos).basis.get_euler()
-	velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
+	if speed > 0:
+		var r:= global_transform.looking_at(global_pos).basis.get_euler()
+		velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
+	else:
+		velocity = Vector3(0, velocity.y, 0)
 
 func _ready() -> void:
 	if Engine.is_editor_hint():

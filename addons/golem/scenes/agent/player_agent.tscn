@@ -10,7 +10,7 @@ top_level = true
 
 [node name="Camera" type="Camera3D" parent="CameraYaw" unique_id=1624781608]
 physics_interpolation_mode = 2
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.7)
 
 [node name="Forward" type="Marker3D" parent="CameraYaw" unique_id=246616217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

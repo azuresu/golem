@@ -6,22 +6,24 @@ const CAMERA_FOLLOW_SPEED:= 5.0
 var _mouse_motion: Vector2
 
 func get_target_to_move() -> Node3D:
-	if is_move_back_pressed():
+	if Input.is_action_pressed("move_back"):
 		return $CameraYaw/Backward
-	if is_move_left_pressed():
+	if Input.is_action_pressed("move_left"):
 		return $CameraYaw/Left
-	if is_move_right_pressed():
+	if Input.is_action_pressed("move_right"):
 		return $CameraYaw/Right
 	return $CameraYaw/Forward
 
 func is_acting(action_name: StringName) -> bool:
-	if action_name == &"move" and is_move_pressed():
+	if action_name == &"move" and Input.is_action_pressed("move"):
 		return true
-	if action_name == &"move_back" and is_move_back_pressed():
+	if action_name == &"move_back" and Input.is_action_pressed("move_back"):
 		return true
-	if action_name == &"move_left" and is_move_left_pressed():
+	if action_name == &"move_left" and Input.is_action_pressed("move_left"):
 		return true
-	if action_name == &"move_right" and is_move_right_pressed():
+	if action_name == &"move_right" and Input.is_action_pressed("move_right"):
+		return true
+	if action_name == &"run" and Input.is_action_pressed("run"):
 		return true
 	return false
 
@@ -43,15 +45,3 @@ func _process(delta: float) -> void:
 
 func _on_tree_entered() -> void:
 	$CameraYaw.global_rotation.y = golem.global_rotation.y
-
-func is_move_pressed() -> bool:
-	return Input.is_action_pressed("ui_up")
-
-func is_move_back_pressed() -> bool:
-	return Input.is_action_pressed("ui_down")
-
-func is_move_left_pressed() -> bool:
-	return Input.is_action_pressed("ui_left")
-
-func is_move_right_pressed() -> bool:
-	return Input.is_action_pressed("ui_right")

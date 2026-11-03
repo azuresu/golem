@@ -7,6 +7,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://dcf3oa7etddba" path="res://addons/golem/animations/human_animations.res" id="3_lwe6g"]
 [ext_resource type="Script" uid="uid://c5tpm86s1oofu" path="res://addons/golem/scenes/state/walk.gd" id="4_153xc"]
 [ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scenes/golem_shape.gd" id="5_afxt5"]
+[ext_resource type="Script" uid="uid://dud7eiehv1yg0" path="res://addons/golem/scenes/state/run.gd" id="5_gcl35"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgcrq"]
 animation = &"human_animations/human_roll_fixed"
@@ -175,7 +176,7 @@ script = ExtResource("4_153xc")
 animation_name = "human_animations/human_walk"
 
 [node name="run" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="2" unique_id=932786383]
-script = ExtResource("3_dkvo6")
+script = ExtResource("5_gcl35")
 animation_name = "human_animations/human_run"
 
 [node name="roll" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="3" unique_id=276615093]
