@@ -1,10 +1,11 @@
 @tool
-class_name GolemTool extends Node
+class_name GolemConfig extends Resource
 
-@export var state_machine: GolemStateMachine
 @export var default_state: StringName
 @export var editor_node_gap:= Vector2i(200, 200)
 @export_tool_button("Build Animation Tree") var build_animation_tree:= _build_animation_tree
+
+var state_machine: GolemStateMachine
 
 func _build_animation_tree() -> void:
 	print("Building animation tree...")
@@ -27,6 +28,7 @@ func _build_animation_tree() -> void:
 		else:
 			printerr("Animation player not found in animation tree: %s" % animation_tree)
 		animation_tree.tree_root = blend_tree
+		animation_tree.get("parameters/StateMachine/playback").start(&"Start")
 	else:
 		printerr("No animation tree set for animation state machine: %s", self)
 

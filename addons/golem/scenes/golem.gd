@@ -1,5 +1,6 @@
 class_name Golem extends CharacterBody3D
 
+@export var config: GolemConfig
 @export var skeleton: Skeleton3D
 
 @onready var state_machine: GolemStateMachine = $StateMachine
@@ -32,6 +33,12 @@ func move_to(global_pos: Vector3, speed: float) -> void:
 		velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
 	else:
 		velocity = Vector3(0, velocity.y, 0)
+
+func _ready() -> void:
+	if config:
+		if config.default_state:
+			print(config.default_state)
+			state_machine.set_current_state(config.default_state)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
