@@ -42,6 +42,11 @@ func _process(delta: float) -> void:
 		current_state.animation_time += delta * anim_ss
 		_set_animation_time_scale(anim_ss)
 
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	super._physics_process(delta)
+
 func _build_tree() -> void:
 	print("Building animation tree...")
 	if animation_tree:

@@ -53,11 +53,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_o5qli")
 
 [node name="Mannequin" parent="." unique_id=487379024 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0073589073, 0)
+velocity = Vector3(0, 0, 0)
 
 [node name="XBot" parent="." unique_id=516435404 instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-default_animation = &"walk"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.009116545, 1.4375567e-09)
+velocity = Vector3(0, 0, 0)
 
 [node name="YBot" parent="." unique_id=1095426518 instance=ExtResource("5_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.0039044751, 4.994741e-09)
+velocity = Vector3(0, 0, 0)
 default_animation = &"run"

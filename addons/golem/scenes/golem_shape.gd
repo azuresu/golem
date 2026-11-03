@@ -1,5 +1,5 @@
 @tool
-class_name BoneShape extends CollisionShape3D
+class_name GolemShape extends CollisionShape3D
 
 @export var skeleton: Skeleton3D
 @export var offset_position: Vector3

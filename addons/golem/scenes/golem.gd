@@ -16,12 +16,33 @@ var agent: GolemAgent:
 
 var _default_state:= &"Start"
 
+func turn_to(global_pos: Vector3, speed: float, delta: float) -> void:
+	var r:= global_transform.looking_at(global_pos).basis.get_euler()
+	if r.length_squared() > 0:
+		var d:= absf(angle_difference(rotation.y, r.y))
+		if d < speed * delta:
+			rotation.y = r.y
+		else:
+			rotation.y = lerp_angle(rotation.y, r.y, minf(speed * delta, d) / d)
+
+func move_to(global_pos: Vector3, speed: float) -> void:
+	var r:= global_transform.looking_at(global_pos).basis.get_euler()
+	velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
 	if _default_state and state_machine:
 		state_machine.set_current_state(_default_state)
+
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	move_and_slide()
 
 func _get_property_list() -> Array[Dictionary]:
 	var properties: Array[Dictionary]
@@ -40,10 +61,6 @@ func _get_property_list() -> Array[Dictionary]:
 
 func _get(property: StringName) -> Variant:
 	if property == "default_animation":
-		if not _default_state and state_machine:
-			for s in state_machine.get_states():
-				_default_state = s.name
-				break
 		return _default_state
 	return null
 

@@ -9,6 +9,9 @@ class_name GolemState extends State
 
 var animation_time: float
 
+var golem: Golem:
+	get: return machine.owner
+
 func get_speed_scale() -> float:
 	return speed_scale
 
@@ -33,3 +36,7 @@ func _has_animation_condition() -> bool:
 
 func _on_animation_finished() -> void:
 	pass
+
+func _is_agent_moving() -> bool:
+	var a:= golem.agent
+	return a and (a.is_acting(&"move") or a.is_acting(&"move_back") or a.is_acting(&"move_left") or a.is_acting(&"move_right"))

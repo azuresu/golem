@@ -8,5 +8,5 @@ func get_target_to_look() -> Node3D:
 func get_target_to_move() -> Node3D:
 	return null
 
-func is_acting(action_name: String) -> bool:
+func is_acting(action_name: StringName) -> bool:
 	return false

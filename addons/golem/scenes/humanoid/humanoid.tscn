@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://claylyiaegk4n" path="res://addons/golem/scenes/golem.tscn" id="1_0f7b8"]
 [ext_resource type="Script" uid="uid://b2ohndekpdi1g" path="res://addons/golem/scenes/humanoid/humanoid.gd" id="1_lwe6g"]
-[ext_resource type="Script" uid="uid://ef5swu85x752" path="res://addons/golem/scripts/golem_state.gd" id="3_dkvo6"]
+[ext_resource type="Script" uid="uid://ckxkvpid01jb3" path="res://addons/golem/scenes/state/stand.gd" id="3_153xc"]
+[ext_resource type="Script" uid="uid://ef5swu85x752" path="res://addons/golem/scenes/golem_state.gd" id="3_dkvo6"]
 [ext_resource type="AnimationLibrary" uid="uid://dcf3oa7etddba" path="res://addons/golem/animations/human_animations.res" id="3_lwe6g"]
-[ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scripts/bone_shape.gd" id="5_afxt5"]
+[ext_resource type="Script" uid="uid://c5tpm86s1oofu" path="res://addons/golem/scenes/state/walk.gd" id="4_153xc"]
+[ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scenes/golem_shape.gd" id="5_afxt5"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgcrq"]
 animation = &"human_animations/human_roll_fixed"
@@ -161,15 +163,15 @@ radius = 0.06
 height = 0.2
 
 [node name="Humanoid" unique_id=487379024 instance=ExtResource("1_0f7b8")]
+velocity = Vector3(0, -1909.4934, 0)
 script = ExtResource("1_lwe6g")
-default_animation = &"stand"
 
 [node name="stand" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="0" unique_id=297206165]
-script = ExtResource("3_dkvo6")
+script = ExtResource("3_153xc")
 animation_name = "human_animations/human_stand"
 
 [node name="walk" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="1" unique_id=990557716]
-script = ExtResource("3_dkvo6")
+script = ExtResource("4_153xc")
 animation_name = "human_animations/human_walk"
 
 [node name="run" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="2" unique_id=932786383]
