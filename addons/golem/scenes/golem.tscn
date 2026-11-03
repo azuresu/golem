@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://claylyiaegk4n"]
 
 [ext_resource type="Script" uid="uid://3qim1cahatpf" path="res://addons/golem/scenes/golem.gd" id="1_mbbae"]
-[ext_resource type="Script" uid="uid://idmwtkk6t0v" path="res://addons/golem/scripts/animation_state_machine.gd" id="2_r6wrr"]
+[ext_resource type="Script" uid="uid://idmwtkk6t0v" path="res://addons/golem/scripts/golem_state_machine.gd" id="2_r6wrr"]
 
 [node name="Golem" type="CharacterBody3D" unique_id=487379024]
 script = ExtResource("1_mbbae")
+default_animation = &"Start"
 
-[node name="AnimationStateMachine" type="Node" parent="." unique_id=2029020036 node_paths=PackedStringArray("animation_tree")]
+[node name="StateMachine" type="Node" parent="." unique_id=2029020036 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("2_r6wrr")
 animation_tree = NodePath("../AnimationTree")
 

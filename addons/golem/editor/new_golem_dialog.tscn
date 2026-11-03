@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bn50vlmu0t618"]
 
-[ext_resource type="Script" uid="uid://dvc3soatylqir" path="res://addons/golem/scenes/editor/new_golem_dialog.gd" id="1_fhpsr"]
+[ext_resource type="Script" uid="uid://dvc3soatylqir" path="res://addons/golem/editor/new_golem_dialog.gd" id="1_fhpsr"]
 
 [node name="NewGolemDialog" type="Window" unique_id=494306871]
 oversampling_override = 1.0

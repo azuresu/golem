@@ -14,7 +14,7 @@ func _disable_plugin() -> void:
 
 func _enter_tree() -> void:
 	add_tool_menu_item(MENU_ITEM_CREATE_NEW_GOLEM, _on_create_new_humanoid)
-	new_golem_dialog = preload("res://addons/golem/scenes/editor/new_golem_dialog.tscn").instantiate()
+	new_golem_dialog = preload("res://addons/golem/editor/new_golem_dialog.tscn").instantiate()
 	EditorInterface.get_editor_main_screen().add_child(new_golem_dialog)
 
 func _exit_tree() -> void:

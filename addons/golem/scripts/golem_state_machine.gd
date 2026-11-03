@@ -1,18 +1,20 @@
 @tool
-@icon("res://addons/golem/scripts/animation_state_machine.png")
-class_name AnimationStateMachine extends StateMachine
+class_name GolemStateMachine extends StateMachine
 
 @export var animation_tree: AnimationTree
 @export var editor_node_gap:= Vector2i(200, 200)
-@export_tool_button("Build Tree Root") var build_button = _build_tree_root
+@export_tool_button("Build Animation Tree") var build_button = _build_tree
+
+var playback: AnimationNodeStateMachinePlayback:
+	get: return animation_tree.get("parameters/StateMachine/playback")
 
 # Cache conditions to improve performance (a lot!)
 var _animation_conditions: Dictionary[String, bool]
 var _animation_time_scale:= 1.0
 
-func get_animation_states() -> Array[AnimationState]:
-	var r: Array[AnimationState]
-	r.assign(get_children().filter(func(ch): return ch is AnimationState))
+func get_states() -> Array[GolemState]:
+	var r: Array[GolemState]
+	r.assign(get_children().filter(func(ch): return ch is GolemState))
 	return r
 
 func set_animation_condition(param_name: String, param_value: bool) -> void:
@@ -21,7 +23,7 @@ func set_animation_condition(param_name: String, param_value: bool) -> void:
 		animation_tree.set("parameters/StateMachine/conditions/%s" % param_name, param_value)
 
 func play_animation(animation_name: String) -> void:
-	animation_tree.get("parameters/StateMachine/playback").start(animation_name)
+	playback.start(animation_name)
 
 func _ready() -> void:
 	super._ready()
@@ -35,15 +37,14 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	super._process(delta)
-	if current_state is AnimationState:
+	if current_state is GolemState:
 		var anim_ss: float = current_state.get_speed_scale()
 		current_state.animation_time += delta * anim_ss
 		_set_animation_time_scale(anim_ss)
 
-func _build_tree_root() -> void:
-	print("Building animation tree root...")
+func _build_tree() -> void:
+	print("Building animation tree...")
 	if animation_tree:
-		animation_tree.tree_root = null
 		var blend_tree:= AnimationNodeBlendTree.new()
 		var state_machine:= AnimationNodeStateMachine.new()
 		var time_scale:= AnimationNodeTimeScale.new()
@@ -57,18 +58,18 @@ func _build_tree_root() -> void:
 		if ap is AnimationPlayer:
 			var first_state:= _build_animations(state_machine, ap)
 			_build_transitions(state_machine, first_state)
-			print("Building animation tree root completed.")
+			print("Building animation tree completed.")
 		else:
 			printerr("Animation player not found in animation tree: %s" % animation_tree)
 		animation_tree.tree_root = blend_tree
 	else:
 		printerr("No animation tree set for animation state machine: %s", self)
 
-func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> AnimationState:
+func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> GolemState:
 	print("Building animation nodes...")
-	var states: Dictionary[String, AnimationState]
+	var states: Dictionary[String, GolemState]
 	for ch in get_children():
-		if ch is AnimationState:
+		if ch is GolemState:
 			states[ch.name] = ch
 	var cols:= maxi(1, int(sqrt(states.size())))
 	var pos: Vector2i
@@ -78,7 +79,7 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> An
 			printerr("Animation state name is not allowed: %s" % state_name)
 			continue
 		var s = states[state_name]
-		if s is AnimationState and not sm.has_node(state_name):
+		if s is GolemState and not sm.has_node(state_name):
 			var ana:= AnimationNodeAnimation.new()
 			var anim_name: String = s.animation_name
 			if not anim_name:
@@ -108,7 +109,7 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> An
 				pos.y += 1
 	return states.values()[0] if states else null
 
-func _build_transitions(sm: AnimationNodeStateMachine, first_state: AnimationState) -> void:
+func _build_transitions(sm: AnimationNodeStateMachine, first_state: GolemState) -> void:
 	print("Building animation transitions...")
 	var node_list: Array[StringName] = sm.get_node_list()
 	for i in node_list.size():
@@ -137,16 +138,16 @@ func _has_transition(sm: AnimationNodeStateMachine, from: StringName, to: String
 	return false
 
 func _on_animation_finished(animation_name: String) -> void:
-	if current_state is AnimationState and animation_name == current_state.animation_name:
+	if current_state is GolemState and animation_name == current_state.animation_name:
 		current_state._on_animation_finished()
 
 func _on_state_entered(state: State) -> void:
-	if state is AnimationState:
+	if state is GolemState:
 		state.animation_time = 0
 		_set_animation_time_scale(state.get_speed_scale())
 
 func _on_state_exited(state: State) -> void:
-	if state is AnimationState:
+	if state is GolemState:
 		_set_animation_time_scale(1.0)
 
 func _set_animation_time_scale(time_scale: float) -> void:

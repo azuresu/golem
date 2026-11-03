@@ -1,6 +1,5 @@
 @tool
-@icon("res://addons/golem/scripts/animation_state.png")
-class_name AnimationState extends State
+class_name GolemState extends State
 
 ## Format: [animation_library_name/]<animation_name>. Changing it in realtime has no effect.
 @export var animation_name: String

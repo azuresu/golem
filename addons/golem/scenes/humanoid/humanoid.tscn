@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://claylyiaegk4n" path="res://addons/golem/scenes/golem.tscn" id="1_0f7b8"]
 [ext_resource type="Script" uid="uid://b2ohndekpdi1g" path="res://addons/golem/scenes/humanoid/humanoid.gd" id="1_lwe6g"]
-[ext_resource type="Script" uid="uid://ef5swu85x752" path="res://addons/golem/scripts/animation_state.gd" id="3_dkvo6"]
+[ext_resource type="Script" uid="uid://ef5swu85x752" path="res://addons/golem/scripts/golem_state.gd" id="3_dkvo6"]
 [ext_resource type="AnimationLibrary" uid="uid://dcf3oa7etddba" path="res://addons/golem/animations/human_animations.res" id="3_lwe6g"]
 [ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scripts/bone_shape.gd" id="5_afxt5"]
 
@@ -144,9 +144,9 @@ height = 0.4
 radius = 0.06
 height = 0.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad3em"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkvo6"]
 radius = 0.06
-height = 0.26
+height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43r14"]
 radius = 0.08
@@ -156,27 +156,27 @@ height = 0.4
 radius = 0.06
 height = 0.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvkw8"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tbgi4"]
 radius = 0.06
-height = 0.26
+height = 0.2
 
 [node name="Humanoid" unique_id=487379024 instance=ExtResource("1_0f7b8")]
 script = ExtResource("1_lwe6g")
 default_animation = &"stand"
 
-[node name="stand" type="Node" parent="AnimationStateMachine" parent_id_path=PackedInt32Array(2029020036) index="0" unique_id=297206165]
+[node name="stand" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="0" unique_id=297206165]
 script = ExtResource("3_dkvo6")
 animation_name = "human_animations/human_stand"
 
-[node name="walk" type="Node" parent="AnimationStateMachine" parent_id_path=PackedInt32Array(2029020036) index="1" unique_id=990557716]
+[node name="walk" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="1" unique_id=990557716]
 script = ExtResource("3_dkvo6")
 animation_name = "human_animations/human_walk"
 
-[node name="run" type="Node" parent="AnimationStateMachine" parent_id_path=PackedInt32Array(2029020036) index="2" unique_id=932786383]
+[node name="run" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="2" unique_id=932786383]
 script = ExtResource("3_dkvo6")
 animation_name = "human_animations/human_run"
 
-[node name="roll" type="Node" parent="AnimationStateMachine" parent_id_path=PackedInt32Array(2029020036) index="3" unique_id=276615093]
+[node name="roll" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="3" unique_id=276615093]
 script = ExtResource("3_dkvo6")
 animation_name = "human_animations/human_roll_fixed"
 
@@ -259,7 +259,7 @@ offset_position = Vector3(0, 0.2, 0)
 
 [node name="LeftFoot" type="CollisionShape3D" parent="." index="14" unique_id=1971276986]
 transform = Transform3D(-0.9536605, 0.3003781, -0.017468393, -0.025428656, -0.022611395, 0.99942106, 0.2998091, 0.9535521, 0.029201813, 0.28267193, 0.05937907, 0.13973835)
-shape = SubResource("CapsuleShape3D_ad3em")
+shape = SubResource("CapsuleShape3D_dkvo6")
 script = ExtResource("5_afxt5")
 offset_position = Vector3(0, 0.06, -0.04)
 
@@ -277,6 +277,6 @@ offset_position = Vector3(0, 0.2, 0)
 
 [node name="RightFoot" type="CollisionShape3D" parent="." index="17" unique_id=1430035401]
 transform = Transform3D(-0.91444194, -0.4046959, -0.004119845, 2.0861626e-07, -0.010180093, 0.9999481, -0.4047169, 0.91439474, 0.00930915, -0.059506416, 0.05306584, -0.015781097)
-shape = SubResource("CapsuleShape3D_tvkw8")
+shape = SubResource("CapsuleShape3D_tbgi4")
 script = ExtResource("5_afxt5")
 offset_position = Vector3(0, 0.06, -0.04)

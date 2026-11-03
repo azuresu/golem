@@ -1,28 +1,29 @@
 @tool
 class_name Golem extends CharacterBody3D
 
-@export var skeleton: Skeleton3D
+@export var skeleton: Skeleton3D:
+	set(ske):
+		skeleton = ske
+		if Engine.is_editor_hint() and skeleton:
+			$AnimationPlayer.root_node = skeleton.get_path()
 
-@onready var _asm: AnimationStateMachine = $AnimationStateMachine
+@onready var state_machine: GolemStateMachine = $StateMachine
 
-var _default_animation: StringName
-
-func set_animation_state(state_name: String, params:= {}) -> void:
-	if _asm:
-		_asm.set_current_state(state_name, params)
+var _default_state:= &"Start"
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
-	if _default_animation and _asm:
-		_asm.set_current_state(_default_animation)
+	if _default_state and state_machine:
+		state_machine.set_current_state(_default_state)
 
 func _get_property_list() -> Array[Dictionary]:
 	var properties: Array[Dictionary]
-	if _asm:
+	if state_machine:
 		var states: Array[StringName]
-		for s in _asm.get_animation_states():
+		states.append(&"Start")
+		for s in state_machine.get_states():
 			states.append(s.name)
 		properties.append({
 			"name": "default_animation",
@@ -34,17 +35,17 @@ func _get_property_list() -> Array[Dictionary]:
 
 func _get(property: StringName) -> Variant:
 	if property == "default_animation":
-		if not _default_animation and _asm:
-			for s in _asm.get_animation_states():
-				_default_animation = s.name
+		if not _default_state and state_machine:
+			for s in state_machine.get_states():
+				_default_state = s.name
 				break
-		return _default_animation
+		return _default_state
 	return null
 
 func _set(property: StringName, value: Variant) -> bool:
 	if property == "default_animation":
-		_default_animation = value
-		if Engine.is_editor_hint() and _asm:
-			_asm.play_animation(value)
+		_default_state = value
+		if Engine.is_editor_hint() and state_machine:
+			state_machine.play_animation(value)
 		return true
 	return false
