@@ -1,4 +1,3 @@
-@tool
 class_name GolemState extends State
 
 ## Format: [animation_library_name/]<animation_name>. Changing it in realtime has no effect.
@@ -23,8 +22,6 @@ func transition(state_name: StringName, params:= {}) -> void:
 			machine.play_animation(animation_name)
 
 func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		return
 	if machine:
 		machine.set_animation_condition(name, _has_animation_condition())
 

@@ -40,8 +40,9 @@ func _process(delta: float) -> void:
 	_mouse_motion = Vector2.ZERO
 
 	var head: Node3D = golem.get_node("Head")
-	var head_txm:= head.get_global_transform_interpolated()
-	$CameraYaw.global_position = $CameraYaw.global_position.lerp(head_txm.origin, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
+	if head:
+		var head_pos:= head.get_global_transform_interpolated().origin
+		$CameraYaw.global_position = $CameraYaw.global_position.lerp(head_pos, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
 
 func _on_tree_entered() -> void:
 	$CameraYaw.global_rotation.y = golem.global_rotation.y
