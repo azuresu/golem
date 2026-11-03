@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bn50vlmu0t618"]
+
+[ext_resource type="Script" uid="uid://dvc3soatylqir" path="res://addons/golem/scenes/editor/new_golem_dialog.gd" id="1_fhpsr"]
+
+[node name="NewGolemDialog" type="Window" unique_id=494306871]
+oversampling_override = 1.0
+title = "Create New Golem"
+initial_position = 2
+size = Vector2i(400, 400)
+visible = false
+always_on_top = true
+minimize_disabled = true
+maximize_disabled = true
+script = ExtResource("1_fhpsr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1268839636]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=163856699]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=677972671]
+layout_mode = 2
+text = "Golem Type:"
+
+[node name="TypeList" type="ItemList" parent="MarginContainer/VBoxContainer" unique_id=905258470]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 2
+item_0/text = "Golem"
+item_1/text = "Humanoid"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=715031089]
+layout_mode = 2
+text = "Scene Name:"
+
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=491306589]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "New Golem Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=926403317]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="OKButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=168872451]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Ok"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=930358856]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/TypeList" to="." method="_on_type_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_create"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel"]
