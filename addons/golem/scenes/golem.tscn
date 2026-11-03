@@ -1,34 +1,26 @@
 [gd_scene format=3 uid="uid://claylyiaegk4n"]
 
 [ext_resource type="Script" uid="uid://3qim1cahatpf" path="res://addons/golem/scenes/golem.gd" id="1_mbbae"]
-[ext_resource type="Script" uid="uid://d0hq3rlmpfc12" path="res://addons/golem/scenes/golem_config.gd" id="2_ptq8k"]
 [ext_resource type="Script" uid="uid://idmwtkk6t0v" path="res://addons/golem/scenes/golem_state_machine.gd" id="2_r6wrr"]
-[ext_resource type="Script" uid="uid://c6f8vlhvf71kb" path="res://addons/golem/scenes/golem_config_sync.gd" id="3_tuqdf"]
+[ext_resource type="Script" uid="uid://by67ctvx7eq0s" path="res://addons/golem/scenes/golem_build.gd" id="4_um712"]
 
-[sub_resource type="Resource" id="Resource_r6wrr"]
-resource_local_to_scene = true
-script = ExtResource("2_ptq8k")
-metadata/_custom_type_script = "uid://d0hq3rlmpfc12"
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ptq8k"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tuqdf"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuqdf"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_um712"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rmlv0"]
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_tuqdf")
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_um712"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ptq8k")
 nodes/StateMachine/position = Vector2(-400, 0)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_um712")
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuqdf")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
 [node name="Golem" type="CharacterBody3D" unique_id=487379024]
 velocity = Vector3(0, -577.8633, 0)
 script = ExtResource("1_mbbae")
-config = SubResource("Resource_r6wrr")
 
-[node name="ConfigSync" type="Node" parent="." unique_id=994333297 node_paths=PackedStringArray("state_machine")]
-script = ExtResource("3_tuqdf")
-state_machine = NodePath("../StateMachine")
+[node name="Build" type="Node" parent="." unique_id=856523901]
+script = ExtResource("4_um712")
 
 [node name="StateMachine" type="Node" parent="." unique_id=2029020036 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("2_r6wrr")
@@ -37,6 +29,6 @@ animation_tree = NodePath("../AnimationTree")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1945369402]
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=938539133]
-tree_root = SubResource("AnimationNodeBlendTree_rmlv0")
+tree_root = SubResource("AnimationNodeBlendTree_um712")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 1.0

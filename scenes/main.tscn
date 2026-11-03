@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dkbal0c23ln36" path="res://scenes/mannequin.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://46l7q0rcq4wj" path="res://addons/glaze/custom/evaluate.gd" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://d2fdelkuufwkv" path="res://scenes/xbot.tscn" id="4_tbgi4"]
-[ext_resource type="Script" uid="uid://d0hq3rlmpfc12" path="res://addons/golem/scenes/golem_config.gd" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://tj8vgxdc4bys" path="res://scenes/ybot.tscn" id="5_tefeu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uld8e"]
@@ -12,23 +11,6 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="Resource" id="Resource_o6xl0"]
-resource_local_to_scene = true
-script = ExtResource("4_tefeu")
-metadata/_custom_type_script = "uid://d0hq3rlmpfc12"
-
-[sub_resource type="Resource" id="Resource_tipki"]
-resource_local_to_scene = true
-script = ExtResource("4_tefeu")
-default_state = &"walk"
-metadata/_custom_type_script = "uid://d0hq3rlmpfc12"
-
-[sub_resource type="Resource" id="Resource_85g3d"]
-resource_local_to_scene = true
-script = ExtResource("4_tefeu")
-default_state = &"run"
-metadata/_custom_type_script = "uid://d0hq3rlmpfc12"
 
 [node name="Main" type="Node3D" unique_id=352494745]
 script = ExtResource("1_0wfyh")
@@ -72,14 +54,13 @@ mesh = SubResource("BoxMesh_o5qli")
 
 [node name="Mannequin" parent="." unique_id=487379024 instance=ExtResource("1_o5qli")]
 velocity = Vector3(0, 0, 0)
-config = SubResource("Resource_o6xl0")
 
 [node name="XBot" parent="." unique_id=516435404 instance=ExtResource("4_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 velocity = Vector3(0, 0, 0)
-config = SubResource("Resource_tipki")
+default_state = &"walk"
 
 [node name="YBot" parent="." unique_id=1095426518 instance=ExtResource("5_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 velocity = Vector3(0, 0, 0)
-config = SubResource("Resource_85g3d")
+default_state = &"run"

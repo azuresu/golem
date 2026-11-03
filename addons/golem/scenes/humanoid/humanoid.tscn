@@ -5,33 +5,41 @@
 [ext_resource type="Script" uid="uid://ckxkvpid01jb3" path="res://addons/golem/scenes/state/stand.gd" id="3_153xc"]
 [ext_resource type="Script" uid="uid://ef5swu85x752" path="res://addons/golem/scenes/golem_state.gd" id="3_dkvo6"]
 [ext_resource type="AnimationLibrary" uid="uid://dcf3oa7etddba" path="res://addons/golem/animations/human_animations.res" id="3_lwe6g"]
-[ext_resource type="Script" uid="uid://d0hq3rlmpfc12" path="res://addons/golem/scenes/golem_config.gd" id="3_udkkr"]
 [ext_resource type="Script" uid="uid://c5tpm86s1oofu" path="res://addons/golem/scenes/state/walk.gd" id="4_153xc"]
 [ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scenes/golem_shape.gd" id="5_afxt5"]
 [ext_resource type="Script" uid="uid://dud7eiehv1yg0" path="res://addons/golem/scenes/state/run.gd" id="5_gcl35"]
 
-[sub_resource type="Resource" id="Resource_sppb6"]
-resource_local_to_scene = true
-script = ExtResource("3_udkkr")
-default_state = &"stand"
-metadata/_custom_type_script = "uid://d0hq3rlmpfc12"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gdoq7"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcl35"]
 animation = &"human_animations/human_roll_fixed"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xk04"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_udkkr"]
 animation = &"human_animations/human_run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qotiq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sppb6"]
 animation = &"human_animations/human_stand"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ncj88"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gdoq7"]
 animation = &"human_animations/human_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3xk04"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qotiq"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ncj88"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ad3em"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"run"
+advance_condition = &"roll"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_43r14"]
 xfade_time = 0.2
@@ -51,7 +59,7 @@ advance_condition = &"roll"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2k8w1"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"stand"
+advance_condition = &"run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1tys8"]
 xfade_time = 0.2
@@ -71,43 +79,28 @@ advance_condition = &"run"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dm0jb"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eq8g8"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"roll"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p3oof"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvagv"]
-xfade_time = 0.2
-advance_mode = 2
 advance_condition = &"stand"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtboe"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eq8g8"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s620d"]
-states/roll/node = SubResource("AnimationNodeAnimation_gdoq7")
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p3oof"]
+states/roll/node = SubResource("AnimationNodeAnimation_gcl35")
 states/roll/position = Vector2(200, 200)
-states/run/node = SubResource("AnimationNodeAnimation_3xk04")
+states/run/node = SubResource("AnimationNodeAnimation_udkkr")
 states/run/position = Vector2(0, 200)
-states/stand/node = SubResource("AnimationNodeAnimation_qotiq")
+states/stand/node = SubResource("AnimationNodeAnimation_sppb6")
 states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_ncj88")
+states/walk/node = SubResource("AnimationNodeAnimation_gdoq7")
 states/walk/position = Vector2(200, 0)
-transitions = ["roll", "run", SubResource("AnimationNodeStateMachineTransition_ad3em"), "roll", "stand", SubResource("AnimationNodeStateMachineTransition_43r14"), "roll", "walk", SubResource("AnimationNodeStateMachineTransition_c0cgu"), "run", "roll", SubResource("AnimationNodeStateMachineTransition_tvkw8"), "run", "stand", SubResource("AnimationNodeStateMachineTransition_2k8w1"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_1tys8"), "stand", "roll", SubResource("AnimationNodeStateMachineTransition_5co6v"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_twtv3"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_dm0jb"), "walk", "roll", SubResource("AnimationNodeStateMachineTransition_eq8g8"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_p3oof"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_pvagv"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_jtboe")]
+transitions = ["roll", "run", SubResource("AnimationNodeStateMachineTransition_3xk04"), "roll", "stand", SubResource("AnimationNodeStateMachineTransition_qotiq"), "roll", "walk", SubResource("AnimationNodeStateMachineTransition_ncj88"), "run", "roll", SubResource("AnimationNodeStateMachineTransition_ad3em"), "run", "stand", SubResource("AnimationNodeStateMachineTransition_43r14"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_c0cgu"), "stand", "roll", SubResource("AnimationNodeStateMachineTransition_tvkw8"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_2k8w1"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_1tys8"), "walk", "roll", SubResource("AnimationNodeStateMachineTransition_5co6v"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_twtv3"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_dm0jb"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_eq8g8")]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_231a4"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pvagv"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_is4ff"]
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_s620d")
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jtboe"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_p3oof")
 nodes/StateMachine/position = Vector2(-400, 0)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_231a4")
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_pvagv")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
@@ -173,7 +166,7 @@ height = 0.2
 [node name="Humanoid" unique_id=487379024 instance=ExtResource("1_0f7b8")]
 velocity = Vector3(0, -2057.1438, 0)
 script = ExtResource("1_lwe6g")
-config = SubResource("Resource_sppb6")
+default_state = &"stand"
 
 [node name="stand" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="0" unique_id=297206165]
 script = ExtResource("3_153xc")
@@ -195,7 +188,7 @@ animation_name = "human_animations/human_roll_fixed"
 libraries/human_animations = ExtResource("3_lwe6g")
 
 [node name="AnimationTree" parent="." index="3" unique_id=938539133]
-tree_root = SubResource("AnimationNodeBlendTree_is4ff")
+tree_root = SubResource("AnimationNodeBlendTree_jtboe")
 parameters/StateMachine/conditions/roll = false
 parameters/StateMachine/conditions/run = false
 parameters/StateMachine/conditions/stand = false
