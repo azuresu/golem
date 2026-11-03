@@ -1,13 +1,18 @@
 @tool
 class_name Golem extends CharacterBody3D
 
-@export var skeleton: Skeleton3D:
-	set(ske):
-		skeleton = ske
-		if Engine.is_editor_hint() and skeleton:
-			$AnimationPlayer.root_node = skeleton.get_path()
+@export var skeleton: Skeleton3D
 
 @onready var state_machine: GolemStateMachine = $StateMachine
+
+var agent: GolemAgent:
+	set(a):
+		if agent:
+			agent.queue_free()
+		agent = a
+		if agent:
+			agent.golem = self
+			add_child(agent)
 
 var _default_state:= &"Start"
 
@@ -43,7 +48,7 @@ func _get(property: StringName) -> Variant:
 	return null
 
 func _set(property: StringName, value: Variant) -> bool:
-	if property == "default_animation":
+	if property == "default_animation" and value is StringName:
 		_default_state = value
 		if Engine.is_editor_hint() and state_machine:
 			state_machine.play_animation(value)

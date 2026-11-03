@@ -6,6 +6,9 @@ var hud_info: String:
 		info += "FPS: %d" % Engine.get_frames_per_second()
 		return info
 
+func _ready() -> void:
+	$XBot.agent = Glaze.new_scene("res://addons/golem/scenes/agent/player_agent.tscn")
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		var fullscreen:= DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN

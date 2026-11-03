@@ -1,4 +1,6 @@
-class_name GolemAgent extends Node
+class_name GolemAgent extends Node3D
+
+var golem: Golem
 
 func get_target_to_look() -> Node3D:
 	return null
