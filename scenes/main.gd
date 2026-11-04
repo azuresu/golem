@@ -7,6 +7,7 @@ var hud_info: String:
 		return info
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$Mannequin.agent = Glaze.new_scene("res://addons/golem/scenes/agent/player_agent.tscn")
 
 func _input(event: InputEvent) -> void:

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bjw7f1tn3qk1p"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_uld8e"]
+size = Vector3(4, 0.8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33ocg"]
+size = Vector3(2.15, 0.7, 2)
+
+[node name="Slope" type="StaticBody3D" unique_id=653253455]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=244052550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("PrismMesh_uld8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1950778641]
+transform = Transform3D(0.9284858, 0.37136784, 0, -0.37136784, 0.9284858, 0, 0, 0, 1, 0.86931044, -0.11974704, 0)
+shape = SubResource("BoxShape3D_33ocg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1252399940]
+transform = Transform3D(0.92848575, -0.3713678, 0, 0.3713678, 0.92848575, 0, 0, 0, 1, -0.869, -0.12, 0)
+shape = SubResource("BoxShape3D_33ocg")

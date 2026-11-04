@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ctpfommyxug7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33ocg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uld8e"]
+
+[node name="Box" type="RigidBody3D" unique_id=808914309]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1096476246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_33ocg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2113298009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_uld8e")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=646617659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shadow_enabled = true

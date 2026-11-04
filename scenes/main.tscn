@@ -5,16 +5,14 @@
 [ext_resource type="Script" uid="uid://46l7q0rcq4wj" path="res://addons/glaze/custom/evaluate.gd" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://d2fdelkuufwkv" path="res://scenes/xbot.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://tj8vgxdc4bys" path="res://scenes/ybot.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://ctpfommyxug7" path="res://scenes/box.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bjw7f1tn3qk1p" path="res://scenes/slope.tscn" id="7_o6xl0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uld8e"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_33ocg"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_uld8e"]
 
 [node name="Main" type="Node3D" unique_id=352494745]
 script = ExtResource("1_0wfyh")
@@ -44,7 +42,6 @@ metadata/_custom_type_script = "uid://46l7q0rcq4wj"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580103370]
 transform = Transform3D(0.70710677, 0.49999997, -0.49999997, 0, 0.70710677, 0.70710677, 0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
-visible = false
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1642784369]
@@ -70,47 +67,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 velocity = Vector3(0, 0, 0)
 default_state = &"run"
 
-[node name="Box" type="RigidBody3D" parent="." unique_id=2021702018]
+[node name="Box" parent="." unique_id=808914309 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.312265, 0, -1.0541625)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box" unique_id=1208872819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_33ocg")
+[node name="Box2" parent="." unique_id=2054858292 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9188294, 0, -1.0541625)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Box" unique_id=928888952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_uld8e")
+[node name="Box3" parent="." unique_id=1242895554 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27229738, 0, -4.2639065)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Box" unique_id=1742870936]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shadow_enabled = true
+[node name="Box4" parent="." unique_id=874666219 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5030074, 0, 3.2882547)
 
-[node name="Box2" type="RigidBody3D" parent="." unique_id=1211401341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4694686, 0, -1.0541625)
+[node name="Box5" parent="." unique_id=908083900 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.889306, 0, 4.6523685)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2" unique_id=832027028]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_33ocg")
+[node name="Slope" parent="." unique_id=653253455 instance=ExtResource("7_o6xl0")]
+transform = Transform3D(0.7512621, 0, -0.66000396, 0, 1, 0, 0.66000396, 0, 0.7512621, -2.1289756, 0, -3.4487145)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Box2" unique_id=121535034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_uld8e")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Box2" unique_id=573127257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shadow_enabled = true
-
-[node name="Box3" type="RigidBody3D" parent="." unique_id=105938063]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09385681, 0, -2.1089385)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box3" unique_id=1158287952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_33ocg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Box3" unique_id=1643644912]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_uld8e")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Box3" unique_id=795959255]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shadow_enabled = true
+[node name="Slope2" parent="." unique_id=1217767125 instance=ExtResource("7_o6xl0")]
+transform = Transform3D(0.7512621, 0, -0.66000396, 0, 1, 0, 0.66000396, 0, 0.7512621, -4.3439436, 0, -5.385369)

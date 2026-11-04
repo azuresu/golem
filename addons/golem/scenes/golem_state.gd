@@ -21,6 +21,10 @@ func transition(state_name: StringName, params:= {}) -> void:
 		if machine.current_state.reset_when_transition_to_self:
 			machine.play_animation(animation_name)
 
+func _update(delta: float) -> void:
+	if golem.agent:
+		transition(golem.agent.state_to_act())
+
 func _process(delta: float) -> void:
 	if machine:
 		machine.set_animation_condition(name, _has_animation_condition())
