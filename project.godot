@@ -17,7 +17,7 @@ warnings/check_invalid_track_paths=false
 config/name="Project Golem"
 run/main_scene="uid://clfa0dxe6p382"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cucbokgl4o25r"
 
 [autoload]
 

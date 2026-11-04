@@ -11,5 +11,5 @@ func _physics_update(delta: float) -> void:
 	if golem.agent:
 		var target:= golem.agent.get_target_to_move()
 		if target:
-			golem.turn_to(target.global_position, TAU, delta)
-			golem.move_to(target.global_position, 1)
+			golem.turn_to(target.global_position, deg_to_rad(golem.walk_turn_speed), delta)
+			golem.move_to(target.global_position, golem.walk_speed)
