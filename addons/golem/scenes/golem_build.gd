@@ -30,6 +30,10 @@ func _get_snapshot() -> Dictionary:
 func _build() -> void:
 	_snapshot = _get_snapshot()
 	Glaze.log_info("Building golem: %s...", golem)
+	if golem.skeleton:
+		golem.get_node("AnimationPlayer").root_node = golem.skeleton.get_path()
+	else:
+		Glaze.log_warn("Skeleton not found in golem.")
 	_build_animation_tree()
 	Glaze.log_info("Building golem: %s completed", golem)
 
@@ -66,6 +70,8 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 	for ch in golem.get_node("StateMachine").get_children():
 		if ch is GolemState:
 			states[ch.name] = ch
+	if not states:
+		Glaze.log_warn("Golem state not found in state machine.")
 	var cols:= maxi(1, int(sqrt(states.size())))
 	var pos: Vector2i
 	for state_name in states:

@@ -8,9 +8,11 @@ script = ExtResource("1_dwbx2")
 [node name="CameraYaw" type="Marker3D" parent="." unique_id=1839924048]
 top_level = true
 
-[node name="Camera" type="Camera3D" parent="CameraYaw" unique_id=1624781608]
+[node name="Arm" type="SpringArm3D" parent="CameraYaw" unique_id=1327158670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="Camera" type="Camera3D" parent="CameraYaw/Arm" unique_id=1624781608]
 physics_interpolation_mode = 2
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.7)
 
 [node name="Forward" type="Marker3D" parent="CameraYaw" unique_id=246616217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
@@ -25,3 +27,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1, 0, 0)
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

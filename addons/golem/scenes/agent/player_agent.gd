@@ -1,7 +1,10 @@
 class_name PlayerAgent extends GolemAgent
 
 const MOUSE_SENSITIVITY:= 0.075
-const CAMERA_FOLLOW_SPEED:= 5.0
+const CAMERA_FOLLOW_SPEED:= 10.0
+
+@onready var camera_arm: SpringArm3D = $CameraYaw/Arm
+@onready var camera: Camera3D = $CameraYaw/Arm/Camera
 
 var _mouse_motion: Vector2
 
@@ -36,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	$CameraYaw.rotation_degrees.y -= _mouse_motion.x * MOUSE_SENSITIVITY
-	$CameraYaw/Camera.rotation_degrees.x = clampf($CameraYaw/Camera.rotation_degrees.x - _mouse_motion.y * MOUSE_SENSITIVITY, -90, 90)
+	$CameraYaw.rotation_degrees.x = clampf($CameraYaw.rotation_degrees.x - _mouse_motion.y * MOUSE_SENSITIVITY, -90, 90)
 	_mouse_motion = Vector2.ZERO
 
 	var head: Node3D = golem.get_node("Head")
@@ -46,3 +49,7 @@ func _process(delta: float) -> void:
 
 func _on_tree_entered() -> void:
 	$CameraYaw.global_rotation.y = golem.global_rotation.y
+	$CameraYaw/Arm.add_excluded_object(golem)
+
+func _on_tree_exiting() -> void:
+	$CameraYaw/Arm.remove_excluded_object(golem)

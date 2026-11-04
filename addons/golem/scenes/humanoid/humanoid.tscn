@@ -163,6 +163,10 @@ height = 0.5
 radius = 0.06
 height = 0.2
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_uld8e"]
+resource_local_to_scene = true
+radius = 0.1
+
 [node name="Humanoid" unique_id=487379024 instance=ExtResource("1_0f7b8")]
 velocity = Vector3(0, -2057.1438, 0)
 script = ExtResource("1_lwe6g")
@@ -263,6 +267,7 @@ offset_position = Vector3(0, 0.2, 0)
 [node name="LeftFoot" type="CollisionShape3D" parent="." index="15" unique_id=1971276986]
 transform = Transform3D(-0.9536605, 0.3003781, -0.017468393, -0.025428656, -0.022611395, 0.99942106, 0.2998091, 0.9535521, 0.029201813, 0.28267193, 0.05937907, 0.13973835)
 shape = SubResource("CapsuleShape3D_dkvo6")
+disabled = true
 script = ExtResource("5_afxt5")
 offset_position = Vector3(0, 0.06, -0.04)
 
@@ -281,5 +286,10 @@ offset_position = Vector3(0, 0.2, 0)
 [node name="RightFoot" type="CollisionShape3D" parent="." index="18" unique_id=1430035401]
 transform = Transform3D(-0.91444194, -0.4046959, -0.004119845, 2.0861626e-07, -0.010180093, 0.9999481, -0.4047169, 0.91439474, 0.00930915, -0.059506416, 0.05306584, -0.015781097)
 shape = SubResource("CapsuleShape3D_tbgi4")
+disabled = true
 script = ExtResource("5_afxt5")
 offset_position = Vector3(0, 0.06, -0.04)
+
+[node name="Base" type="CollisionShape3D" parent="." index="19" unique_id=670264204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("SphereShape3D_uld8e")

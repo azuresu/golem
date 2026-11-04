@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bn50vlmu0t618"]
 
 [ext_resource type="Script" uid="uid://dvc3soatylqir" path="res://addons/golem/editor/new_golem_dialog.gd" id="1_fhpsr"]
+[ext_resource type="Texture2D" uid="uid://cpnshb8qpv18t" path="res://addons/golem/scenes/golem.png" id="2_a3wni"]
+[ext_resource type="Texture2D" uid="uid://choxadtcv0wk3" path="res://addons/golem/scenes/humanoid/humanoid.png" id="3_14gh1"]
 
 [node name="NewGolemDialog" type="Window" unique_id=494306871]
 oversampling_override = 1.0
@@ -36,8 +38,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 item_count = 2
+fixed_icon_size = Vector2i(20, 20)
 item_0/text = "Golem"
+item_0/icon = ExtResource("2_a3wni")
 item_1/text = "Humanoid"
+item_1/icon = ExtResource("3_14gh1")
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=715031089]
 layout_mode = 2
