@@ -10,14 +10,17 @@ class_name Golem extends CharacterBody3D
 @export var animation_tree_node_gap:= Vector2i(200, 200)
 @export var auto_build:= true
 
-var agent: GolemAgent:
-	set(a):
-		if agent:
-			agent.queue_free()
-		agent = a
-		if agent:
-			agent.golem = self
-			add_child(agent)
+# Use set_agent() in script.
+var agent: GolemAgent
+
+func set_agent(a: GolemAgent) -> void:
+	if agent:
+		agent.queue_free()
+	agent = a
+	if agent:
+		agent.golem = self
+		add_child(agent)
+		agent.owner = self
 
 func turn_to(global_pos: Vector3, speed: float, delta: float) -> void:
 	var r:= global_transform.looking_at(global_pos).basis.get_euler()
@@ -50,6 +53,12 @@ func _ready() -> void:
 		action_state_machine.set_current_state(default_state)
 	if skeleton:
 		skeleton.skeleton_updated.connect(_on_skeleton_updated)
+	# Set agent if it has been added into scene.
+	for ch in get_children():
+		if ch is GolemAgent:
+			agent = ch
+			agent.golem = self
+			break
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

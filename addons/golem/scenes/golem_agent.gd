@@ -1,6 +1,7 @@
 class_name GolemAgent extends Node3D
 
-var golem: Golem
+var golem: Golem:
+	get: return golem if golem else get_parent()
 
 func target_to_gaze() -> Node3D:
 	return null
