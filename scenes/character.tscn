@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://bbopoy518hwab"]
 
 [ext_resource type="PackedScene" uid="uid://oj0of51uhca2" path="res://addons/golem/scenes/humanoid.tscn" id="1_agfs1"]
+[ext_resource type="Script" uid="uid://dldkhyn5lxgih" path="res://addons/golem/scenes/golem_profile.gd" id="2_a5ia6"]
 [ext_resource type="Script" uid="uid://ckxkvpid01jb3" path="res://addons/golem/scenes/action/stand.gd" id="2_my7n2"]
 [ext_resource type="Script" uid="uid://c5tpm86s1oofu" path="res://addons/golem/scenes/action/walk.gd" id="3_dp8ca"]
 [ext_resource type="Script" uid="uid://dud7eiehv1yg0" path="res://addons/golem/scenes/action/run.gd" id="4_0lw5n"]
 [ext_resource type="Animation" uid="uid://b314ntjjolybe" path="res://addons/golem/animations/mixamo/human_run.res" id="5_2cgup"]
 [ext_resource type="Animation" uid="uid://mu2fjx1ktqlq" path="res://addons/golem/animations/mixamo/human_stand.res" id="6_a5ia6"]
 [ext_resource type="Animation" uid="uid://du67bf3mcj4tu" path="res://addons/golem/animations/mixamo/human_walk.res" id="7_0dpix"]
+
+[sub_resource type="Resource" id="Resource_ptq8k"]
+script = ExtResource("2_a5ia6")
+metadata/_custom_type_script = "uid://dldkhyn5lxgih"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2hyy3"]
 
@@ -17,29 +22,19 @@ _data = {
 &"walk": ExtResource("7_0dpix")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2cgup"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dpix"]
 animation = &"character_animations/run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a5ia6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2hyy3"]
 animation = &"character_animations/stand"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dpix"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_irmqu"]
 animation = &"character_animations/walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2hyy3"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irmqu"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7eonc"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"run"
+advance_condition = &"stand"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_50cep"]
 xfade_time = 0.2
@@ -54,35 +49,46 @@ advance_condition = &"run"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lagn4"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"stand"
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x8k1v"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ih8y6"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rbud2"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ih8y6"]
-states/run/node = SubResource("AnimationNodeAnimation_2cgup")
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vovfy"]
+states/run/node = SubResource("AnimationNodeAnimation_0dpix")
 states/run/position = Vector2(0, 400)
-states/stand/node = SubResource("AnimationNodeAnimation_a5ia6")
+states/stand/node = SubResource("AnimationNodeAnimation_2hyy3")
 states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_0dpix")
+states/walk/node = SubResource("AnimationNodeAnimation_irmqu")
 states/walk/position = Vector2(0, 200)
-transitions = ["run", "stand", SubResource("AnimationNodeStateMachineTransition_2hyy3"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_irmqu"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_7eonc"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_50cep"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_8yvht"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_lagn4"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_x8k1v")]
+transitions = ["run", "stand", SubResource("AnimationNodeStateMachineTransition_7eonc"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_50cep"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_8yvht"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_lagn4"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_x8k1v"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_ih8y6"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_rbud2")]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rbud2"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u0pwc"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vovfy"]
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ih8y6")
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cicko"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_vovfy")
 nodes/StateMachine/position = Vector2(-400, 0)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rbud2")
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_u0pwc")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_2cgup"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_bj47h"]
 resource_local_to_scene = true
 radius = 0.1
 
 [node name="Character" unique_id=487379024 node_paths=PackedStringArray("gaze_point") instance=ExtResource("1_agfs1")]
 gaze_point = NodePath("Head")
+profile = SubResource("Resource_ptq8k")
 
 [node name="ActionStateMachine" parent="." index="1" unique_id=2029020036]
 animation_library_default = "character_animations"
@@ -101,10 +107,10 @@ libraries/ = SubResource("AnimationLibrary_2hyy3")
 libraries/character_animations = SubResource("AnimationLibrary_irmqu")
 
 [node name="AnimationTree" parent="." index="3" unique_id=938539133]
-tree_root = SubResource("AnimationNodeBlendTree_vovfy")
+tree_root = SubResource("AnimationNodeBlendTree_cicko")
 parameters/StateMachine/conditions/run = false
 parameters/StateMachine/conditions/stand = false
 parameters/StateMachine/conditions/walk = false
 
 [node name="Base" parent="." index="19" unique_id=670264204]
-shape = SubResource("SphereShape3D_2cgup")
+shape = SubResource("SphereShape3D_bj47h")
