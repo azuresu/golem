@@ -3,9 +3,6 @@ class_name PlayerAgent extends GolemAgent
 const MOUSE_SENSITIVITY:= 0.075
 const CAMERA_FOLLOW_SPEED:= 10.0
 
-@onready var camera_arm: SpringArm3D = $CameraYaw/Arm
-@onready var camera: Camera3D = $CameraYaw/Arm/Camera
-
 var _mouse_motion: Vector2
 
 func target_to_move() -> Node3D:
@@ -35,6 +32,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_mouse_motion += event.relative
 
+func _ready() -> void:
+	$CameraPivot.global_rotation.y = golem.global_rotation.y
+	$CameraPivot/Arm.add_excluded_object(golem)
+
 func _process(delta: float) -> void:
 	var pivot: Node3D = $CameraPivot
 	pivot.rotation_degrees.y -= _mouse_motion.x * MOUSE_SENSITIVITY
@@ -45,10 +46,6 @@ func _process(delta: float) -> void:
 	if head:
 		var head_pos:= head.get_global_transform_interpolated().origin
 		pivot.global_position = pivot.global_position.lerp(head_pos, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
-
-func _on_tree_entered() -> void:
-	$CameraPivot.global_rotation.y = golem.global_rotation.y
-	$CameraPivot/Arm.add_excluded_object(golem)
 
 func _on_tree_exiting() -> void:
 	$CameraPivot/Arm.remove_excluded_object(golem)

@@ -2,6 +2,10 @@
 class_name Golem extends CharacterBody3D
 
 @export var skeleton: Skeleton3D
+@export var gaze_modifier: LookAtModifier3D
+@export var gaze_point: Node3D
+
+@export_category("Build")
 @export var default_state: StringName
 @export var animation_tree_node_gap:= Vector2i(200, 200)
 @export var auto_build:= true
@@ -39,6 +43,16 @@ func move_to(global_pos: Vector3, speed: float) -> void:
 		velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
 	else:
 		velocity = Vector3(0, velocity.y, 0)
+
+func gaze_at(target: Node3D) -> void:
+	if gaze_modifier:
+		if target:
+			if target is Golem and target.gaze_point:
+				gaze_modifier.target_node = target.gaze_point.get_path()
+			else:
+				gaze_modifier.target_node = target.get_path()
+		else:
+			gaze_modifier.target_node = ""
 
 func _ready() -> void:
 	if default_state:

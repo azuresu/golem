@@ -2,7 +2,7 @@ class_name GolemAgent extends Node3D
 
 var golem: Golem
 
-func target_to_look() -> Node3D:
+func target_to_gaze() -> Node3D:
 	return null
 
 func target_to_move() -> Node3D:

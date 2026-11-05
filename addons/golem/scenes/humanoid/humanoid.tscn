@@ -167,9 +167,10 @@ height = 0.2
 resource_local_to_scene = true
 radius = 0.1
 
-[node name="Humanoid" unique_id=487379024 instance=ExtResource("1_0f7b8")]
+[node name="Humanoid" unique_id=487379024 node_paths=PackedStringArray("gaze_point") instance=ExtResource("1_0f7b8")]
 velocity = Vector3(0, -2057.1438, 0)
 script = ExtResource("1_lwe6g")
+gaze_point = NodePath("Head")
 default_state = &"stand"
 
 [node name="stand" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(2029020036) index="0" unique_id=297206165]

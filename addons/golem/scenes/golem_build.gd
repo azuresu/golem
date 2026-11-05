@@ -31,11 +31,24 @@ func _build() -> void:
 	_snapshot = _get_snapshot()
 	Glaze.log_info("Building golem: %s...", golem)
 	if golem.skeleton:
+		_build_gaze_modifier()
 		golem.get_node("AnimationPlayer").root_node = golem.skeleton.get_path()
 	else:
 		Glaze.log_warn("Skeleton not found in golem.")
 	_build_animation_tree()
 	Glaze.log_info("Building golem: %s completed", golem)
+
+func _build_gaze_modifier() -> void:
+	if golem.gaze_modifier:
+		Glaze.log_info("Building gaze modifier skipped as it exists.")
+	else:
+		Glaze.log_info("Building gaze modifier into skeleton.")
+		var gm:= LookAtModifier3D.new()
+		gm.name = "GazeModififer"
+		gm.bone_name = &"Head"
+		golem.skeleton.add_child(gm)
+		gm.owner = golem
+		golem.gaze_modifier = gm
 
 func _build_animation_tree() -> void:
 	Glaze.log_info("Building animation tree....")
