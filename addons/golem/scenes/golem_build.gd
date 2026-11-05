@@ -10,13 +10,15 @@ var _snapshot: Dictionary
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint() and golem and golem.auto_build:
-		var snapshot:= _get_snapshot()
+		var snapshot:= _take_snapshot()
 		if not _snapshot == snapshot:
 			_build()
 
-func _get_snapshot() -> Dictionary:
+func _take_snapshot() -> Dictionary:
 	var snapshot:= {}
 	if golem:
+		if golem.skeleton:
+			snapshot["skeleton"] = golem.get_path()
 		if golem.default_state:
 			snapshot["default_state"] = golem.default_state
 		var gsm: GolemStateMachine = golem.get_node("StateMachine")
@@ -28,7 +30,7 @@ func _get_snapshot() -> Dictionary:
 	return snapshot
 
 func _build() -> void:
-	_snapshot = _get_snapshot()
+	_snapshot = _take_snapshot()
 	Glaze.log_info("Building golem: %s...", golem)
 	if golem.skeleton:
 		_build_gaze_modifier()
@@ -88,6 +90,7 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 		Glaze.log_warn("Golem state not found in state machine.")
 	var cols:= maxi(1, int(sqrt(states.size())))
 	var pos: Vector2i
+	var nodes_built:= 0
 	for state_name in states:
 		Glaze.log_debug("Building animation node: %s", state_name)
 		if state_name == &"Start" or state_name == &"End":
@@ -118,15 +121,18 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 			ana.play_mode = AnimationNodeAnimation.PLAY_MODE_BACKWARD if s.play_backward else AnimationNodeAnimation.PLAY_MODE_FORWARD
 			sm.add_node(state_name, ana)
 			sm.set_node_position(state_name, gap * pos)
+			nodes_built += 1
 			pos.x += 1
 			if pos.x >= cols:
 				pos.x = 0
 				pos.y += 1
+	Glaze.log_info("Animation nodes built: %s" % nodes_built)
 	if not golem.default_state and states:
 		golem.default_state = states.keys()[0]
 
 func _build_transitions(sm: AnimationNodeStateMachine) -> void:
 	Glaze.log_info("Building animation transitions...")
+	var trans_built:= 0
 	var node_list: Array[StringName] = sm.get_node_list()
 	for i in node_list.size():
 		if sm.get_node(node_list[i]) is AnimationNodeAnimation:
@@ -141,11 +147,14 @@ func _build_transitions(sm: AnimationNodeStateMachine) -> void:
 				trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
 				trans.advance_condition = str(node_list[j])
 				sm.add_transition(node_list[i], node_list[j], trans)
+				trans_built += 1
 	if golem.default_state:
 		Glaze.log_debug("Building default transition from Start to %s", golem.default_state)
 		var trans:= AnimationNodeStateMachineTransition.new()
 		trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
 		sm.add_transition(&"Start", golem.default_state, trans)
+		trans_built += 1
+	Glaze.log_info("Animation transitions built: %s" % trans_built)
 
 func _has_transition(sm: AnimationNodeStateMachine, from: StringName, to: StringName) -> bool:
 	for i in sm.get_transition_count():
