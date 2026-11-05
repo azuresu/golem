@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bbopoy518hwab"]
 
 [ext_resource type="PackedScene" uid="uid://oj0of51uhca2" path="res://addons/golem/scenes/humanoid.tscn" id="1_agfs1"]
-[ext_resource type="Script" uid="uid://ckxkvpid01jb3" path="res://addons/golem/scenes/state/stand.gd" id="2_my7n2"]
-[ext_resource type="Script" uid="uid://c5tpm86s1oofu" path="res://addons/golem/scenes/state/walk.gd" id="3_dp8ca"]
-[ext_resource type="Script" uid="uid://dud7eiehv1yg0" path="res://addons/golem/scenes/state/run.gd" id="4_0lw5n"]
+[ext_resource type="Script" uid="uid://ckxkvpid01jb3" path="res://addons/golem/scenes/action/stand.gd" id="2_my7n2"]
+[ext_resource type="Script" uid="uid://c5tpm86s1oofu" path="res://addons/golem/scenes/action/walk.gd" id="3_dp8ca"]
+[ext_resource type="Script" uid="uid://dud7eiehv1yg0" path="res://addons/golem/scenes/action/run.gd" id="4_0lw5n"]
 [ext_resource type="Animation" uid="uid://b314ntjjolybe" path="res://addons/golem/animations/mixamo/human_run.res" id="5_2cgup"]
 [ext_resource type="Animation" uid="uid://mu2fjx1ktqlq" path="res://addons/golem/animations/mixamo/human_stand.res" id="6_a5ia6"]
 [ext_resource type="Animation" uid="uid://du67bf3mcj4tu" path="res://addons/golem/animations/mixamo/human_walk.res" id="7_0dpix"]
