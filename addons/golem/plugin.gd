@@ -13,7 +13,7 @@ func _disable_plugin() -> void:
 	print("Plugin Golem is disabled.")
 
 func _enter_tree() -> void:
-	add_tool_menu_item(MENU_ITEM_CREATE_NEW_GOLEM, _on_create_new_humanoid)
+	add_tool_menu_item(MENU_ITEM_CREATE_NEW_GOLEM, _on_create_new_golem)
 	new_golem_dialog = preload("res://addons/golem/editor/new_golem_dialog.tscn").instantiate()
 	EditorInterface.get_editor_main_screen().add_child(new_golem_dialog)
 
@@ -22,5 +22,5 @@ func _exit_tree() -> void:
 	new_golem_dialog.queue_free()
 	new_golem_dialog = null
 
-func _on_create_new_humanoid() -> void:
+func _on_create_new_golem() -> void:
 	new_golem_dialog.show()

@@ -29,7 +29,7 @@ func _create_golem_scene() -> bool:
 			EditorInterface.open_scene_from_path("res://addons/golem/scenes/golem.tscn", true)
 			return true
 		"Humanoid":
-			EditorInterface.open_scene_from_path("res://addons/golem/scenes/humanoid/humanoid.tscn", true)
+			EditorInterface.open_scene_from_path("res://addons/golem/scenes/humanoid.tscn", true)
 			return true
 	return false
 
