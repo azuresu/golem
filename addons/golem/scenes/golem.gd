@@ -57,8 +57,15 @@ func gaze_at(target: Node3D) -> void:
 func _ready() -> void:
 	if default_state:
 		state_machine.set_current_state(default_state)
+	if skeleton:
+		skeleton.skeleton_updated.connect(_on_skeleton_updated)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
+
+func _on_skeleton_updated() -> void:
+	for ch in get_children():
+		if ch is GolemShape:
+			ch.update(skeleton)
