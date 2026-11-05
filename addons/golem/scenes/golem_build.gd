@@ -21,9 +21,8 @@ func _take_snapshot() -> Dictionary:
 			snapshot["skeleton"] = golem.get_path()
 		if golem.default_state:
 			snapshot["default_state"] = golem.default_state
-		var gsm: GolemStateMachine = golem.get_node("StateMachine")
-		for ch in gsm.get_children():
-			if ch is GolemState:
+		for ch in golem.action_state_machine.get_children():
+			if ch is ActionState:
 				snapshot["state_%s" % ch.name] = 1
 		snapshot["animation_tree_node_gap_x"] = golem.animation_tree_node_gap.x
 		snapshot["animation_tree_node_gap_y"] = golem.animation_tree_node_gap.y
@@ -54,7 +53,7 @@ func _build_gaze_modifier() -> void:
 
 func _build_animation_tree() -> void:
 	Glaze.log_info("Building animation tree....")
-	var animation_tree: AnimationTree = golem.get_node("StateMachine").animation_tree
+	var animation_tree: AnimationTree = golem.action_state_machine.animation_tree
 	var gap:= golem.animation_tree_node_gap
 	if animation_tree:
 		var blend_tree:= AnimationNodeBlendTree.new()
@@ -81,10 +80,9 @@ func _build_animation_tree() -> void:
 func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> void:
 	Glaze.log_info("Building animation nodes...")
 	var gap:= golem.animation_tree_node_gap
-	var states: Dictionary[StringName, GolemState]
-	var gsm: GolemStateMachine = golem.get_node("StateMachine")
-	for ch in gsm.get_children():
-		if ch is GolemState:
+	var states: Dictionary[StringName, ActionState]
+	for ch in golem.action_state_machine.get_children():
+		if ch is ActionState:
 			states[ch.name] = ch
 	if not states:
 		Glaze.log_warn("Golem state not found in state machine.")
@@ -97,12 +95,12 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 			Glaze.log_error("Animation state name is not allowed: %s", state_name)
 			continue
 		var s = states[state_name]
-		if s is GolemState and not sm.has_node(state_name):
+		if s is ActionState and not sm.has_node(state_name):
 			var ana:= AnimationNodeAnimation.new()
 			var anim_name: String = s.animation_name
 			if not anim_name:
 				anim_name = s.name
-			var anim_lib:= gsm.animation_library_default
+			var anim_lib:= golem.action_state_machine.animation_library_default
 			var i = anim_name.find("/")
 			if i >= 0:
 				anim_lib = anim_name.substr(0, i)
@@ -134,10 +132,13 @@ func _build_transitions(sm: AnimationNodeStateMachine) -> void:
 	Glaze.log_info("Building animation transitions...")
 	var trans_built:= 0
 	var node_list: Array[StringName] = sm.get_node_list()
+	var default_exists:= false
 	for i in node_list.size():
 		if sm.get_node(node_list[i]) is AnimationNodeAnimation:
 			if node_list[i] == &"Start" or node_list[i] == &"End":
 				continue
+			if golem.default_state == node_list[i]:
+				default_exists = true
 			for j in node_list.size():
 				if i == j or node_list[j] == &"Start" or node_list[j] == &"End":
 					continue
@@ -148,7 +149,7 @@ func _build_transitions(sm: AnimationNodeStateMachine) -> void:
 				trans.advance_condition = str(node_list[j])
 				sm.add_transition(node_list[i], node_list[j], trans)
 				trans_built += 1
-	if golem.default_state:
+	if default_exists:
 		Glaze.log_debug("Building default transition from Start to %s", golem.default_state)
 		var trans:= AnimationNodeStateMachineTransition.new()
 		trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO

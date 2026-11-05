@@ -1,4 +1,4 @@
-class_name GolemState extends State
+class_name ActionState extends State
 
 ## Format: [animation_library_name/]<animation_name>. Changing it in realtime has no effect.
 @export var animation_name: String

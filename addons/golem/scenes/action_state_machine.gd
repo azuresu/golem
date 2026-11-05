@@ -1,4 +1,4 @@
-class_name GolemStateMachine extends StateMachine
+class_name ActionStateMachine extends StateMachine
 
 @export var animation_tree: AnimationTree
 @export var animation_library_default: String
@@ -10,9 +10,9 @@ var playback: AnimationNodeStateMachinePlayback:
 var _animation_conditions: Dictionary[String, bool]
 var _animation_time_scale:= 1.0
 
-func get_states() -> Array[GolemState]:
-	var r: Array[GolemState]
-	r.assign(get_children().filter(func(ch): return ch is GolemState))
+func get_states() -> Array[ActionState]:
+	var r: Array[ActionState]
+	r.assign(get_children().filter(func(ch): return ch is ActionState))
 	return r
 
 func set_animation_condition(param_name: String, param_value: bool) -> void:
@@ -33,22 +33,22 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if current_state is GolemState:
+	if current_state is ActionState:
 		var anim_ss: float = current_state.get_speed_scale()
 		current_state.animation_time += delta * anim_ss
 		_set_animation_time_scale(anim_ss)
 
 func _on_animation_finished(animation_name: String) -> void:
-	if current_state is GolemState and animation_name == current_state.animation_name:
+	if current_state is ActionState and animation_name == current_state.animation_name:
 		current_state._on_animation_finished()
 
 func _on_state_entered(state: State) -> void:
-	if state is GolemState:
+	if state is ActionState:
 		state.animation_time = 0
 		_set_animation_time_scale(state.get_speed_scale())
 
 func _on_state_exited(state: State) -> void:
-	if state is GolemState:
+	if state is ActionState:
 		_set_animation_time_scale(1.0)
 
 func _set_animation_time_scale(time_scale: float) -> void:

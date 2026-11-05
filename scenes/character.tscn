@@ -77,23 +77,23 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rbud2")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_u0pwc"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_2cgup"]
 resource_local_to_scene = true
 radius = 0.1
 
 [node name="Character" unique_id=487379024 node_paths=PackedStringArray("gaze_point") instance=ExtResource("1_agfs1")]
 gaze_point = NodePath("Head")
 
-[node name="StateMachine" parent="." index="1" unique_id=2029020036]
+[node name="ActionStateMachine" parent="." index="1" unique_id=2029020036]
 animation_library_default = "character_animations"
 
-[node name="stand" type="Node" parent="StateMachine" index="0" unique_id=471137240]
+[node name="stand" type="Node" parent="ActionStateMachine" index="0" unique_id=471137240]
 script = ExtResource("2_my7n2")
 
-[node name="walk" type="Node" parent="StateMachine" index="1" unique_id=419395926]
+[node name="walk" type="Node" parent="ActionStateMachine" index="1" unique_id=419395926]
 script = ExtResource("3_dp8ca")
 
-[node name="run" type="Node" parent="StateMachine" index="2" unique_id=1042620643]
+[node name="run" type="Node" parent="ActionStateMachine" index="2" unique_id=1042620643]
 script = ExtResource("4_0lw5n")
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=1945369402]
@@ -107,4 +107,4 @@ parameters/StateMachine/conditions/stand = false
 parameters/StateMachine/conditions/walk = false
 
 [node name="Base" parent="." index="19" unique_id=670264204]
-shape = SubResource("SphereShape3D_u0pwc")
+shape = SubResource("SphereShape3D_2cgup")

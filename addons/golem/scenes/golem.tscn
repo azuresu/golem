@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://claylyiaegk4n"]
 
 [ext_resource type="Script" uid="uid://3qim1cahatpf" path="res://addons/golem/scenes/golem.gd" id="1_mbbae"]
-[ext_resource type="Script" uid="uid://idmwtkk6t0v" path="res://addons/golem/scenes/golem_state_machine.gd" id="2_r6wrr"]
+[ext_resource type="Script" uid="uid://idmwtkk6t0v" path="res://addons/golem/scenes/action_state_machine.gd" id="2_r6wrr"]
 [ext_resource type="Script" uid="uid://by67ctvx7eq0s" path="res://addons/golem/scenes/golem_build.gd" id="4_um712"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ptq8k"]
@@ -15,14 +15,15 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuqdf")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
-[node name="Golem" type="CharacterBody3D" unique_id=487379024]
+[node name="Golem" type="CharacterBody3D" unique_id=487379024 node_paths=PackedStringArray("action_state_machine")]
 velocity = Vector3(0, -577.8633, 0)
 script = ExtResource("1_mbbae")
+action_state_machine = NodePath("ActionStateMachine")
 
 [node name="Build" type="Node" parent="." unique_id=856523901]
 script = ExtResource("4_um712")
 
-[node name="StateMachine" type="Node" parent="." unique_id=2029020036 node_paths=PackedStringArray("animation_tree")]
+[node name="ActionStateMachine" type="Node" parent="." unique_id=2029020036 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("2_r6wrr")
 animation_tree = NodePath("../AnimationTree")
 

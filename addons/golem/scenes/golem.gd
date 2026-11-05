@@ -1,6 +1,7 @@
 @icon("res://addons/golem/scenes/golem.png")
 class_name Golem extends CharacterBody3D
 
+@export var action_state_machine: ActionStateMachine
 @export var skeleton: Skeleton3D
 @export var gaze_modifier: LookAtModifier3D
 @export var gaze_point: Node3D
@@ -16,8 +17,6 @@ class_name Golem extends CharacterBody3D
 @export_custom(PROPERTY_HINT_NONE, "suffix:deg/s") var walk_turn_speed:= 360.0
 @export_custom(PROPERTY_HINT_NONE, "suffix:m/s") var run_speed:= 3.8
 @export_custom(PROPERTY_HINT_NONE, "suffix:deg/s")  var run_turn_speed:= 180.0
-
-@onready var state_machine: GolemStateMachine = $StateMachine
 
 var agent: GolemAgent:
 	set(a):
@@ -56,7 +55,7 @@ func gaze_at(target: Node3D) -> void:
 
 func _ready() -> void:
 	if default_state:
-		state_machine.set_current_state(default_state)
+		action_state_machine.set_current_state(default_state)
 	if skeleton:
 		skeleton.skeleton_updated.connect(_on_skeleton_updated)
 

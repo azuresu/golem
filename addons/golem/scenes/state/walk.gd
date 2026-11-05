@@ -1,4 +1,4 @@
-class_name GolemState_Walk extends GolemState
+class_name ActionState_Walk extends ActionState
 
 func _physics_update(delta: float) -> void:
 	if golem.agent:
