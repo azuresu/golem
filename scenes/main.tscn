@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://b3ggsmq8jh2ub" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dkbal0c23ln36" path="res://scenes/mannequin.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://46l7q0rcq4wj" path="res://addons/glaze/custom/evaluate.gd" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://d2fdelkuufwkv" path="res://scenes/xbot.tscn" id="4_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://tj8vgxdc4bys" path="res://scenes/ybot.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://ctpfommyxug7" path="res://scenes/box.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bjw7f1tn3qk1p" path="res://scenes/slope.tscn" id="7_o6xl0"]
 
@@ -13,105 +11,6 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o6xl0"]
-animation = &"human_animations/human_roll_fixed"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tipki"]
-animation = &"human_animations/human_run"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_85g3d"]
-animation = &"human_animations/human_stand"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_choun"]
-animation = &"human_animations/human_walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ya4ey"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eb6dy"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_trceg"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a8y0u"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"roll"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jkv2x"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jbj1t"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_muem4"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"roll"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dp3eg"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ld40"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gqmmt"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"roll"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yc10j"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jscy8"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pm3ni"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y6deb"]
-states/roll/node = SubResource("AnimationNodeAnimation_o6xl0")
-states/roll/position = Vector2(200, 200)
-states/run/node = SubResource("AnimationNodeAnimation_tipki")
-states/run/position = Vector2(0, 200)
-states/stand/node = SubResource("AnimationNodeAnimation_85g3d")
-states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_choun")
-states/walk/position = Vector2(200, 0)
-transitions = ["roll", "run", SubResource("AnimationNodeStateMachineTransition_ya4ey"), "roll", "stand", SubResource("AnimationNodeStateMachineTransition_eb6dy"), "roll", "walk", SubResource("AnimationNodeStateMachineTransition_trceg"), "run", "roll", SubResource("AnimationNodeStateMachineTransition_a8y0u"), "run", "stand", SubResource("AnimationNodeStateMachineTransition_jkv2x"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_jbj1t"), "stand", "roll", SubResource("AnimationNodeStateMachineTransition_muem4"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_dp3eg"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_0ld40"), "walk", "roll", SubResource("AnimationNodeStateMachineTransition_gqmmt"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_yc10j"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_jscy8"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_pm3ni")]
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_og1vs"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2wyq8"]
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_y6deb")
-nodes/StateMachine/position = Vector2(-400, 0)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_og1vs")
-nodes/TimeScale/position = Vector2(-100, 0)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_vxglm"]
-resource_local_to_scene = true
-radius = 0.1
 
 [node name="Main" type="Node3D" unique_id=352494745]
 script = ExtResource("1_0wfyh")
@@ -153,115 +52,6 @@ shape = SubResource("BoxShape3D_uld8e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_o5qli")
 
-[node name="Mannequin" parent="." unique_id=487379024 instance=ExtResource("1_o5qli")]
-velocity = Vector3(0, 0, 0)
-
-[node name="AnimationPlayer" parent="Mannequin" index="2" unique_id=1945369402]
-root_node = NodePath("/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/Main/Mannequin/mannequin/GeneralSkeleton")
-
-[node name="AnimationTree" parent="Mannequin" index="3" unique_id=938539133]
-tree_root = SubResource("AnimationNodeBlendTree_2wyq8")
-
-[node name="Head" parent="Mannequin" index="4" unique_id=1848330755]
-transform = Transform3D(-0.9998761, -0.003670407, 0.0153100565, -0.0033482828, 0.9997736, 0.02101326, -0.015383726, 0.020959392, -0.999662, -0.03491732, 1.6424018, 0.016927121)
-
-[node name="Chest" parent="Mannequin" index="5" unique_id=1209252167]
-transform = Transform3D(-0.9983398, 0.033962395, 0.04652257, 0.031738434, 0.9983556, -0.047736, -0.048067305, -0.046180192, -0.997776, -0.053739272, 1.2569698, 0.00028285943)
-
-[node name="Hips" parent="Mannequin" index="6" unique_id=1748376206]
-transform = Transform3D(-0.9953106, -0.050600436, 0.08244051, -0.049624387, 0.99867195, 0.013847071, -0.0830317, 0.009691076, -0.9964998, -0.044608284, 0.937296, -0.012952458)
-
-[node name="LeftUpperArm" parent="Mannequin" index="7" unique_id=1524323219]
-transform = Transform3D(-0.5150052, -0.23702747, 0.8237644, 0.134018, -0.97145563, -0.19573766, 0.84664583, 0.009593358, 0.5320707, -0.24641752, 1.3153527, 0.019155543)
-
-[node name="LeftLowerArm" parent="Mannequin" index="8" unique_id=1907551329]
-transform = Transform3D(0.82976246, -0.15824865, 0.5352121, -0.19560194, -0.980593, 0.013313523, 0.5227185, -0.11573558, -0.84461313, -0.29115397, 1.0655748, 0.031794824)
-
-[node name="LeftHand" parent="Mannequin" index="9" unique_id=1477463082]
-transform = Transform3D(-0.31267035, -0.20285228, 0.9279486, -0.39187184, -0.8623687, -0.32055688, 0.8652596, -0.4638656, 0.19014512, -0.334677, 0.85010314, -0.04285408)
-
-[node name="RightUpperArm" parent="Mannequin" index="10" unique_id=135876966]
-transform = Transform3D(-0.5212217, 0.15457283, -0.83930635, -0.19314107, -0.97930944, -0.060413375, -0.8312786, 0.13061577, 0.54029167, 0.14847627, 1.2906072, 0.04475572)
-
-[node name="RightLowerArm" parent="Mannequin" index="11" unique_id=1127358815]
-transform = Transform3D(0.8478397, 0.05122761, -0.52777237, 0.060419023, -0.9981732, 0.0001734951, -0.52679926, -0.032034542, -0.84938574, 0.17043719, 1.0416067, 0.08575815)
-
-[node name="RightHand" parent="Mannequin" index="12" unique_id=1959256119]
-transform = Transform3D(-0.096835874, 0.36254564, -0.92692167, 0.33314312, -0.8657736, -0.37343258, -0.9378904, -0.34495905, -0.036941536, 0.21616642, 0.8221309, 0.034609005)
-
-[node name="LeftUpperLeg" parent="Mannequin" index="13" unique_id=2067887626]
-transform = Transform3D(0.996017, -0.081159465, 0.03692215, -0.08807497, -0.96004504, 0.26562417, 0.0138890175, -0.26781815, -0.96336937, -0.1414815, 0.73718554, -0.06792264)
-
-[node name="LeftLowerLeg" parent="Mannequin" index="14" unique_id=2034606257]
-transform = Transform3D(-0.9968031, -0.07842008, -0.015289301, 0.0787411, -0.9966595, -0.021665826, -0.013539198, -0.022800557, 0.9996482, -0.21373618, 0.31759164, -0.107402906)
-
-[node name="LeftFoot" parent="Mannequin" index="15" unique_id=1971276986]
-transform = Transform3D(0.9533156, -0.30140308, 0.018584168, -0.026644802, -0.022654405, 0.9993881, -0.30079758, -0.9532275, -0.02962745, -0.28369305, 0.05960204, -0.1400565)
-
-[node name="RightUpperLeg" parent="Mannequin" index="16" unique_id=148753717]
-transform = Transform3D(0.97794324, -0.051933102, 0.2023119, -0.06595527, -0.9958196, 0.063192114, 0.1981844, -0.07514183, -0.9772802, 0.024992153, 0.738018, -0.013820927)
-
-[node name="RightLowerLeg" parent="Mannequin" index="17" unique_id=333981475]
-transform = Transform3D(-0.977643, -0.08708015, -0.19139306, 0.07070843, -0.9933579, 0.09077728, -0.1980267, 0.075214654, 0.97730654, 0.027489148, 0.31085777, 0.015788125)
-
-[node name="RightFoot" parent="Mannequin" index="18" unique_id=1430035401]
-transform = Transform3D(0.91425186, 0.4051313, 0.0034895923, -6.742962e-05, -0.008461058, 0.99996424, 0.40514627, -0.9142193, -0.0077081253, 0.0597082, 0.052721392, 0.013413768)
-
-[node name="Base" parent="Mannequin" index="19" unique_id=670264204]
-shape = SubResource("SphereShape3D_vxglm")
-
-[node name="GeneralSkeleton" parent="Mannequin/mannequin" parent_id_path=PackedInt32Array(487379024, 243857172) index="0" unique_id=49970656]
-bones/0/position = Vector3(0.047138307, 0.9872296, 0.012467908)
-bones/0/rotation = Quaternion(-0.005891549, -0.0414174, -0.02508607, 0.9988096)
-bones/1/rotation = Quaternion(0.010142275, 0.005987487, 0.014722912, 0.99982226)
-bones/2/rotation = Quaternion(0.020523088, 0.012222123, 0.025662825, 0.9993853)
-bones/3/rotation = Quaternion(0.02052309, 0.012222132, 0.025662828, 0.9993853)
-bones/4/rotation = Quaternion(-0.09098133, 0.0015535827, -0.0027003845, 0.99584776)
-bones/5/rotation = Quaternion(0.037038676, 0.0067164777, -0.040943157, 0.99845225)
-bones/7/rotation = Quaternion(0.5144593, 0.4685635, 0.5797586, -0.4238631)
-bones/8/rotation = Quaternion(0.14028622, 0.80959564, -0.5498813, -0.15001792)
-bones/9/rotation = Quaternion(0.052727256, -0.70906657, 0.052144695, 0.7012314)
-bones/10/rotation = Quaternion(0.039666433, 0.5766588, 0.18087785, 0.7957226)
-bones/15/rotation = Quaternion(0.11797224, -0.06827865, -0.09848216, 0.9857596)
-bones/16/rotation = Quaternion(0.09905262, 0.003829442, -0.010122029, 0.9950234)
-bones/19/rotation = Quaternion(0.092701115, -0.012552492, -0.059319045, 0.9938462)
-bones/20/rotation = Quaternion(0.090290084, 9.541186e-05, 0.0025565592, 0.9959123)
-bones/23/rotation = Quaternion(0.16601837, 0.0070382887, -0.059129074, 0.98432326)
-bones/24/rotation = Quaternion(0.09085215, -0.0009506606, -0.00090870453, 0.99586356)
-bones/27/rotation = Quaternion(0.24377488, 0.041199747, -0.07260283, 0.96623254)
-bones/28/rotation = Quaternion(0.14250083, -0.0008003699, 0.024797294, 0.9894838)
-bones/31/rotation = Quaternion(0.5172487, -0.4699887, -0.5555806, -0.45043844)
-bones/32/rotation = Quaternion(-0.1262672, 0.8002741, -0.5410901, 0.22547665)
-bones/33/rotation = Quaternion(0.0690013, 0.70938057, -0.06790892, 0.69814503)
-bones/34/rotation = Quaternion(-0.06666258, -0.48507512, -0.22056444, 0.8435696)
-bones/39/rotation = Quaternion(0.11950881, 0.0646836, 0.06190697, 0.9887878)
-bones/40/rotation = Quaternion(0.046108574, -0.0001475776, 0.005029252, 0.9989238)
-bones/43/rotation = Quaternion(0.12045379, 0.0071927924, 0.053398266, 0.99125564)
-bones/44/rotation = Quaternion(0.09143093, 0.00043096993, -0.0040994915, 0.9958029)
-bones/47/rotation = Quaternion(0.17731926, 0.011224618, 0.03359017, 0.983516)
-bones/48/rotation = Quaternion(0.08194242, 0.0028006784, -0.00417071, 0.99662447)
-bones/51/rotation = Quaternion(0.19433424, -0.0069696493, 0.03254517, 0.98037064)
-bones/52/rotation = Quaternion(0.10920798, 0.0072861183, -0.036525823, 0.99332094)
-bones/55/rotation = Quaternion(0.024549192, 0.12663987, 0.9889524, -0.07302683)
-bones/56/rotation = Quaternion(0.004607337, 0.9922973, -0.12379101, 0.000858933)
-bones/57/rotation = Quaternion(0.0939568, 0.7189917, -0.676164, 0.13048114)
-bones/58/rotation = Quaternion(-0.023785949, 0.999624, -0.00046933172, 0.013633627)
-bones/60/rotation = Quaternion(-0.060507067, 0.025144853, 0.996312, -0.055398576)
-bones/61/rotation = Quaternion(-0.0023812596, 0.9970145, -0.077178, 8.0524595e-05)
-bones/62/rotation = Quaternion(-0.09876419, 0.67004424, -0.73352855, -0.056766357)
-
-[node name="XBot" parent="." unique_id=516435404 node_paths=PackedStringArray("gaze_modifier") instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-velocity = Vector3(0, 0, 0)
-gaze_modifier = NodePath("xbot/GeneralSkeleton/GazeModififer")
-default_state = &"walk"
-
-[node name="YBot" parent="." unique_id=1095426518 node_paths=PackedStringArray("gaze_modifier") instance=ExtResource("5_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-velocity = Vector3(0, 0, 0)
-gaze_modifier = NodePath("ybot/GeneralSkeleton/GazeModififer")
-default_state = &"run"
-
 [node name="Box" parent="." unique_id=808914309 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.312265, 0, -1.0541625)
 
@@ -283,5 +73,12 @@ transform = Transform3D(0.7512621, 0, -0.66000396, 0, 1, 0, 0.66000396, 0, 0.751
 [node name="Slope2" parent="." unique_id=1217767125 instance=ExtResource("7_o6xl0")]
 transform = Transform3D(0.7512621, 0, -0.66000396, 0, 1, 0, 0.66000396, 0, 0.7512621, -4.3439436, 0, -5.385369)
 
-[editable path="Mannequin"]
-[editable path="Mannequin/mannequin"]
+[node name="Mannequin" parent="." unique_id=487379024 instance=ExtResource("1_o5qli")]
+
+[node name="NPC" parent="." unique_id=1133590094 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+default_state = &"walk"
+
+[node name="NPC2" parent="." unique_id=175232780 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+default_state = &"run"

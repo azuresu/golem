@@ -80,7 +80,8 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 	Glaze.log_info("Building animation nodes...")
 	var gap:= golem.animation_tree_node_gap
 	var states: Dictionary[StringName, GolemState]
-	for ch in golem.get_node("StateMachine").get_children():
+	var gsm: GolemStateMachine = golem.get_node("StateMachine")
+	for ch in gsm.get_children():
 		if ch is GolemState:
 			states[ch.name] = ch
 	if not states:
@@ -98,7 +99,7 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 			var anim_name: String = s.animation_name
 			if not anim_name:
 				anim_name = s.name
-			var anim_lib:= ""
+			var anim_lib:= gsm.animation_library_default
 			var i = anim_name.find("/")
 			if i >= 0:
 				anim_lib = anim_name.substr(0, i)

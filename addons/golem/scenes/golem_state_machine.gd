@@ -1,6 +1,7 @@
 class_name GolemStateMachine extends StateMachine
 
 @export var animation_tree: AnimationTree
+@export var animation_library_default: String
 
 var playback: AnimationNodeStateMachinePlayback:
 	get: return animation_tree.get("parameters/StateMachine/playback")
