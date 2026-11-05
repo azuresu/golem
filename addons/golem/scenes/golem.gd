@@ -66,5 +66,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_skeleton_updated() -> void:
 	for ch in get_children():
-		if ch is GolemShape:
+		if ch is BoneShape:
 			ch.update(skeleton)

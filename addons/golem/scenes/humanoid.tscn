@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://oj0of51uhca2"]
 
 [ext_resource type="PackedScene" uid="uid://claylyiaegk4n" path="res://addons/golem/scenes/golem.tscn" id="1_ufbvr"]
-[ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scenes/golem_shape.gd" id="7_34tv0"]
+[ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scenes/bone_shape.gd" id="7_34tv0"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fbage"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w4ydr"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_guyq3"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fbage"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ige7"]
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_fbage")
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_guyq3"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_w4ydr")
 nodes/StateMachine/position = Vector2(-400, 0)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_guyq3")
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fbage")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
@@ -82,7 +82,7 @@ velocity = Vector3(0, -2057.1438, 0)
 default_state = &"stand"
 
 [node name="AnimationTree" parent="." index="3" unique_id=938539133]
-tree_root = SubResource("AnimationNodeBlendTree_8ige7")
+tree_root = SubResource("AnimationNodeBlendTree_guyq3")
 
 [node name="Head" type="CollisionShape3D" parent="." index="4" unique_id=1848330755]
 transform = Transform3D(0.9988778, 0.005957657, -0.046981487, -0.0034182342, 0.99853796, 0.053947743, 0.047234185, -0.053726617, 0.99743783, 0.038090084, 1.6421753, -0.025980394)
@@ -116,6 +116,7 @@ offset_position = Vector3(0, 0.1, 0)
 [node name="LeftHand" type="CollisionShape3D" parent="." index="9" unique_id=1477463082]
 transform = Transform3D(0.3470577, 0.17876628, -0.9206483, -0.38373455, -0.86866176, -0.3133285, -0.85574436, 0.46202764, -0.23287705, 0.32904083, 0.85230124, 0.046804618)
 shape = SubResource("CapsuleShape3D_udkkr")
+disabled = true
 script = ExtResource("7_34tv0")
 offset_position = Vector3(0, 0.1, 0)
 
@@ -134,6 +135,7 @@ offset_position = Vector3(0, 0.1, 0)
 [node name="RightHand" type="CollisionShape3D" parent="." index="12" unique_id=1959256119]
 transform = Transform3D(0.053288817, -0.3728503, 0.9263598, 0.32907718, -0.86930084, -0.36881474, 0.94279814, 0.3244976, 0.07637265, -0.21163961, 0.8279446, -0.048819054)
 shape = SubResource("CapsuleShape3D_3xk04")
+disabled = true
 script = ExtResource("7_34tv0")
 offset_position = Vector3(0, 0.1, 0)
 

@@ -1,5 +1,5 @@
 @tool
-class_name GolemShape extends CollisionShape3D
+class_name BoneShape extends CollisionShape3D
 
 @export var offset_position: Vector3
 @export_custom(PROPERTY_HINT_RANGE, "-360,360,0.1,or_less,or_greater,radians_as_degrees") var offset_rotation: Vector3
