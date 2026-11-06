@@ -1,6 +1,9 @@
 @icon("res://addons/golem/scenes/golem.png")
 class_name Golem extends CharacterBody3D
 
+const POSE_STAND:= &"stand"
+const POSE_CROUCH:= &"crouch"
+
 @export var action_state_machine: ActionStateMachine
 @export var skeleton: Skeleton3D
 @export var gaze_modifier: LookAtModifier3D
@@ -9,6 +12,8 @@ class_name Golem extends CharacterBody3D
 @export var default_state: StringName
 @export var animation_tree_node_gap:= Vector2i(200, 200)
 @export var auto_build:= true
+
+var pose:= POSE_STAND
 
 # Use set_agent() in script.
 var agent: GolemAgent

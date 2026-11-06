@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b3ggsmq8jh2ub" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dkbal0c23ln36" path="res://scenes/mannequin.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://46l7q0rcq4wj" path="res://addons/glaze/custom/evaluate.gd" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://dldkhyn5lxgih" path="res://addons/golem/scenes/golem_profile.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://ctpfommyxug7" path="res://scenes/box.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bjw7f1tn3qk1p" path="res://scenes/slope.tscn" id="7_o6xl0"]
 
@@ -11,6 +12,10 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="Resource" id="Resource_ptq8k"]
+script = ExtResource("6_o6xl0")
+metadata/_custom_type_script = "uid://dldkhyn5lxgih"
 
 [node name="Main" type="Node3D" unique_id=352494745]
 script = ExtResource("1_0wfyh")
@@ -74,11 +79,14 @@ transform = Transform3D(0.7512621, 0, -0.66000396, 0, 1, 0, 0.66000396, 0, 0.751
 transform = Transform3D(0.7512621, 0, -0.66000396, 0, 1, 0, 0.66000396, 0, 0.7512621, -4.3439436, 0, -5.385369)
 
 [node name="Mannequin" parent="." unique_id=487379024 instance=ExtResource("1_o5qli")]
+profile = SubResource("Resource_ptq8k")
 
 [node name="NPC" parent="." unique_id=1133590094 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+profile = SubResource("Resource_ptq8k")
 default_state = &"walk"
 
 [node name="NPC2" parent="." unique_id=175232780 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+profile = SubResource("Resource_ptq8k")
 default_state = &"run"

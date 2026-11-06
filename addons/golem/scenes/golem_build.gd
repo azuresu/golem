@@ -47,6 +47,10 @@ func _build_gaze_modifier() -> void:
 		var gm:= LookAtModifier3D.new()
 		gm.name = "GazeModififer"
 		gm.bone_name = &"Head"
+		gm.duration = 0.5
+		gm.use_angle_limitation = true
+		gm.primary_limit_angle = deg_to_rad(120.0)
+		gm.secondary_limit_angle = deg_to_rad(120.0)
 		golem.skeleton.add_child(gm)
 		gm.owner = golem
 		golem.gaze_modifier = gm

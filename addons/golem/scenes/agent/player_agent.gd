@@ -18,6 +18,9 @@ func target_to_move() -> Node3D:
 	return $CameraPivot/Forward
 
 func state_to_act() -> StringName:
+	if Input.is_action_pressed("jump"):
+		if golem.pose == Golem.POSE_CROUCH:
+			return &"roll"
 	if Input.is_action_pressed("run"):
 		if Input.is_action_pressed("move_forward"):
 			return &"run"
@@ -25,12 +28,16 @@ func state_to_act() -> StringName:
 	Input.is_action_pressed("move_backward") or \
 	Input.is_action_pressed("move_left") or \
 	Input.is_action_pressed("move_right"):
-		return &"walk"
-	return &"stand"
+		return &"walk" if golem.pose == Golem.POSE_STAND else &"crouch_walk"
+	return &"stand" if golem.pose == Golem.POSE_STAND else &"crouch"
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_mouse_motion += event.relative
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("crouch"):
+		golem.pose = Golem.POSE_CROUCH if golem.pose == Golem.POSE_STAND else Golem.POSE_STAND
 
 func _ready() -> void:
 	$CameraPivot.global_rotation.y = golem.global_rotation.y
@@ -46,6 +53,7 @@ func _process(delta: float) -> void:
 	if head:
 		var head_pos:= head.get_global_transform_interpolated().origin
 		pivot.global_position = pivot.global_position.lerp(head_pos, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
+
 
 func _on_tree_exiting() -> void:
 	$CameraPivot/Arm.remove_excluded_object(golem)
