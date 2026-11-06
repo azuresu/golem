@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		_set_animation_time_scale(anim_ss)
 
 func _on_animation_finished(animation_name: String) -> void:
-	if current_state is ActionState:
+	if current_state is ActionState and current_state.get_animation_name_in_tree() == animation_name:
 		current_state._on_animation_finished()
 
 func _on_state_entered(state: State) -> void:

@@ -16,6 +16,15 @@ var golem: Golem:
 func get_speed_scale() -> float:
 	return speed_scale
 
+func get_animation_name_in_tree() -> String:
+	var anim_lib:= golem.action_state_machine.animation_library_default
+	var anim_name:= animation_name if animation_name else name
+	var i = animation_name.find("/")
+	if i >= 0:
+		anim_lib = animation_name.substr(0, i)
+		anim_name = animation_name.substr(i + 1)
+	return ("%s/%s" % [anim_lib, anim_name]) if anim_lib else anim_name
+
 func transition(state_name: StringName, params:= {}) -> void:
 	super.transition(state_name, params)
 	# Some states can be transitioned to itself when agent requires like melee and roll.
@@ -41,7 +50,8 @@ func _on_animation_finished() -> void:
 	pass
 
 func _get_animation_percent() -> float:
-	var length: float = machine.playback.get_current_length()
-	if length > 0:
-		return machine.playback.get_current_play_position() / length
+	if machine.playback.get_current_node() == name:
+		var length: float = machine.playback.get_current_length()
+		if length > 0:
+			return machine.playback.get_current_play_position() / length
 	return 0
