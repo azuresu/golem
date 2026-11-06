@@ -8,7 +8,6 @@ var hud_info: String:
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$Mannequin.set_agent(Glaze.new_scene("res://scenes/test_agent.tscn"))
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):

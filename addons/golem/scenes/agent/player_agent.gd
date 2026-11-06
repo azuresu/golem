@@ -4,6 +4,7 @@ const MOUSE_SENSITIVITY:= 0.075
 const CAMERA_FOLLOW_SPEED:= 10.0
 
 var _mouse_motion: Vector2
+var _gazed_target: Node3D
 
 func target_to_move() -> Node3D:
 	if Input.is_action_pressed("run"):
@@ -54,6 +55,18 @@ func _process(delta: float) -> void:
 		var head_pos:= head.get_global_transform_interpolated().origin
 		pivot.global_position = pivot.global_position.lerp(head_pos, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
 
-
 func _on_tree_exiting() -> void:
 	$CameraPivot/Arm.remove_excluded_object(golem)
+
+func _on_gaze_area_body_entered(body: Node3D) -> void:
+	if _can_gaze(body):
+		golem.gaze_at(body)
+		_gazed_target = body
+
+func _on_gaze_area_body_exited(body: Node3D) -> void:
+	if body == _gazed_target:
+		golem.gaze_at(null)
+		_gazed_target = null
+
+func _can_gaze(target: Node3D) -> bool:
+	return target is Golem and not target == golem and not _gazed_target

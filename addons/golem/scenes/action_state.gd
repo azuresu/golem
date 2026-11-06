@@ -11,7 +11,7 @@ class_name ActionState extends State
 var animation_time: float
 
 var golem: Golem:
-	get: return machine.owner
+	get: return machine.golem
 
 func get_speed_scale() -> float:
 	return speed_scale

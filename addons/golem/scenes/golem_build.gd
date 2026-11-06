@@ -4,7 +4,7 @@ extends Node
 @export_tool_button("Build") var built_button:= _build
 
 var golem: Golem:
-	get: return owner
+	get: return get_parent()
 
 var _snapshot: Dictionary
 
@@ -21,7 +21,7 @@ func _take_snapshot() -> Dictionary:
 			snapshot["skeleton"] = golem.get_path()
 		if golem.default_state:
 			snapshot["default_state"] = golem.default_state
-		for ch in golem.action_state_machine.get_children():
+		for ch in golem.action_state_machine.get_children(true):
 			if ch is ActionState:
 				snapshot["state_%s" % ch.name] = 1
 		snapshot["animation_tree_node_gap_x"] = golem.animation_tree_node_gap.x
@@ -34,6 +34,7 @@ func _build() -> void:
 	if golem.skeleton:
 		_build_gaze_modifier()
 		golem.get_node("AnimationPlayer").root_node = golem.skeleton.get_path()
+		golem.get_node("AnimationTree").root_node = golem.skeleton.get_path()
 	else:
 		Glaze.log_warn("Skeleton not found in golem.")
 	_build_animation_tree()
@@ -45,14 +46,14 @@ func _build_gaze_modifier() -> void:
 	else:
 		Glaze.log_info("Building gaze modifier into skeleton.")
 		var gm:= LookAtModifier3D.new()
-		gm.name = "GazeModififer"
 		gm.bone_name = &"Head"
 		gm.duration = 0.5
 		gm.use_angle_limitation = true
 		gm.primary_limit_angle = deg_to_rad(120.0)
 		gm.secondary_limit_angle = deg_to_rad(120.0)
 		golem.skeleton.add_child(gm)
-		gm.owner = golem
+		gm.owner = get_tree().edited_scene_root # To make sure GazeModifier appears in editor.
+		gm.name = "GazeModifier"
 		golem.gaze_modifier = gm
 
 func _build_animation_tree() -> void:
@@ -84,7 +85,7 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> Di
 	Glaze.log_info("Building animation nodes...")
 	var gap:= golem.animation_tree_node_gap
 	var states: Dictionary[StringName, ActionState]
-	for ch in golem.action_state_machine.get_children():
+	for ch in golem.action_state_machine.get_children(true):
 		if ch is ActionState:
 			states[ch.name] = ch
 	if not states:

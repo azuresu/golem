@@ -25,7 +25,6 @@ func set_agent(a: GolemAgent) -> void:
 	if agent:
 		agent.golem = self
 		add_child(agent)
-		agent.owner = self
 
 func turn_to(global_pos: Vector3, speed: float, delta: float) -> void:
 	var r:= global_transform.looking_at(global_pos).basis.get_euler()
@@ -57,6 +56,8 @@ func _ready() -> void:
 	if default_state:
 		action_state_machine.set_current_state(default_state)
 	if skeleton:
+		# Set in runtime to make sure root node is correct.
+		$AnimationPlayer.root_node = skeleton.get_path()
 		skeleton.skeleton_updated.connect(_on_skeleton_updated)
 	# Set agent if it has been added into scene.
 	for ch in get_children():
