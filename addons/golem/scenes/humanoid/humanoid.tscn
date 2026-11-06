@@ -10,148 +10,136 @@
 [ext_resource type="Script" uid="uid://s4shbil6cvpl" path="res://addons/golem/scenes/bone_shape.gd" id="7_34tv0"]
 [ext_resource type="Script" uid="uid://bvmr5aysux4so" path="res://addons/golem/scenes/action/roll.gd" id="7_ww8h1"]
 [ext_resource type="AnimationLibrary" uid="uid://cv2tq07usr500" path="res://addons/golem/scenes/humanoid/humanoid_animations.res" id="8_ho0aj"]
+[ext_resource type="Script" uid="uid://colsqh3k8vsoh" path="res://addons/golem/scenes/action/jump_up.gd" id="9_3xk04"]
+[ext_resource type="Script" uid="uid://0u4cjxirfbuu" path="res://addons/golem/scenes/action/jump_down.gd" id="10_3xk04"]
 
 [sub_resource type="Resource" id="Resource_tipki"]
 script = ExtResource("2_a72t7")
 metadata/_custom_type_script = "uid://dldkhyn5lxgih"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sppb6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xk04"]
 animation = &"humanoid_animations/crouch"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gdoq7"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qotiq"]
 animation = &"humanoid_animations/crouch_walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xk04"]
-animation = &"humanoid_animations/roll"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qotiq"]
-animation = &"humanoid_animations/run"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ncj88"]
-animation = &"humanoid_animations/stand"
+animation = &"humanoid_animations/jump_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ad3em"]
+animation = &"humanoid_animations/jump_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_43r14"]
+animation = &"humanoid_animations/roll"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0cgu"]
+animation = &"humanoid_animations/run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tvkw8"]
+animation = &"humanoid_animations/stand"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2k8w1"]
 animation = &"humanoid_animations/walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_43r14"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"crouch_walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c0cgu"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"roll"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tvkw8"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2k8w1"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"stand"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1tys8"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"walk"
+advance_condition = &"crouch_walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5co6v"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch"
+advance_condition = &"jump_down"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_twtv3"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"roll"
+advance_condition = &"jump_up"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dm0jb"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"run"
+advance_condition = &"roll"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eq8g8"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"stand"
+advance_condition = &"run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p3oof"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"walk"
+advance_condition = &"stand"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvagv"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch"
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtboe"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch_walk"
+advance_condition = &"crouch"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s620d"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"run"
+advance_condition = &"jump_down"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_231a4"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"stand"
+advance_condition = &"jump_up"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_is4ff"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"walk"
+advance_condition = &"roll"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_owvsc"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch"
+advance_condition = &"run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u7inu"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch_walk"
+advance_condition = &"stand"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l3b33"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"roll"
+advance_condition = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewu3w"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"stand"
+advance_condition = &"crouch"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fid8b"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"walk"
+advance_condition = &"crouch_walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_22vwj"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch"
+advance_condition = &"jump_up"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rj0se"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"crouch_walk"
+advance_condition = &"roll"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whkff"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"roll"
+advance_condition = &"run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jd38"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"run"
+advance_condition = &"stand"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bnpqf"]
 xfade_time = 0.2
@@ -171,42 +159,196 @@ advance_condition = &"crouch_walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_37aht"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"roll"
+advance_condition = &"jump_down"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p4qgr"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"run"
+advance_condition = &"roll"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6moax"]
 xfade_time = 0.2
 advance_mode = 2
-advance_condition = &"stand"
+advance_condition = &"run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2pp8d"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rayiv"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_puicm"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_thnst"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bxy6u"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0qs5v"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xe1kw"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cbwd0"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wwth2"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k1qh5"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oe8xn"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eex16"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lsbsd"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fth2f"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4d1ux"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_khy5l"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_27cpa"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sksti"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_te0wc"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qfn0c"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xl6wj"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ykiqh"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gmumq"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_10nva"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fdcof"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7056n"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wtlb1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qe4ov"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n56mj"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2xxxk"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"stand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_stxwj"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rayiv"]
-states/crouch/node = SubResource("AnimationNodeAnimation_sppb6")
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ubj4o"]
+states/crouch/node = SubResource("AnimationNodeAnimation_3xk04")
 states/crouch/position = Vector2(200, 200)
-states/crouch_walk/node = SubResource("AnimationNodeAnimation_gdoq7")
+states/crouch_walk/node = SubResource("AnimationNodeAnimation_qotiq")
 states/crouch_walk/position = Vector2(0, 400)
-states/roll/node = SubResource("AnimationNodeAnimation_3xk04")
+states/jump_down/node = SubResource("AnimationNodeAnimation_ncj88")
+states/jump_down/position = Vector2(200, 600)
+states/jump_up/node = SubResource("AnimationNodeAnimation_ad3em")
+states/jump_up/position = Vector2(0, 600)
+states/roll/node = SubResource("AnimationNodeAnimation_43r14")
 states/roll/position = Vector2(200, 400)
-states/run/node = SubResource("AnimationNodeAnimation_qotiq")
+states/run/node = SubResource("AnimationNodeAnimation_c0cgu")
 states/run/position = Vector2(0, 200)
-states/stand/node = SubResource("AnimationNodeAnimation_ncj88")
+states/stand/node = SubResource("AnimationNodeAnimation_tvkw8")
 states/stand/position = Vector2(0, 0)
-states/walk/node = SubResource("AnimationNodeAnimation_ad3em")
+states/walk/node = SubResource("AnimationNodeAnimation_2k8w1")
 states/walk/position = Vector2(200, 0)
-transitions = ["crouch", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_43r14"), "crouch", "roll", SubResource("AnimationNodeStateMachineTransition_c0cgu"), "crouch", "run", SubResource("AnimationNodeStateMachineTransition_tvkw8"), "crouch", "stand", SubResource("AnimationNodeStateMachineTransition_2k8w1"), "crouch", "walk", SubResource("AnimationNodeStateMachineTransition_1tys8"), "crouch_walk", "crouch", SubResource("AnimationNodeStateMachineTransition_5co6v"), "crouch_walk", "roll", SubResource("AnimationNodeStateMachineTransition_twtv3"), "crouch_walk", "run", SubResource("AnimationNodeStateMachineTransition_dm0jb"), "crouch_walk", "stand", SubResource("AnimationNodeStateMachineTransition_eq8g8"), "crouch_walk", "walk", SubResource("AnimationNodeStateMachineTransition_p3oof"), "roll", "crouch", SubResource("AnimationNodeStateMachineTransition_pvagv"), "roll", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_jtboe"), "roll", "run", SubResource("AnimationNodeStateMachineTransition_s620d"), "roll", "stand", SubResource("AnimationNodeStateMachineTransition_231a4"), "roll", "walk", SubResource("AnimationNodeStateMachineTransition_is4ff"), "run", "crouch", SubResource("AnimationNodeStateMachineTransition_owvsc"), "run", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_u7inu"), "run", "roll", SubResource("AnimationNodeStateMachineTransition_l3b33"), "run", "stand", SubResource("AnimationNodeStateMachineTransition_ewu3w"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_fid8b"), "stand", "crouch", SubResource("AnimationNodeStateMachineTransition_22vwj"), "stand", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_rj0se"), "stand", "roll", SubResource("AnimationNodeStateMachineTransition_whkff"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_3jd38"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_bnpqf"), "walk", "crouch", SubResource("AnimationNodeStateMachineTransition_6sfis"), "walk", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_06pl6"), "walk", "roll", SubResource("AnimationNodeStateMachineTransition_37aht"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_p4qgr"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_6moax"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_2pp8d")]
+transitions = ["crouch", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_1tys8"), "crouch", "jump_down", SubResource("AnimationNodeStateMachineTransition_5co6v"), "crouch", "jump_up", SubResource("AnimationNodeStateMachineTransition_twtv3"), "crouch", "roll", SubResource("AnimationNodeStateMachineTransition_dm0jb"), "crouch", "run", SubResource("AnimationNodeStateMachineTransition_eq8g8"), "crouch", "stand", SubResource("AnimationNodeStateMachineTransition_p3oof"), "crouch", "walk", SubResource("AnimationNodeStateMachineTransition_pvagv"), "crouch_walk", "crouch", SubResource("AnimationNodeStateMachineTransition_jtboe"), "crouch_walk", "jump_down", SubResource("AnimationNodeStateMachineTransition_s620d"), "crouch_walk", "jump_up", SubResource("AnimationNodeStateMachineTransition_231a4"), "crouch_walk", "roll", SubResource("AnimationNodeStateMachineTransition_is4ff"), "crouch_walk", "run", SubResource("AnimationNodeStateMachineTransition_owvsc"), "crouch_walk", "stand", SubResource("AnimationNodeStateMachineTransition_u7inu"), "crouch_walk", "walk", SubResource("AnimationNodeStateMachineTransition_l3b33"), "jump_down", "crouch", SubResource("AnimationNodeStateMachineTransition_ewu3w"), "jump_down", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_fid8b"), "jump_down", "jump_up", SubResource("AnimationNodeStateMachineTransition_22vwj"), "jump_down", "roll", SubResource("AnimationNodeStateMachineTransition_rj0se"), "jump_down", "run", SubResource("AnimationNodeStateMachineTransition_whkff"), "jump_down", "stand", SubResource("AnimationNodeStateMachineTransition_3jd38"), "jump_down", "walk", SubResource("AnimationNodeStateMachineTransition_bnpqf"), "jump_up", "crouch", SubResource("AnimationNodeStateMachineTransition_6sfis"), "jump_up", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_06pl6"), "jump_up", "jump_down", SubResource("AnimationNodeStateMachineTransition_37aht"), "jump_up", "roll", SubResource("AnimationNodeStateMachineTransition_p4qgr"), "jump_up", "run", SubResource("AnimationNodeStateMachineTransition_6moax"), "jump_up", "stand", SubResource("AnimationNodeStateMachineTransition_2pp8d"), "jump_up", "walk", SubResource("AnimationNodeStateMachineTransition_rayiv"), "roll", "crouch", SubResource("AnimationNodeStateMachineTransition_puicm"), "roll", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_thnst"), "roll", "jump_down", SubResource("AnimationNodeStateMachineTransition_bxy6u"), "roll", "jump_up", SubResource("AnimationNodeStateMachineTransition_0qs5v"), "roll", "run", SubResource("AnimationNodeStateMachineTransition_xe1kw"), "roll", "stand", SubResource("AnimationNodeStateMachineTransition_cbwd0"), "roll", "walk", SubResource("AnimationNodeStateMachineTransition_wwth2"), "run", "crouch", SubResource("AnimationNodeStateMachineTransition_k1qh5"), "run", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_oe8xn"), "run", "jump_down", SubResource("AnimationNodeStateMachineTransition_eex16"), "run", "jump_up", SubResource("AnimationNodeStateMachineTransition_lsbsd"), "run", "roll", SubResource("AnimationNodeStateMachineTransition_fth2f"), "run", "stand", SubResource("AnimationNodeStateMachineTransition_4d1ux"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_khy5l"), "stand", "crouch", SubResource("AnimationNodeStateMachineTransition_27cpa"), "stand", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_sksti"), "stand", "jump_down", SubResource("AnimationNodeStateMachineTransition_te0wc"), "stand", "jump_up", SubResource("AnimationNodeStateMachineTransition_qfn0c"), "stand", "roll", SubResource("AnimationNodeStateMachineTransition_xl6wj"), "stand", "run", SubResource("AnimationNodeStateMachineTransition_ykiqh"), "stand", "walk", SubResource("AnimationNodeStateMachineTransition_gmumq"), "walk", "crouch", SubResource("AnimationNodeStateMachineTransition_10nva"), "walk", "crouch_walk", SubResource("AnimationNodeStateMachineTransition_fdcof"), "walk", "jump_down", SubResource("AnimationNodeStateMachineTransition_7056n"), "walk", "jump_up", SubResource("AnimationNodeStateMachineTransition_wtlb1"), "walk", "roll", SubResource("AnimationNodeStateMachineTransition_qe4ov"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_n56mj"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_2xxxk"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_stxwj")]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_puicm"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_eekpx"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_thnst"]
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_rayiv")
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ft5nf"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ubj4o")
 nodes/StateMachine/position = Vector2(-400, 0)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_puicm")
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_eekpx")
 nodes/TimeScale/position = Vector2(-100, 0)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
 
@@ -300,13 +442,21 @@ script = ExtResource("6_neuca")
 [node name="roll" type="Node" parent="ActionStateMachine" index="5" unique_id=1005018635]
 script = ExtResource("7_ww8h1")
 
+[node name="jump_up" type="Node" parent="ActionStateMachine" index="6" unique_id=1904481515]
+script = ExtResource("9_3xk04")
+
+[node name="jump_down" type="Node" parent="ActionStateMachine" index="7" unique_id=845652050]
+script = ExtResource("10_3xk04")
+
 [node name="AnimationPlayer" parent="." index="2" unique_id=1945369402]
 libraries/humanoid_animations = ExtResource("8_ho0aj")
 
 [node name="AnimationTree" parent="." index="3" unique_id=938539133]
-tree_root = SubResource("AnimationNodeBlendTree_thnst")
+tree_root = SubResource("AnimationNodeBlendTree_ft5nf")
 parameters/StateMachine/conditions/crouch = false
 parameters/StateMachine/conditions/crouch_walk = false
+parameters/StateMachine/conditions/jump_down = false
+parameters/StateMachine/conditions/jump_up = false
 parameters/StateMachine/conditions/roll = false
 parameters/StateMachine/conditions/run = false
 parameters/StateMachine/conditions/stand = false

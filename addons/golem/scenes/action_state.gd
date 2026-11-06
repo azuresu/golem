@@ -39,3 +39,9 @@ func _has_animation_condition() -> bool:
 
 func _on_animation_finished() -> void:
 	pass
+
+func _get_animation_percent() -> float:
+	var length: float = machine.playback.get_current_length()
+	if length > 0:
+		return machine.playback.get_current_play_position() / length
+	return 0
