@@ -17,5 +17,6 @@ func update(ske: Skeleton3D) -> void:
 func _process(delta: float) -> void:
 	# Golem is not running in editor so we update here.
 	if Engine.is_editor_hint():
-		if "skeleton" in owner and owner.skeleton is Skeleton3D:
-			update(owner.skeleton)
+		var ske = get_parent().skeleton
+		if ske is Skeleton3D:
+			update(ske)
