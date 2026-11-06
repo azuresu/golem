@@ -16,9 +16,10 @@ func _on_animation_finished() -> void:
 
 func _get_roll_speed() -> float:
 	var speed_max:= golem.profile.roll_speed if golem.profile else 1.0
-	if golem.agent:
-		var length: float = machine.playback.get_current_length()
-		if length > 0:
-			var percent: float = machine.playback.get_current_play_position() / length
-			return sin(percent * PI) * speed_max
-	return speed_max
+	return sin(_get_animation_percent() * PI) * speed_max
+
+func _get_animation_percent() -> float:
+	var length: float = machine.playback.get_current_length()
+	if length > 0:
+		return machine.playback.get_current_play_position() / length
+	return 0

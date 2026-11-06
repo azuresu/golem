@@ -2,6 +2,7 @@ class_name ActionStateMachine extends StateMachine
 
 @export var animation_tree: AnimationTree
 @export var animation_library_default: String
+@export var default_xfade_time:= 0.2
 
 var playback: AnimationNodeStateMachinePlayback:
 	get: return animation_tree.get("parameters/StateMachine/playback")

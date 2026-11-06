@@ -5,6 +5,8 @@ class_name ActionState extends State
 ## Animation is played backward. Changing it in realtime has no effect.
 @export var play_backward: bool
 @export var speed_scale:= 1.0
+@export var xfade_in_time_scale:= 1.0
+@export var xfade_out_time_scale:= 1.0
 
 var animation_time: float
 

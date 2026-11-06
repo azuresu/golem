@@ -71,8 +71,7 @@ func _build_animation_tree() -> void:
 		blend_tree.connect_node("output", 0, "TimeScale")
 		var ap = animation_tree.get_node(animation_tree.anim_player)
 		if ap is AnimationPlayer:
-			_build_animations(state_machine, ap)
-			_build_transitions(state_machine)
+			_build_transitions(state_machine, _build_animations(state_machine, ap))
 			Glaze.log_info("Building animation tree completed")
 		else:
 			Glaze.log_error("Animation player not found in animation tree: %s", animation_tree)
@@ -81,7 +80,7 @@ func _build_animation_tree() -> void:
 	else:
 		Glaze.log_error("No animation tree set to golem state machine")
 
-func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> void:
+func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> Dictionary[StringName, ActionState]:
 	Glaze.log_info("Building animation nodes...")
 	var gap:= golem.animation_tree_node_gap
 	var states: Dictionary[StringName, ActionState]
@@ -131,27 +130,31 @@ func _build_animations(sm: AnimationNodeStateMachine, ap: AnimationPlayer) -> vo
 	Glaze.log_info("Animation nodes built: %s" % nodes_built)
 	if not golem.default_state and states:
 		golem.default_state = states.keys()[0]
+	return states
 
-func _build_transitions(sm: AnimationNodeStateMachine) -> void:
+func _build_transitions(sm: AnimationNodeStateMachine, states: Dictionary[StringName, ActionState]) -> void:
 	Glaze.log_info("Building animation transitions...")
+	var xfade_time:= golem.action_state_machine.default_xfade_time
 	var trans_built:= 0
 	var node_list: Array[StringName] = sm.get_node_list()
 	var default_exists:= false
 	for i in node_list.size():
-		if sm.get_node(node_list[i]) is AnimationNodeAnimation:
-			if node_list[i] == &"Start" or node_list[i] == &"End":
+		var from:= node_list[i]
+		if sm.get_node(from) is AnimationNodeAnimation:
+			if from == &"Start" or from == &"End":
 				continue
-			if golem.default_state == node_list[i]:
+			if golem.default_state == from:
 				default_exists = true
 			for j in node_list.size():
-				if i == j or node_list[j] == &"Start" or node_list[j] == &"End":
+				var to:= node_list[j]
+				if i == j or to == &"Start" or to == &"End":
 					continue
-				Glaze.log_debug("Building transition from %s to %s", node_list[i], node_list[j])
+				Glaze.log_debug("Building transition from %s to %s", from, to)
 				var trans:= AnimationNodeStateMachineTransition.new()
-				trans.xfade_time = 0.2 # Maybe this should be configurable in animation state.
+				trans.xfade_time = xfade_time * states[from].xfade_out_time_scale * states[to].xfade_in_time_scale
 				trans.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
-				trans.advance_condition = str(node_list[j])
-				sm.add_transition(node_list[i], node_list[j], trans)
+				trans.advance_condition = str(to)
+				sm.add_transition(from, to, trans)
 				trans_built += 1
 	if default_exists:
 		Glaze.log_debug("Building default transition from Start to %s", golem.default_state)
