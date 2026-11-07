@@ -21,7 +21,7 @@ func target_to_move() -> Node3D:
 func state_to_act() -> StringName:
 	if Input.is_action_pressed("jump"):
 		if golem.pose == Golem.POSE_CROUCH:
-			return &"roll"
+			return &"crouch_roll"
 		if Input.is_action_pressed("run") and Input.is_action_pressed("move_forward"):
 			return &"run_jump"
 		return &"jump"

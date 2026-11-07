@@ -1,8 +1,8 @@
 # Roll
 extends ActionState
 
-@export var animation_roll_start:= 0.2
-@export var animation_roll_end:= 0.8
+@export var animation_roll_start:= 0.1
+@export var animation_roll_end:= 0.9
 
 func _update(delta: float) -> void:
 	# Prevent from transition when rolling.
