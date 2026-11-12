@@ -3,32 +3,40 @@ class_name PlayerAgent extends GolemAgent
 const MOUSE_SENSITIVITY:= 0.075
 const CAMERA_FOLLOW_SPEED:= 10.0
 
+@export_category("Input Map Actions")
+@export var ima_run:= "run"
+@export var ima_move_forward:= "move_forward"
+@export var ima_move_backward:= "move_backward"
+@export var ima_move_left:= "move_left"
+@export var ima_move_right:= "move_right"
+@export var ima_jump:= "jump"
+@export var ima_crouch:= "crouch"
+
 var _mouse_motion: Vector2
 var _gazed_target: Node3D
 
 func target_to_move() -> Node3D:
-	if Input.is_action_pressed("run"):
-		if Input.is_action_pressed("move_forward"):
+	if _is_ima_pressed(ima_run):
+		if _is_ima_pressed(ima_move_forward):
 			return $CameraPivot/Forward
-	if Input.is_action_pressed("move_backward"):
+	if _is_ima_pressed(ima_move_backward):
 		return $CameraPivot/Backward
-	if Input.is_action_pressed("move_left"):
+	if _is_ima_pressed(ima_move_left):
 		return $CameraPivot/Left
-	if Input.is_action_pressed("move_right"):
+	if _is_ima_pressed(ima_move_right):
 		return $CameraPivot/Right
 	return $CameraPivot/Forward
 
 func state_to_act() -> StringName:
-	if Input.is_action_pressed("jump"):
+	if _is_ima_pressed(ima_jump):
 		if golem.pose == Golem.POSE_CROUCH:
 			return &"crouch_roll"
-		if Input.is_action_pressed("run") and Input.is_action_pressed("move_forward"):
+		if _is_ima_pressed(ima_run) and _is_ima_pressed(ima_move_forward):
 			return &"run_jump"
 		return &"jump"
-	if Input.is_action_pressed("run") and Input.is_action_pressed("move_forward"):
+	if _is_ima_pressed(ima_run) and _is_ima_pressed(ima_move_forward):
 		return &"run"
-	if Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_backward") or \
-	Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+	if _is_ima_pressed(ima_move_forward) or _is_ima_pressed(ima_move_backward) or _is_ima_pressed(ima_move_left) or _is_ima_pressed(ima_move_right):
 		return &"walk" if golem.pose == Golem.POSE_STAND else &"crouch_walk"
 	return &"stand" if golem.pose == Golem.POSE_STAND else &"crouch"
 
@@ -37,7 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_mouse_motion += event.relative
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("crouch"):
+	if _is_ima_pressed(ima_crouch, true):
 		golem.pose = Golem.POSE_CROUCH if golem.pose == Golem.POSE_STAND else Golem.POSE_STAND
 
 func _ready() -> void:
@@ -70,3 +78,10 @@ func _on_gaze_area_body_exited(body: Node3D) -> void:
 
 func _can_gaze(target: Node3D) -> bool:
 	return target is Golem and not target == golem and not _gazed_target
+
+func _is_ima_pressed(ima_name: String, just_pressed:= false) -> bool:
+	if ima_name:
+		if just_pressed:
+			return Input.is_action_just_pressed(ima_name)
+		return Input.is_action_pressed(ima_name)
+	return false
