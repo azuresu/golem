@@ -3,6 +3,7 @@ class_name PlayerAgent extends GolemAgent
 const MOUSE_SENSITIVITY:= 0.075
 const CAMERA_FOLLOW_SPEED:= 10.0
 
+@export var attach_to: Node3D
 @export_category("Input Map Actions")
 @export var ima_run:= "run"
 @export var ima_move_forward:= "move_forward"
@@ -15,7 +16,10 @@ const CAMERA_FOLLOW_SPEED:= 10.0
 var _mouse_motion: Vector2
 var _gazed_target: Node3D
 
-func target_to_move() -> Node3D:
+func get_target_to_gaze() -> Node3D:
+	return _gazed_target
+
+func get_target_to_move() -> Node3D:
 	if _is_ima_pressed(ima_run):
 		if _is_ima_pressed(ima_move_forward):
 			return $CameraPivot/Forward
@@ -27,7 +31,7 @@ func target_to_move() -> Node3D:
 		return $CameraPivot/Right
 	return $CameraPivot/Forward
 
-func state_to_act() -> StringName:
+func get_state_to_act() -> StringName:
 	if _is_ima_pressed(ima_jump):
 		if golem.pose == Golem.POSE_CROUCH:
 			return &"crouch_roll"
@@ -58,22 +62,22 @@ func _process(delta: float) -> void:
 	pivot.rotation_degrees.x = clampf(pivot.rotation_degrees.x - _mouse_motion.y * MOUSE_SENSITIVITY, -90, 90)
 	_mouse_motion = Vector2.ZERO
 
-	var head: Node3D = golem.get_node("Head")
-	if head:
-		var head_pos:= head.get_global_transform_interpolated().origin
-		pivot.global_position = pivot.global_position.lerp(head_pos, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
+	var at:= attach_to
+	if not at:
+		at = golem.get_node("Head")
+	if at:
+		var at_pos:= at.get_global_transform_interpolated().origin
+		pivot.global_position = pivot.global_position.lerp(at_pos, 1.0 - exp(-CAMERA_FOLLOW_SPEED * delta))
 
 func _on_tree_exiting() -> void:
 	$CameraPivot/Arm.remove_excluded_object(golem)
 
 func _on_gaze_area_body_entered(body: Node3D) -> void:
 	if _can_gaze(body):
-		golem.gaze_at(body)
 		_gazed_target = body
 
 func _on_gaze_area_body_exited(body: Node3D) -> void:
 	if body == _gazed_target:
-		golem.gaze_at(null)
 		_gazed_target = null
 
 func _can_gaze(target: Node3D) -> bool:

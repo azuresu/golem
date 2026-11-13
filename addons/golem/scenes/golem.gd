@@ -66,6 +66,10 @@ func _ready() -> void:
 			agent.golem = self
 			break
 
+func _process(delta: float) -> void:
+	if agent:
+		gaze_at(agent.get_target_to_gaze())
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta

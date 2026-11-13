@@ -12,7 +12,7 @@ func _physics_update(delta: float) -> void:
 	if golem.agent:
 		var p:= _get_animation_percent()
 		if p >= animation_roll_start and p < animation_roll_end:
-			var target_to_move = golem.agent.target_to_move()
+			var target_to_move = golem.agent.get_target_to_move()
 			if target_to_move:
 				golem.move_to(target_to_move.global_position, _get_roll_speed())
 		else:

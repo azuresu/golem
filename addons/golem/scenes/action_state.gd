@@ -34,7 +34,9 @@ func transition(state_name: StringName, params:= {}) -> void:
 
 func _update(delta: float) -> void:
 	if golem.agent:
-		transition(golem.agent.state_to_act())
+		var state:= golem.agent.get_state_to_act()
+		if state:
+			transition(state)
 
 func _process(delta: float) -> void:
 	if machine:
