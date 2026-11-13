@@ -27,20 +27,24 @@ func set_agent(a: GolemAgent) -> void:
 		add_child(agent)
 
 func turn_to(global_pos: Vector3, speed: float, delta: float) -> void:
-	var r:= global_transform.looking_at(global_pos).basis.get_euler()
-	if r.length_squared() > 0:
-		var d:= absf(angle_difference(rotation.y, r.y))
-		if d < speed * delta:
-			rotation.y = r.y
-		else:
-			rotation.y = lerp_angle(rotation.y, r.y, minf(speed * delta, d) / d)
+	if _is_valid_to_look_at(global_pos):
+		var r:= global_transform.looking_at(global_pos).basis.get_euler()
+		if r.length_squared() > 0:
+			var d:= absf(angle_difference(rotation.y, r.y))
+			if d < speed * delta:
+				rotation.y = r.y
+			else:
+				rotation.y = lerp_angle(rotation.y, r.y, minf(speed * delta, d) / d)
 
 func move_to(global_pos: Vector3, speed: float) -> void:
-	if speed > 0:
+	if speed > 0 and _is_valid_to_look_at(global_pos):
 		var r:= global_transform.looking_at(global_pos).basis.get_euler()
 		velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
 	else:
-		velocity = Vector3(0, velocity.y, 0)
+		still()
+
+func still() -> void:
+	velocity = Vector3(0, velocity.y, 0)
 
 func gaze_at(target: Node3D) -> void:
 	if gaze_modifier:
@@ -79,3 +83,12 @@ func _on_skeleton_updated() -> void:
 	for ch in get_children():
 		if ch is BoneShape:
 			ch.update(skeleton)
+
+func _is_valid_to_look_at(global_pos: Vector3) -> bool:
+	var to_target := global_transform.origin - global_pos
+	if to_target.length_squared() < 0.0001:
+		return false
+	var dir := to_target.normalized()
+	if absf(dir.dot(Vector3.UP.normalized())) > 0.9999:
+		return false
+	return true

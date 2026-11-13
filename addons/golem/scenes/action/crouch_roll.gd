@@ -16,7 +16,7 @@ func _physics_update(delta: float) -> void:
 			if target_to_move:
 				golem.move_to(target_to_move.global_position, _get_roll_speed())
 		else:
-			golem.move_to(Vector3.ZERO, 0)
+			golem.still()
 
 func _on_animation_finished() -> void:
 	transition("crouch")

@@ -10,7 +10,7 @@ var _velocity: Vector3
 func _enter() -> void:
 	_jumped = false
 	_velocity = golem.velocity * init_velocity_scale
-	golem.move_to(Vector3.ZERO, 0)
+	golem.still()
 
 func _update(delta: float) -> void:
 	if _get_animation_percent() >= animation_jump_start:

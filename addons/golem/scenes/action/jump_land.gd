@@ -5,7 +5,7 @@ extends ActionState
 
 func _update(delta: float) -> void:
 	if _get_animation_percent() > animation_land_start:
-		golem.move_to(Vector3.ZERO, 0)
+		golem.still()
 
 func _on_animation_finished() -> void:
 	transition("stand")
