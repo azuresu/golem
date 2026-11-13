@@ -14,3 +14,6 @@ func get_target_to_turn() -> Node3D:
 
 func get_state_to_act() -> StringName:
 	return &""
+
+func set_golem_velocity(v: Vector3) -> void:
+	golem.velocity = v

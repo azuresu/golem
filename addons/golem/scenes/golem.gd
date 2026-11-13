@@ -39,7 +39,11 @@ func turn_to(global_pos: Vector3, speed: float, delta: float) -> void:
 func move_to(global_pos: Vector3, speed: float) -> void:
 	if speed > 0 and _is_valid_to_look_at(global_pos):
 		var r:= global_transform.looking_at(global_pos).basis.get_euler()
-		velocity = Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
+		var v:= Vector3(-sin(r.y) * speed, velocity.y, -cos(r.y) * speed)
+		if agent:
+			agent.set_golem_velocity(v)
+		else:
+			velocity = v
 	else:
 		still()
 
