@@ -1,5 +1,6 @@
 # Stand
 extends ActionState
 
-func _enter() -> void:
+func _update(delta: float) -> void:
+	super._update(delta)
 	golem.still()
