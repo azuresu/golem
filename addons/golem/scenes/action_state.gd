@@ -33,6 +33,7 @@ func transition(state_name: StringName, params:= {}) -> void:
 			machine.play_animation(animation_name)
 
 func _update(delta: float) -> void:
+	# Sub-class can decide whether it can be transitioned to another by agent.
 	if golem.agent:
 		var state:= golem.agent.get_state_to_act()
 		if state:
